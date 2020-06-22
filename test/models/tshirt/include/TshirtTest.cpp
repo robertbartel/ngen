@@ -61,3 +61,17 @@ TEST_F(TshirtModelTest, TestRun0) {
 
 }
 
+/**
+ * Test for the tshirt_model class using sample forcing data for which output values are known (or at least have
+ * otherwise been calculated).
+ */
+TEST_F(TshirtModelTest, TestRun1) {
+    // TODO: read in forcings data
+
+    // TODO: create model object
+
+    // TODO: run model over time steps
+
+    // TODO: compare model and pre-calculated outputs
+}
+
