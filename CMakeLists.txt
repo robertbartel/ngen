@@ -44,6 +44,8 @@ add_executable(ngen
         src/NGen.cpp
         )
 
+add_executable(freds freds/t-shirt_0.99.c)
+
 # Find the Boost library and configure usage
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
