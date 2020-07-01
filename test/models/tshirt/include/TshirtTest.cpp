@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "tshirt/include/Tshirt.h"
 #include "tshirt/include/tshirt_params.h"
+#include "Pdm03.h"
 #include "GIUH.hpp"
 
 class TshirtModelTest : public ::testing::Test {
@@ -28,6 +29,31 @@ void TshirtModelTest::SetUp() {
 }
 
 void TshirtModelTest::TearDown() {
+
+}
+
+namespace tshirt {
+    /**
+     * A custom extension of tshirt_model for testing, which do no ET calculation by overriding calc_evapotranspiration
+     * to return zero loss.
+     */
+    class no_et_tshirt_model : public tshirt_model {
+    public:
+        no_et_tshirt_model(tshirt_params model_params, const shared_ptr<tshirt_state> &initial_state)
+                : tshirt_model(model_params, initial_state) {}
+
+        /**
+         * An override of ET logic that does not perform any ET loss calculation, and thus returns zero loss.
+         *
+         * @param soil_m
+         * @param et_params
+         * @return 0.0, to represent zero calculated ET loss
+         */
+        double calc_evapotranspiration(double soil_m, shared_ptr<pdm03_struct> et_params) override {
+            return 0.0;
+        }
+
+    };
 
 }
 
