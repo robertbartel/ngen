@@ -69,7 +69,7 @@ namespace tshirt {
          * @param et_params
          * @return
          */
-        double calc_evapotranspiration(double soil_m, shared_ptr<pdm03_struct> et_params);
+        virtual double calc_evapotranspiration(double soil_m, shared_ptr<pdm03_struct> et_params);
 
         /**
          * Calculate soil field capacity storage, the level at which free drainage stops (i.e., "Sfc").
