@@ -206,15 +206,6 @@ namespace tshirt {
          */
         void initialize_soil_reservoir();
 
-        /**
-         * Initialize the Nash Cascade reservoirs applied to the subsurface soil reservoir's lateral flow outlet.
-         *
-         * Initialize the soil_lf_nash_res member, containing the collection of Reservoir objects used to create
-         * the Nash Cascade for soil_reservoir lateral flow outlet.  The analogous values for Nash Cascade storage from
-         * previous_state are used for current storage of reservoirs at each given index.
-         */
-        void initialize_subsurface_lateral_flow_nash_cascade();
-
     };
 }
 

@@ -145,26 +145,6 @@ namespace tshirt {
     }
 
     /**
-     * Initialize the Nash Cascade reservoirs applied to the subsurface soil reservoir's lateral flow outlet.
-     *
-     * Initialize the soil_lf_nash_res member, containing the collection of Reservoir objects used to create
-     * the Nash Cascade for soil_reservoir lateral flow outlet.  The analogous values for Nash Cascade storage from
-     * previous_state are used for current storage of reservoirs at each given index.
-     */
-    void tshirt_model::initialize_subsurface_lateral_flow_nash_cascade()
-    {
-        soil_lf_nash_res.resize(model_params.nash_n);
-        // TODO: verify correctness of activation_threshold (Sfc) and max_velocity (max_lateral_flow) arg values
-        for (unsigned long i = 0; i < soil_lf_nash_res.size(); ++i) {
-            //construct a single linear outlet reservoir
-            soil_lf_nash_res[i] = make_unique<Reservoir>(
-                    Reservoir(0.0, model_params.max_soil_storage_meters,
-                                        previous_state->nash_cascade_storeage_meters[i], model_params.Kn,
-                                        0.0, model_params.max_lateral_flow));
-        }
-    }
-
-    /**
      * Calculate losses due to evapotranspiration.
      *
      * @param soil_m The soil moisture measured in meters.
