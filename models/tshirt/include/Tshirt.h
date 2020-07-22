@@ -3,6 +3,7 @@
 
 #include "all.h"
 #include "schaake_partitioning.hpp"
+#include "reservoir/Nash_Cascade.hpp"
 #include "Constants.h"
 #include "reservoir/Reservoir.hpp"
 #include "Pdm03.h"
@@ -17,6 +18,8 @@
 #include <utility>
 #include <vector>
 #include <memory>
+
+using namespace reservoir;
 
 namespace tshirt {
 
@@ -143,11 +146,7 @@ namespace tshirt {
         tshirt_params model_params;
         /** Model state from that previous time step before the current. */
         shared_ptr<tshirt_state> previous_state;
-        /**
-         * A collection of reservoirs for a Nash Cascade at the end of the lateral flow output from the subsurface soil
-         * reservoir.
-         */
-        vector<unique_ptr<Reservoir>> soil_lf_nash_res;
+        reservoir::Nash_Cascade soil_lat_flow_nash;
         //FIXME reservoir construction sorts outlets by activation_threshold
         //so the fixed index assumption is invalid.  However, in the current use case
         //they both have the save activation_threshold (Sfc), but we do want percolation fluxes to happen first
