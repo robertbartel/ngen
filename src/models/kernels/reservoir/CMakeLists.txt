@@ -4,6 +4,7 @@ add_library(kernels_reservoir STATIC
         Reservoir_Outlet.cpp
         Reservoir_Exponential_Outlet.cpp
         Reservoir_Linear_Outlet.cpp
+        Nash_Cascade.cpp
         )
 add_library(NGen::kernels_reservoir ALIAS kernels_reservoir)
 target_include_directories(kernels_reservoir PUBLIC
