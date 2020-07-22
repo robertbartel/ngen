@@ -270,11 +270,20 @@ namespace tshirt {
                 model_params.max_soil_storage_meters - previous_state->soil_storage_meters;
 
         // Perform Schaake partitioning, passing some declared references to hold the calculated values.
+        // TODO: confirm whether these are flux, velocity, storage (i.e., meters), etc.
         double surface_runoff, subsurface_infiltration_flux;
         Schaake_partitioning_scheme(dt, model_params.Cschaake, soil_column_moisture_deficit_m, input_storage_m,
                                     &surface_runoff, &subsurface_infiltration_flux);
 
+        // TODO: is this necessary?
+        // check to make sure that there is storage available in soil to hold the water that does not runoff
+        if (soil_column_moisture_deficit_m < subsurface_infiltration_flux) {
+            surface_runoff += subsurface_infiltration_flux - soil_column_moisture_deficit_m;  // put won't fit back into runoff
+            subsurface_infiltration_flux = soil_column_moisture_deficit_m;
+        }
+
         double subsurface_excess, nash_subsurface_excess;
+        // TODO: depending on the units of subsurface_infiltration_flux, make sure this is correct
         soil_reservoir.response_meters_per_second(subsurface_infiltration_flux, dt, subsurface_excess);
 
         // lateral subsurface flow
@@ -320,7 +329,7 @@ namespace tshirt {
         */
 
         // Adjust lateral flow using Nash Cascade, using approach with Nash Cascade class
-        soil_lateral_flow = soil_lat_flow_nash.calc_response_m_per_s(soil_lateral_flow, (unsigned int)dt);
+        Qlf = soil_lat_flow_nash.calc_response_m_per_s(Qlf, (unsigned int)dt);
         // ... and update the current state values
         for (std::vector<double>::size_type i = 0; i < soil_lat_flow_nash.get_size(); ++i) {
             current_state->nash_cascade_storeage_meters[i] = soil_lat_flow_nash.get_storage_for_reservoir_at_index_m(i);
