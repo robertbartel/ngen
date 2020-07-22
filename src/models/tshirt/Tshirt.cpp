@@ -14,16 +14,18 @@ namespace tshirt {
      * @param initial_state Shared smart pointer to tshirt_state struct hold initial state values
      */
     tshirt_model::tshirt_model(tshirt_params model_params, const shared_ptr<tshirt_state> &initial_state)
-            : model_params(model_params), previous_state(initial_state), current_state(initial_state)
+            : model_params(model_params), previous_state(initial_state), current_state(initial_state),
+              soil_lat_flow_nash(reservoir::Nash_Cascade(model_params.nash_n,
+                                                         initial_state->nash_cascade_storeage_meters,
+                                                         model_params.max_soil_storage_meters,
+                                                         model_params.Kn,
+                                                         model_params.max_lateral_flow))
     {
         // ********** Start by calculating Sfc, as this will get by several other things
         soil_field_capacity_storage_threshold = calc_soil_field_capacity_storage_threshold();
 
         // ********** Sanity check init (in particular, size of Nash Cascade storage vector in the state parameter).
         check_valid();
-
-        // ********** Create the vector of Nash Cascade reservoirs used at the end of the soil lateral flow outlet
-        initialize_subsurface_lateral_flow_nash_cascade();
 
         // ********** Create the soil reservoir
         initialize_soil_reservoir();
@@ -309,6 +311,7 @@ namespace tshirt {
         // Update the current soil storage, accounting for ET
         current_state->soil_storage_meters = new_soil_storage_m - fluxes->et_loss_meters;
 
+        /*
         // Cycle through lateral flow Nash cascade of reservoirs
         // loop essentially copied from Hymod logic, but with different variable names
         for (unsigned long int i = 0; i < soil_lf_nash_res.size(); ++i) {
@@ -318,10 +321,34 @@ namespace tshirt {
             Qlf += nash_subsurface_excess / dt;
             current_state->nash_cascade_storeage_meters[i] = soil_lf_nash_res[i]->get_storage_height_meters();
         }
+        */
+
+        // Alternate approach (still doesn't work)
+        /*
+        std::vector<double> lf_nash_fluxes(soil_lf_nash_res.size());
+        for (unsigned long int i = 0; i < soil_lf_nash_res.size(); ++i) {
+            double nash_input_flux = i == 0 ? soil_lateral_flow : lf_nash_fluxes[i -1];
+            soil_lf_nash_res[i]->response_meters_per_second(nash_input_flux, int(dt), nash_subsurface_excess);
+            lf_nash_fluxes[i] = soil_lf_nash_res[i]->velocity_meters_per_second_for_outlet(0);
+            lf_nash_fluxes[i] += nash_subsurface_excess / dt;
+            double storage_height = soil_lf_nash_res[i]->get_storage_height_meters();
+            current_state->nash_cascade_storeage_meters[i] = storage_height;
+            //current_state->nash_cascade_storeage_meters[i] = soil_lf_nash_res[i]->get_storage_height_meters();
+            //current_state->nash_cascade_storeage_meters[i] = previous_state->nash_cascade_storeage_meters[i] -  lf_nash_fluxes[i];
+        }
+        soil_lateral_flow = lf_nash_fluxes[soil_lf_nash_res.size() - 1];
+        */
+
+        // Adjust lateral flow using Nash Cascade, using approach with Nash Cascade class
+        soil_lateral_flow = soil_lat_flow_nash.calc_response_m_per_s(soil_lateral_flow, (unsigned int)dt);
+        // ... and update the current state values
+        for (std::vector<double>::size_type i = 0; i < soil_lat_flow_nash.get_size(); ++i) {
+            current_state->nash_cascade_storeage_meters[i] = soil_lat_flow_nash.get_storage_for_reservoir_at_index_m(i);
+        }
 
         // Get response and update gw res state
         double excess_gw_water;
-        fluxes->groundwater_flow_meters_per_second = groundwater_reservoir.response_meters_per_second(Qperc, dt,
+        fluxes->groundwater_flow_meters_per_second = groundwater_reservoir.response_meters_per_second(Qperc, (int)dt,
                                                                                                excess_gw_water);
         // update local copy of state
         current_state->groundwater_storage_meters = groundwater_reservoir.get_storage_height_meters();
