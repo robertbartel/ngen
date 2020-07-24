@@ -97,6 +97,24 @@ double slop;   // this factor (0-1) modifies the gradient of the hydraulic head 
 double D;       // soil depth [m]
 };
 
+//DATA STRUCTURE TO HOLD AORC FORCING DATA
+struct aorc_forcing_data
+{
+// struct NAME                          DESCRIPTION                                            ORIGINAL AORC NAME     
+//____________________________________________________________________________________________________________________
+float precip_kg_per_m2;                // Surface precipitation "kg/m^2"                         | APCP_surface
+float incoming_longwave_W_per_m2 ;     // Downward Long-Wave Rad. Flux at 0m height, W/m^2       | DLWRF_surface
+float incoming_shortwave_W_per_m2;     // Downward Short-Wave Radiation Flux at 0m height, W/m^2 | DSWRF_surface
+float surface_pressure_Pa;             // Surface atmospheric pressure, Pa                       | PRES_surface
+float specific_humidity_2m_kg_per_kg;  // Specific Humidity at 2m height, kg/kg                  | SPFH_2maboveground
+float air_temperature_2m_K;            // Air temparture at 2m height, K                         | TMP_2maboveground
+float u_wind_speed_10m_m_per_s;        // U-component of Wind at 10m height, m/s                 | UGRD_10maboveground
+float v_wind_speed_10m_m_per_s;        // V-component of Wind at 10m height, m/s                 | VGRD_10maboveground
+float latitude;                        // degrees north of the equator.  Negative south          | latitude
+float longitude;                       // degrees east of prime meridian. Negative west          | longitude
+long int time; //TODO: type?           // seconds since 1970-01-01 00:00:00.0 0:00               | time
+} ;
+
 // function prototypes
 // --------------------------------
 extern void Schaake_partitioning_scheme(double dt, double magic_number, double deficit, double qinsur,
@@ -124,6 +142,10 @@ extern void dtwo_alloc( double ***ptr, int x, int y);
 extern void d_alloc(double **var,int size);
 extern void i_alloc(int **var,int size);
 
+extern void parse_aorc_line(char *theString,long *year,long *month, long *day,long *hour,
+                long *minute, double *dsec, struct aorc_forcing_data *aorc);
+
+extern void get_word(char *theString,int *start,int *end,char *theWord,int *wordlen);
 
 //####################################################################
 //####################################################################
@@ -144,6 +166,10 @@ int tstep;
 double upper_lim;
 double lower_lim;
 double diff;
+char theString[513];   // dangerously hard coded string size... TODO fixme.
+long year,month,day,hour,minute;
+double dsec;
+double jdate_start=0.0;
 
 double catchment_area_km2=5.0;            // in the range of our desired size
 double drainage_density_km_per_km2=3.5;   // this is approx. the average blue line drainage density for CONUS
@@ -155,6 +181,7 @@ double timestep_h;
 // forcing
 double *rain_rate=NULL;
 double timestep_rainfall_input_m;
+int yes_aorc=TRUE;                  // change to TRUE to read in entire AORC precip/met. forcing data set.
 
 //Schaake partitioning function parameters
 
@@ -206,6 +233,7 @@ double Qout_m;           // the sum of giuh, nash-cascade, and base flow outputs
 struct conceptual_reservoir soil_reservoir;
 struct conceptual_reservoir gw_reservoir;
 struct NWM_soil_parameters NWM_soil_params;
+struct aorc_forcing_data aorc_data;
 
 double refkdt=3.0;   // in Sugar Creek WRF-Hydro calibration this value was 0.15  3.0 is the default from noah-mp.
 
@@ -259,7 +287,9 @@ catchment_area_km2=5.0;
 //---------------------------
 num_timesteps=10000;
 timestep_h=1.0;
-atm_press_Pa=101300.0;
+// Changing this, as this seems to be incorrect based on online references
+//atm_press_Pa=101300.0;
+atm_press_Pa=101325.0;
 unit_weight_water_N_per_m3=9810.0;
 
 //initialize NWM soil parameters, using LOAM soils from SOILPARM.TBL.
@@ -271,7 +301,7 @@ NWM_soil_params.satpsi=0.355;   // [m]
 NWM_soil_params.bb=4.05;        // [-]    -- called "bexp" in NWM
 NWM_soil_params.slop=1.0;    // calibration factor that varies from 0 (no flow) to 1 (free drainage) at soil bottom
 NWM_soil_params.D=2.0;       // [m] soil thickness assumed in the NWM not from SOILPARM.TBL
-NWM_soil_params.mult=0.0;    // not from SOILPARM.TBL, This is actually calibration parameter: LKSATFAC
+NWM_soil_params.mult=1000.0;    // not from SOILPARM.TBL, This is actually calibration parameter: LKSATFAC
 
 trigger_z_m=0.5;   // distance from the bottom of the soil column to the center of the lowest discretization
 
@@ -348,8 +378,8 @@ for(i=0;i<MAX_NUM_NASH_CASCADE;i++) nash_storage[i]=0.0;  /* initialize */
 //  Populate the groundwater conceptual reservoir data structure
 //-----------------------------------------------------------------------
 // one outlet, 0.0 threshold, nonliner and exponential as in NWM
-gw_reservoir.is_exponential=FALSE;         // set this true TRUE to use the exponential form of the discharge equation
-gw_reservoir.storage_max_m=1.0;            // calibrated Sugar Creek WRF-Hydro value 16.0, I assume mm.
+gw_reservoir.is_exponential=TRUE;         // set this true TRUE to use the exponential form of the discharge equation
+gw_reservoir.storage_max_m=16.0;            // calibrated Sugar Creek WRF-Hydro value 16.0, I assume mm.
 gw_reservoir.coeff_primary=0.01;           // per h
 gw_reservoir.exponent_primary=6.0;              // linear iff 1.0, non-linear iff > 1.0
 gw_reservoir.storage_threshold_primary_m=0.0;     // 0.0 means no threshold applied
@@ -385,23 +415,45 @@ volstart          += soil_reservoir.storage_m;    // initial mass balance checks
 vol_soil_start     = soil_reservoir.storage_m;
 
 
-// read in the rainfall forcing data
-//------------------------------------
-if((in_fptr=fopen("rain_mm_per_h.dat","r"))==NULL)
-  {printf("Can't open input file\n");exit(0);}
-
 d_alloc(&rain_rate,MAX_NUM_RAIN_DATA);
 
-num_rain_dat=720;
-for(i=0;i<num_rain_dat;i++)
+//########################################################################################################
+// read in the aorc forcing data, just save the rain rate in mm/h in an array, ignore other vars ffor now.
+//########################################################################################################
+if(yes_aorc==TRUE)  // reading a csv file containing all the AORC meteorological/radiation and rainfall
   {
-  fscanf(in_fptr,"%lf",&rain_rate[i]);
-  }
-fclose(in_fptr);
+  if((in_fptr=fopen("cat87_01Dec2015.csv","r"))==NULL)
+    {printf("Can't open input file\n");exit(0);}
 
-fprintf(out_fptr,"#    ,hourly,  direct,   giuh ,lateral,  base,   total\n");
-fprintf(out_fptr,"#Time,rainfall,runoff,  runoff, flow  ,  flow,  discharge\n");
-fprintf(out_fptr,"# (h),  (m)   ,  (m) ,    (m) ,  (m)  ,   (m),     (m)\n");
+  num_rain_dat=720;  // hard coded number of lines in the forcing input file.
+  fgets(theString,512,in_fptr);  // read in the header.
+  for(i=0;i<num_rain_dat;i++)
+    {
+    fgets(theString,512,in_fptr);  // read in a line of AORC data.
+    parse_aorc_line(theString,&year,&month,&day,&hour,&minute,&dsec,&aorc_data);
+    if(i==0) jdate_start=greg_2_jul(year,month,day,hour,minute,dsec);      // calc & save the starting julian date of the rainfall data
+    // saving only the rainfall data ffor now.
+    rain_rate[i]=(double)aorc_data.precip_kg_per_m2;  // assumed 1000 kg/m3 density of water.  This result is mm/h;
+    }
+  }
+else  // reading a single column txt file that contains only rainfall (mm/h) 
+  {
+  if((in_fptr=fopen("cat87_01Dec2015_rain_only.dat","r"))==NULL)
+    {printf("Can't open input file\n");exit(0);}
+
+  num_rain_dat=720;  // hard coded number of lines in the forcing input file.
+  for(i=0;i<num_rain_dat;i++)
+    {
+    fscanf(in_fptr,"%lf",&rain_rate[i]);
+    }
+  }  
+fclose(in_fptr);
+//######################  END OF READ FORCING CODE  ######################################################
+
+
+fprintf(out_fptr,"#    ,            hourly ,  direct,   giuh ,lateral,  base,   total\n");
+fprintf(out_fptr,"#Time,           rainfall,  runoff,  runoff, flow  ,  flow,  discharge\n");
+fprintf(out_fptr,"# (h),             (m)   ,    (m) ,    (m) ,  (m)  ,   (m),     (m)\n");
 //tstep,Schaake_output_runoff_m,giuh_runoff_m,
 //                                         nash_lateral_runoff_m, flux_from_deep_gw_to_chan_m, Qout_m 
 
@@ -418,6 +470,8 @@ double percolation_flux;  // flux from soil to gw nonlinear researvoir, +downwar
 num_timesteps=num_rain_dat+279;  // run a little bit beyond the rain data to see what happens.
 for(tstep=0;tstep<num_timesteps;tstep++)
   {
+  
+  
   if(tstep<num_rain_dat)  timestep_rainfall_input_m=rain_rate[tstep]/1000.0;  // convert from mm/h to m w/ 1h timestep
   else                    timestep_rainfall_input_m=0.0;
   volin+=timestep_rainfall_input_m;
@@ -458,6 +512,7 @@ for(tstep=0;tstep<num_timesteps;tstep++)
     infiltration_depth_m=soil_reservoir_storage_deficit_m;  
     vol_sch_runoff+=diff;  // send excess water back to GIUH runoff
     vol_sch_infilt-=diff;  // correct overprediction of infilt.
+    flux_overland_m+=diff; // bug found by Nels.  This was missing and fixes it.
     }
 
   vol_to_soil              += infiltration_depth_m; 
@@ -536,8 +591,11 @@ for(tstep=0;tstep<num_timesteps;tstep++)
   // These fluxs are all in units of meters per time step.   Multiply them by the "catchment_area_km2" variable
   // to convert them into cubic meters per time step.
   
-  fprintf(out_fptr,"%3d %lf %lf %lf %lf %lf %lf\n",tstep,timestep_rainfall_input_m,Schaake_output_runoff_m,
-                           giuh_runoff_m,nash_lateral_runoff_m, flux_from_deep_gw_to_chan_m, Qout_m );
+  // WRITE OUTPUTS IN mm/h ffor aiding in interpretation
+  fprintf(out_fptr,"%16.8lf %lf %lf %lf %lf %lf %lf\n",jdate_start+(double)tstep*1.0/24.0,
+                           timestep_rainfall_input_m*1000.0,Schaake_output_runoff_m*1000.0,
+                           giuh_runoff_m*1000.0,nash_lateral_runoff_m*1000.0, flux_from_deep_gw_to_chan_m*1000.0,
+                           Qout_m*1000.0 );
   }
 
 // done.
@@ -862,6 +920,102 @@ else                return(FALSE);
 /**************************************************************************/
 /**************************************************************************/
 /**************************************************************************/
+
+
+/*####################################################################*/
+/*########################### PARSE LINE #############################*/
+/*####################################################################*/
+void parse_aorc_line(char *theString,long *year,long *month, long *day,long *hour,long *minute, double *second,
+                struct aorc_forcing_data *aorc)
+{
+char str[20];
+long yr,mo,da,hr,mi;
+double mm,julian,se;
+float val;
+int i,start,end,len;
+int yes_pm,wordlen;
+char theWord[150];
+
+len=strlen(theString);
+
+start=0; /* begin at the beginning of theString */
+get_word(theString,&start,&end,theWord,&wordlen);
+*year=atol(theWord);
+
+get_word(theString,&start,&end,theWord,&wordlen);
+*month=atol(theWord);
+
+get_word(theString,&start,&end,theWord,&wordlen);
+*day=atol(theWord);
+
+get_word(theString,&start,&end,theWord,&wordlen);
+*hour=atol(theWord);
+
+get_word(theString,&start,&end,theWord,&wordlen);
+*minute=atol(theWord);
+
+get_word(theString,&start,&end,theWord,&wordlen);
+*second=(double)atof(theWord);
+
+get_word(theString,&start,&end,theWord,&wordlen);
+aorc->precip_kg_per_m2=atof(theWord);
+              
+get_word(theString,&start,&end,theWord,&wordlen);
+aorc->incoming_longwave_W_per_m2=atof(theWord);   
+
+get_word(theString,&start,&end,theWord,&wordlen);
+aorc->incoming_shortwave_W_per_m2=atof(theWord);   
+
+get_word(theString,&start,&end,theWord,&wordlen);
+aorc->surface_pressure_Pa=atof(theWord);           
+
+get_word(theString,&start,&end,theWord,&wordlen);
+aorc->specific_humidity_2m_kg_per_kg=atof(theWord);
+
+get_word(theString,&start,&end,theWord,&wordlen);
+aorc->air_temperature_2m_K=atof(theWord);          
+
+get_word(theString,&start,&end,theWord,&wordlen);
+aorc->u_wind_speed_10m_m_per_s=atof(theWord);      
+
+get_word(theString,&start,&end,theWord,&wordlen);
+aorc->v_wind_speed_10m_m_per_s=atof(theWord);      
+
+  
+return;
+}
+
+/*####################################################################*/
+/*############################## GET WORD ############################*/
+/*####################################################################*/
+void get_word(char *theString,int *start,int *end,char *theWord,int *wordlen)
+{
+int i,lenny,j;
+lenny=strlen(theString);
+
+while(theString[*start]==' ' || theString[*start]=='\t')
+  {
+  (*start)++;
+  };
+  
+j=0;
+for(i=(*start);i<lenny;i++)
+  {
+  if(theString[i]!=' ' && theString[i]!='\t' && theString[i]!=',' && theString[i]!=':' && theString[i]!='/')
+    {
+    theWord[j]=theString[i];
+    j++;
+    }
+  else
+    {
+    break;
+    }
+  }
+theWord[j]='\0';
+*start=i+1;
+*wordlen=strlen(theWord);
+return;
+}
 
 /****************************************/
 void itwo_alloc(int ***array,int rows, int cols)
