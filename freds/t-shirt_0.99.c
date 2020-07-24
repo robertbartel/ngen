@@ -468,6 +468,7 @@ double percolation_flux;  // flux from soil to gw nonlinear researvoir, +downwar
 //###################################################################################
 
 num_timesteps=num_rain_dat+279;  // run a little bit beyond the rain data to see what happens.
+num_timesteps=2; //DEUBUG ONLY FIXME
 for(tstep=0;tstep<num_timesteps;tstep++)
   {
   
@@ -479,12 +480,20 @@ for(tstep=0;tstep<num_timesteps;tstep++)
   //##################################################
   // partition rainfall using Schaake function
   //##################################################
+  printf("Time step %d:\n", tstep);
+  printf("\tBefore Schaake:\n");
+  printf("\t\trainfall_input_m\t\t%lf\n", timestep_rainfall_input_m);
 
   soil_moisture_deficit_m=(NWM_soil_params.smcmax*NWM_soil_params.D-soil_reservoir.storage_m);
   
+  printf("\t\tsoil_mosisture_deficit_m\t%lf\n", soil_moisture_deficit_m);
+
   Schaake_partitioning_scheme(timestep_h,Schaake_adjusted_magic_constant_by_soil_type,soil_moisture_deficit_m,
                               timestep_rainfall_input_m,&Schaake_output_runoff_m,&infiltration_depth_m);
-  
+  printf("\n\tAfter Schaake:\n");
+  printf("\t\tSchaake_output_runoff\t\t%lf\n", Schaake_output_runoff_m);
+  printf("\t\tinfiltration_depth\t\t%lf\n", infiltration_depth_m);
+
   // check to make sure that there is storage available in soil to hold the water that does not runoff
   //--------------------------------------------------------------------------------------------------
   if(soil_moisture_deficit_m<infiltration_depth_m)
@@ -493,9 +502,13 @@ for(tstep=0;tstep<num_timesteps;tstep++)
     infiltration_depth_m=soil_moisture_deficit_m;
     soil_reservoir.storage_m=soil_reservoir.storage_max_m;
     }
-  printf("After Schaake function: rain:%8.5lf mm  runoff:%8.5lf mm  infiltration:%8.5lf mm  residual:%e m\n",
-                                 rain_rate[tstep],Schaake_output_runoff_m*1000.0,infiltration_depth_m*1000.0,
-                                 timestep_rainfall_input_m-Schaake_output_runoff_m-infiltration_depth_m);
+  printf("\n\tAfter Soil Check:\n");
+  printf("\t\tSchaake_output_runoff\t\t%lf\n", Schaake_output_runoff_m);
+  printf("\t\tinfiltration_depth\t\t%lf\n" , infiltration_depth_m);
+  printf("\t\tsoil_reservoir.storage\t\t%lf\n", soil_reservoir.storage_m);
+  //printf("After Schaake function: rain:%8.5lf mm  runoff:%8.5lf mm  infiltration:%8.5lf mm  residual:%e m\n",
+  //                               rain_rate[tstep],Schaake_output_runoff_m*1000.0,infiltration_depth_m*1000.0,
+  //                               timestep_rainfall_input_m-Schaake_output_runoff_m-infiltration_depth_m);
 
   flux_overland_m=Schaake_output_runoff_m;
 
@@ -506,6 +519,10 @@ for(tstep=0;tstep<num_timesteps;tstep++)
   // limit amount transferred to deficit
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   soil_reservoir_storage_deficit_m=soil_reservoir.storage_max_m-soil_reservoir.storage_m;
+  
+  printf("\n\tsoil befores input:\n");
+  printf("\t\tsoil_reservoir.storage_m\t%lf\n", soil_reservoir.storage_m); 
+  //FIXME BUG flux_perc_m not initialized here!!!
   if(flux_perc_m>soil_reservoir_storage_deficit_m)
     {
     diff=flux_perc_m-soil_reservoir_storage_deficit_m;  // the amount that there is not capacity ffor
@@ -514,11 +531,11 @@ for(tstep=0;tstep<num_timesteps;tstep++)
     vol_sch_infilt-=diff;  // correct overprediction of infilt.
     flux_overland_m+=diff; // bug found by Nels.  This was missing and fixes it.
     }
-
+  
   vol_to_soil              += infiltration_depth_m; 
   soil_reservoir.storage_m += infiltration_depth_m;  // put the infiltrated water in the soil.
-
-  
+  printf("\n\tBefore soil res calc (w/ input_flux):\n");
+  printf("\t\tsoil_reservoir.storage_m\t%lf\n", soil_reservoir.storage_m);
   // calculate fluxes from the soil storage into the deep groundwater (percolation) and to lateral subsurface flow
   //--------------------------------------------------------------------------------------------------------------
   conceptual_reservoir_flux_calc(&soil_reservoir,&percolation_flux,&lateral_flux);
@@ -527,12 +544,14 @@ for(tstep=0;tstep<num_timesteps;tstep++)
   
   flux_lat_m=lateral_flux;  // m/h        <<<<<<<<<<<  flux into the lateral flow Nash cascade >>>>>>>>
   
-
   // calculate flux of base flow from deep groundwater reservoir to channel
   //--------------------------------------------------------------------------
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   gw_reservoir_storage_deficit_m= gw_reservoir.storage_max_m-gw_reservoir.storage_m;
-  
+
+  printf("\n\tgroundwater before input:\n");
+  printf("\t\tgw_reservoir.storage_m\t\t%lf\n", gw_reservoir.storage_m);
+
   // limit amount transferred to deficit iff there is insuffienct avail. storage
   if(flux_perc_m>gw_reservoir_storage_deficit_m)
     {
@@ -551,8 +570,17 @@ for(tstep=0;tstep<num_timesteps;tstep++)
   vol_soil_to_lat_flow     += flux_lat_m;  //TODO add this to nash cascade as input
   volout=volout+flux_lat_m;
   
+  printf("\n\tAfter soil res calc:\n");
+  printf("\t\tsoil_reservoir.storage_m\t%lf\n", soil_reservoir.storage_m);
+  printf("\t\tpercolation_flux\t\t%lf\n", percolation_flux);
+  printf("\t\tlateral_flux\t\t\t%lf\n", lateral_flux);
+  printf("\t\tAdjusted flux_perc_m\t\t%lf\n", flux_perc_m);
+  
+  printf("\n\tBefore GW res calc (w/ input flux):\n");
+  printf("\t\tgw_reservoir.storage_m\t\t%lf\n", gw_reservoir.storage_m);
   conceptual_reservoir_flux_calc(&gw_reservoir,&primary_flux,&secondary_flux);
 
+  // calculate flux of base flow from deep groundwater reservoir to channel
   flux_from_deep_gw_to_chan_m=primary_flux;  // m/h   <<<<<<<<<< BASE FLOW FLUX >>>>>>>>>
   vol_from_gw+=flux_from_deep_gw_to_chan_m;
   
@@ -565,11 +593,17 @@ for(tstep=0;tstep<num_timesteps;tstep++)
   
   gw_reservoir.storage_m -= flux_from_deep_gw_to_chan_m;
 
+  printf("\n\tAfter GW res calc:\n");
+  printf("\t\tgw_reservoir.storage_m\t\t%lf\n", gw_reservoir.storage_m);
+  printf("\t\tprimary_flux\t\t\t%lf\n", primary_flux);
+  printf("\t\tsecondary_flux\t\t\t%lf\n", secondary_flux);
   
   // Solve the convolution integral ffor this time step 
 
   giuh_runoff_m = convolution_integral(Schaake_output_runoff_m,num_giuh_ordinates,
                                               giuh_ordinates,runoff_queue_m_per_timestep);
+  printf("\n\tGIUH:\n");
+  printf("\t\tgiuh_runoff_m\t\t\t%lf\n", giuh_runoff_m);
   vol_out_giuh+=giuh_runoff_m;
 
   volout+=giuh_runoff_m;
@@ -580,13 +614,16 @@ for(tstep=0;tstep<num_timesteps;tstep++)
                                        K_nash,nash_storage);
   vol_in_nash   += flux_lat_m;
   vol_out_nash  += nash_lateral_runoff_m;
-
+  printf("\n\tNASH:\n");
+  printf("\t\tnash_lateral_runoff_m\t\t%lf\n", nash_lateral_runoff_m);
 #ifdef DEBUG
         fprintf(out_debug_fptr,"%d %lf %lf\n",tstep,flux_lat_m,nash_lateral_runoff_m);
 #endif
 
   Qout_m = giuh_runoff_m + nash_lateral_runoff_m + flux_from_deep_gw_to_chan_m;
-
+  printf("\n\tResponse:\n");
+  printf("\t\tQout_m\t\t\t\t%lf\n", Qout_m);
+  printf("\n\n");
   // <<<<<<<<NOTE>>>>>>>>>
   // These fluxs are all in units of meters per time step.   Multiply them by the "catchment_area_km2" variable
   // to convert them into cubic meters per time step.
@@ -597,7 +634,6 @@ for(tstep=0;tstep<num_timesteps;tstep++)
                            giuh_runoff_m*1000.0,nash_lateral_runoff_m*1000.0, flux_from_deep_gw_to_chan_m*1000.0,
                            Qout_m*1000.0 );
   }
-
 // done.
 //
 // PERFORM MASS BALANCE CHECKS AND WRITE RESULTS TO stderr.
