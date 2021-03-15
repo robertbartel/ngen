@@ -120,19 +120,19 @@ void Bmi_C_Formulation_Test::SetUp() {
     config_prop_ptree = std::vector<boost::property_tree::ptree>(EX_COUNT);
 
     /* Set up the basic/explicit example index details in the arrays */
-    catchment_ids[0] = "cat-87";
+    catchment_ids[0] = "cat-27";
     model_type_name[0] = "bmi_c_cfe";
-    forcing_file[0] = find_file(forcing_dir_opts, "cat-87_2015-12-01 00_00_00_2015-12-30 23_00_00.csv");
+    forcing_file[0] = find_file(forcing_dir_opts, "cat-27_2015-12-01 00_00_00_2015-12-30 23_00_00.csv");
     lib_file[0] = find_file(lib_dir_opts, BMI_CFE_LOCAL_LIB_NAME);
-    init_config[0] = find_file(bmi_init_cfg_dir_opts, "cat_87_bmi_config.txt");
+    init_config[0] = find_file(bmi_init_cfg_dir_opts, "cat_27_bmi_config.txt");
     main_output_variable[0] = "Q_OUT";
     uses_forcing_file[0] = true;
 
-    catchment_ids[1] = "cat-87";
+    catchment_ids[1] = "cat-27";
     model_type_name[1] = "bmi_c_cfe";
-    forcing_file[1] = find_file(forcing_dir_opts, "cat-87_2015-12-01 00_00_00_2015-12-30 23_00_00.csv");
+    forcing_file[1] = find_file(forcing_dir_opts, "cat-27_2015-12-01 00_00_00_2015-12-30 23_00_00.csv");
     lib_file[1] = find_file(lib_dir_opts, BMI_CFE_LOCAL_LIB_NAME);
-    init_config[1] = find_file(bmi_init_cfg_dir_opts, "cat_87_bmi_config.txt");
+    init_config[1] = find_file(bmi_init_cfg_dir_opts, "cat_27_bmi_config.txt");
     main_output_variable[1] = "Q_OUT";
     uses_forcing_file[1] = true;
 
