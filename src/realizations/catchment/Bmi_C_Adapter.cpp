@@ -1,7 +1,5 @@
 #include <exception>
 #include <utility>
-#include <dlfcn.h>
-#include "FileChecker.h"
 #include "Bmi_C_Adapter.hpp"
 #include "boost/algorithm/string.hpp"
 
@@ -496,7 +494,7 @@ void Bmi_C_Adapter::Initialize() {
     else {
         // Make sure this is set to 'true' after this function call finishes
         model_initialized = true;
-        dynamic_library_load();
+        init_and_load_model();
         int init_result = bmi_model->initialize(bmi_model.get(), bmi_init_config.c_str());
         if (init_result != BMI_SUCCESS) {
             init_exception_msg = "Failure when attempting to initialize " + model_name;
