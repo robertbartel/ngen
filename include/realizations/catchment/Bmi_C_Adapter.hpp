@@ -28,20 +28,24 @@ namespace models {
 
             explicit Bmi_C_Adapter(std::string library_file_path, std::string forcing_file_path,
                                    bool model_uses_forcing_file, bool allow_exceed_end, bool has_fixed_time_step,
-                                   const std::string& registration_func, utils::StreamHandler output);
+                                   const std::string& registration_func, utils::StreamHandler output,
+                                   bool call_bmi_initialize = true);
 
             Bmi_C_Adapter(std::string library_file_path, std::string bmi_init_config,
                           std::string forcing_file_path, bool model_uses_forcing_file, bool allow_exceed_end,
-                          bool has_fixed_time_step, std::string  registration_func, utils::StreamHandler output);
+                          bool has_fixed_time_step, std::string  registration_func, utils::StreamHandler output,
+                          bool call_bmi_initialize = true);
 
             Bmi_C_Adapter(std::string library_file_path, std::string forcing_file_path, bool model_uses_forcing_file,
                           bool allow_exceed_end, bool has_fixed_time_step, const std::string& registration_func,
-                          const geojson::JSONProperty &other_input_vars, utils::StreamHandler output);
+                          const geojson::JSONProperty &other_input_vars, utils::StreamHandler output,
+                          bool call_bmi_initialize = true);
 
             Bmi_C_Adapter(std::string library_file_path, const std::string &bmi_init_config,
                           std::string forcing_file_path, bool model_uses_forcing_file, bool allow_exceed_end,
                           bool has_fixed_time_step, const std::string& registration_func,
-                          const geojson::JSONProperty &other_input_vars, utils::StreamHandler output);
+                          const geojson::JSONProperty &other_input_vars, utils::StreamHandler output,
+                          bool call_bmi_initialize = true);
 
             // Copy constructor
             // TODO: since the dynamically loaded lib and model struct can't easily be copied (without risking breaking
