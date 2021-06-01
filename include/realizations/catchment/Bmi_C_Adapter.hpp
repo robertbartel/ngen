@@ -439,6 +439,8 @@ namespace models {
         protected:
             // TODO: look at setting this in some other way
             std::string model_name = "BMI C model";
+            /** Pointer to C BMI model struct object. */
+            std::shared_ptr<Bmi> bmi_model;
 
             /**
              * Get model time step size pointer, using lazy loading when fixed.
@@ -536,8 +538,6 @@ namespace models {
             std::string bmi_init_config;
             /** Path to the BMI shared library file, for dynamic linking. */
             std::string bmi_lib_file;
-            /** Pointer to C BMI model struct object. */
-            std::shared_ptr<Bmi> bmi_model;
             /** Whether this particular model has a time step size that cannot be changed internally or externally. */
             bool bmi_model_has_fixed_time_step = true;
             /** Conversion factor for converting values for model time in model's unit type to equivalent in seconds. */
