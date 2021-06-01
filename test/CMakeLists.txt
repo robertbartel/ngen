@@ -171,3 +171,29 @@ add_automated_test_w_mock(
         core/NetworkTests.cpp
         realizations/Formulation_Manager_Test.cpp
 )
+
+# A special, manually constructed test for profiling the BMI C adapter code
+add_executable(profile_bmi_c_static
+        realizations/catchments/Bmi_C_Adapter_Static_Profiling_Test.cpp
+        realizations/catchments/Bmi_C_Static_Adapter.hpp
+        ../extern/alt-modular/alt-modular/Modules/CFE/src/cfe.c
+        ../extern/alt-modular/alt-modular/Modules/CFE/src/bmi_cfe.c
+        )
+
+target_include_directories(profile_bmi_c_static PUBLIC
+        ../extern/alt-modular/alt-modular/Modules/CFE/include
+        )
+
+target_link_libraries(profile_bmi_c_static
+        gtest
+        gmock
+        gtest_main
+        NGen::core
+        NGen::core_catchment
+        NGen::core_catchment_giuh
+        NGen::core_nexus
+        NGen::geojson
+        NGen::models_tshirt
+        NGen::realizations_catchment
+        NGen::kernels_reservoir
+        )
