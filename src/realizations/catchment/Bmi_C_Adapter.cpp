@@ -24,17 +24,6 @@ Bmi_C_Adapter::Bmi_C_Adapter(std::string library_file_path, std::string bmi_init
           output(std::move(output)),
           bmi_model(std::make_shared<Bmi>(Bmi())) {
     Initialize();
-    std::string time_units = GetTimeUnits();
-    if (time_units == "s" || time_units == "sec" || time_units == "second" || time_units == "seconds")
-        bmi_model_time_convert_factor = 1.0;
-    else if (time_units == "m" || time_units == "min" || time_units == "minute" || time_units == "minutes")
-        bmi_model_time_convert_factor = 60.0;
-    else if (time_units == "h" || time_units == "hr" || time_units == "hour" || time_units == "hours")
-        bmi_model_time_convert_factor = 3600.0;
-    else if (time_units == "d" || time_units == "day" || time_units == "days")
-        bmi_model_time_convert_factor = 86400.0;
-    else
-        throw std::runtime_error("Invalid model time step units ('" + time_units + "') in BMI C formulation.");
 }
 
 Bmi_C_Adapter::Bmi_C_Adapter(std::string library_file_path, std::string forcing_file_path,
@@ -500,6 +489,17 @@ void Bmi_C_Adapter::Initialize() {
             init_exception_msg = "Failure when attempting to initialize " + model_name;
             throw models::external::State_Exception(init_exception_msg);
         }
+        std::string time_units = GetTimeUnits();
+        if (time_units == "s" || time_units == "sec" || time_units == "second" || time_units == "seconds")
+            bmi_model_time_convert_factor = 1.0;
+        else if (time_units == "m" || time_units == "min" || time_units == "minute" || time_units == "minutes")
+            bmi_model_time_convert_factor = 60.0;
+        else if (time_units == "h" || time_units == "hr" || time_units == "hour" || time_units == "hours")
+            bmi_model_time_convert_factor = 3600.0;
+        else if (time_units == "d" || time_units == "day" || time_units == "days")
+            bmi_model_time_convert_factor = 86400.0;
+        else
+            throw std::runtime_error("Invalid model time step units ('" + time_units + "') in BMI C formulation.");
     }
 }
 
