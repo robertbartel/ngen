@@ -194,57 +194,6 @@ double Bmi_C_Adapter::convert_seconds_to_model_time(const double& seconds_val) {
 }
 
 /**
- * Dynamically load the required C library and the backing BMI model itself.
- *
- * Dynamically load the external C library for this object's backing model.  Then load this object's "instance" of the
- * model itself.  For C BMI models, this is actually a struct with function pointer (rather than a class with member
- * functions).
- *
- * Libraries should provide an additional ``register_bmi`` function that essentially works as a constructor (or factory)
- * for the model struct, accepts a pointer to a BMI struct and then setting the appropriate function pointer values.
- *
- * A handle to the dynamically loaded library (as a ``void*``) is maintained in within a private member variable.  A
- * warning will output if this function is called with the handle already set (i.e., with the library already loaded),
- * and then the function will returns without taking any other action.
- *
- * @throws ``std::runtime_error`` Thrown if the configured BMI C library file is not readable.
- */
-inline void Bmi_C_Adapter::dynamic_library_load() {
-    if (dyn_lib_handle != nullptr) {
-        output.put("WARNING: ignoring attempt to reload C library '" + bmi_lib_file + "' for BMI model " + model_name);
-        return;
-    }
-    if (!utils::FileChecker::file_is_readable(bmi_lib_file)) {
-        init_exception_msg = "Cannot init " + model_name + "; unreadable C library file '" + bmi_lib_file + "'";
-        throw std::runtime_error(init_exception_msg);
-    }
-    if (bmi_registration_function.empty()) {
-        init_exception_msg = "Cannot init " + model_name + "; empty pointer registration function name given.";
-        throw std::runtime_error(init_exception_msg);
-    }
-
-    // TODO: add support for either the configured-by-name mapping or just using the standard names
-    void* sym;
-    Bmi* (*dynamic_register_bmi)(Bmi *model);
-
-    // Load up the necessary library dynamically
-    dyn_lib_handle = dlopen(bmi_lib_file.c_str(), RTLD_NOW | RTLD_LOCAL);
-
-    // Acquire the BMI struct func pointer registration function
-    sym = dlsym(dyn_lib_handle, bmi_registration_function.c_str());
-    if (sym == nullptr) {
-        init_exception_msg = "Cannot init " + model_name + "; expected pointer registration function '"
-                + bmi_registration_function
-                + "' is not implemented.";
-        throw std::runtime_error(init_exception_msg);
-    }
-    dynamic_register_bmi = (Bmi* (*)(Bmi*))sym;
-
-    // Call registration function, which handles setting up this object's pointed-to member BMI struct
-    dynamic_register_bmi(bmi_model.get());
-}
-
-/**
  * Perform tear-down task for this object and its backing model.
  *
  * The function will simply return if either the pointer to the backing model is `nullptr` (e.g., after use
