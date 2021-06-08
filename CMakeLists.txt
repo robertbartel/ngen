@@ -49,6 +49,7 @@ add_executable(ngen
         src/NGen.cpp
         )
 
+
 # Find the Boost library and configure usage
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
@@ -118,6 +119,21 @@ target_link_libraries(ngen PUBLIC
         #NGen::forcing
         )
 
+add_executable(partitionGenerator 
+    src/partitionGenerator.cpp
+    )
+
+target_include_directories(partitionGenerator PUBLIC
+        "${PROJECT_BINARY_DIR}/include" # For generated config header file in binary tree
+        
+        )
+
+
+    target_link_libraries(partitionGenerator PUBLIC
+       core
+       geojson
+        )
+    
 if(LSTM_TORCH_LIB_ACTIVE)
     add_compile_definitions(NGEN_LSTM_TORCH_LIB_ACTIVE)
     add_subdirectory("src/models/lstm")
