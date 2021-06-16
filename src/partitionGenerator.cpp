@@ -1,85 +1,89 @@
 #include <network.hpp>
 #include <FileChecker.h>
 #include <boost/lexical_cast.hpp>
-#include<string>
+#include <string>
+#include <iostream>
+#include <fstream>
 
 std::vector<std::string> list_item;
 void write_part( int id,
                  std::unordered_map<std::string, std::vector<std::string>>& catchment_parts,
                  std::unordered_map<std::string, std::vector<std::string>>& nexus_parts,
                  std::vector<std::pair<std::string, std::string>>& remote_up,
-                 std::vector<std::pair<std::string, std::string>>& remote_down, int num_part)
+                 std::vector<std::pair<std::string, std::string>>& remote_down, int num_part, std::ofstream& outFile)
 {
     // Write out catchment list
-    std::cout<<"        {\"id\":"<<id<<", \"cat-ids\":[";
+    outFile<<"        {\"id\":"<<id<<", \"cat-ids\":[";
     for(auto const cat_id : catchment_parts)
         list_item = cat_id.second;
         for (std::vector<std::string>::const_iterator i = list_item.begin(); i != list_item.end(); ++i)   
             {
                 if (i != (list_item.end()-1))
-                    std::cout<< *i << ", ";
+                    outFile<< *i << ", ";
                 else
-                    std::cout<< *i;
+                    outFile<< *i;
             }
-    std::cout<<"], ";
+    outFile<<"], ";
 
     // Write out nexus list
-    std::cout<<"\"nex-ids\":[";
+    outFile<<"\"nex-ids\":[";
     for(auto const cat_id : nexus_parts)
         list_item = cat_id.second;
         for (std::vector<std::string>::const_iterator i = list_item.begin(); i != list_item.end(); ++i)
             {
                 if (i != (list_item.end()-1))
-                    std::cout<< *i << ", ";
+                    outFile<< *i << ", ";
                 else
-                    std::cout<< *i;
+                    outFile<< *i;
             }
-    std::cout<<"], ";
+    outFile<<"], ";
 
     // Write out remote up 
     std::pair<std::string, std::string> remote_up_list;
-    std::cout<<"\"remote-up\":[";
+    outFile<<"\"remote-up\":[";
     for (std::vector<std::pair<std::string, std::string> >::const_iterator i = remote_up.begin(); i != remote_up.end(); ++i)
     {
         if (id != 0)
         {
             remote_up_list = *i;
-            std::cout << "{" << "\"" << remote_up_list.first << "\"" << ":" << remote_up_list.second << ", ";
+            outFile << "{" << "\"" << remote_up_list.first << "\"" << ":" << remote_up_list.second << ", ";
             ++i;
             remote_up_list = *i;
-            std::cout << "\"" << remote_up_list.first << "\"" << ":" << "\"" << remote_up_list.second << "\"" << "}";
+            outFile << "\"" << remote_up_list.first << "\"" << ":" << "\"" << remote_up_list.second << "\"" << "}";
         }
     }
-    std::cout<<"], ";
+    outFile<<"], ";
 
     // Write out remote down
     std::pair<std::string, std::string> remote_down_list;
-    std::cout<<"\"remote-down\":[";
+    outFile<<"\"remote-down\":[";
     for (std::vector<std::pair<std::string, std::string> >::const_iterator i = remote_down.begin(); i != remote_down.end(); ++i)
     {
         if (id != (num_part-1))
         {
             remote_down_list = *i;
-            std::cout << "{" << "\"" << remote_down_list.first << "\"" << ":" << remote_down_list.second << ", ";
+            outFile << "{" << "\"" << remote_down_list.first << "\"" << ":" << remote_down_list.second << ", ";
             ++i;
             remote_down_list = *i;
-            std::cout << "\"" << remote_down_list.first << "\"" << ":" << "\"" << remote_down_list.second << "\"" << "}";
+            outFile << "\"" << remote_down_list.first << "\"" << ":" << "\"" << remote_down_list.second << "\"" << "}";
         }
     }
-    std::cout<<"]";
+    outFile<<"]";
     if (id != (num_part-1))
-       std::cout<<"},";
+       outFile<<"},";
     else
-        std::cout<<"}";
+        outFile<<"}";
 }
 
 
 int main(int argc, char* argv[])
 {
     std::string catchmentDataFile;
+    std::string partitionOutFile;
     int num_partitions = 0;
+    int num_catchments = 0;
 
-    if( argc < 3 ){
+    if( argc < 5 ){
         std::cout << "Missing required args:" << std::endl;
         std::cout << argv[0] << " <catchment_data_path> <number of partitions>" << std::endl;
     }
@@ -90,9 +94,15 @@ int main(int argc, char* argv[])
             error = true;
         }
         else{ catchmentDataFile = argv[1]; }
+
+        partitionOutFile = argv[2];
+        if (partitionOutFile == "") {
+            std::cout << "Missing output file name " << std::endl;
+            error = true;
+        }
     
         try {
-            num_partitions = boost::lexical_cast<int>(argv[2]);
+            num_partitions = boost::lexical_cast<int>(argv[3]);
             if(num_partitions < 0) throw boost::bad_lexical_cast();
         }
         catch(boost::bad_lexical_cast &e) {
@@ -100,8 +110,20 @@ int main(int argc, char* argv[])
             error = true;
         }
 
+        try {
+            num_catchments = boost::lexical_cast<int>(argv[4]);
+            if(num_catchments < 0) throw boost::bad_lexical_cast();
+        }
+        catch(boost::bad_lexical_cast &e) {
+            std::cout<<"number of catchments must be a postive integer."<<std::endl;
+            error = true;
+        }
+
         if(error) exit(-1);
     }
+
+    std::ofstream outFile;
+    outFile.open(partitionOutFile, std::ios::trunc);
 
     //Get the feature collecion for the given hydrofabric
     geojson::GeoJSON catchment_collection = geojson::read(catchmentDataFile);
@@ -111,10 +133,18 @@ int main(int argc, char* argv[])
     //Assumes dendridic, can add check in network if needed.
     int partition = 0;
     int counter = 0;
-    int total = network.size()/2; //Note network.size is the number of catchments + nexuses.  This should be a rough count.
-    int partition_size = total/num_partitions+1;
-    //std::cout << "num_partition:" << num_partitions << std::endl;
-    //std::cout << "partition_size:" << partition_size << std::endl;
+    //int total = network.size()/2; //Note network.size is the number of catchments + nexuses.  This should be a rough count.
+    int total = num_catchments;
+    int partition_size = total/num_partitions;
+    int partition_size_norm = partition_size;
+    int remainder;
+    remainder = total - partition_size*num_partitions;
+    //int partition_size_plus1 = partition_size + 1;
+    int partition_size_plus1 = ++partition_size;
+    std::cout << "num_partition:" << num_partitions << std::endl;
+    std::cout << "partition_size_norm:" << partition_size_norm << std::endl;
+    std::cout << "partition_size_plus1:" << partition_size_plus1 << std::endl;
+    std::cout << "remainder:" << remainder << std::endl;
     std::vector<std::string> catchment_list, nexus_list;
 
     std::string id, partition_str, empty_up, empty_down;
@@ -129,12 +159,17 @@ int main(int argc, char* argv[])
     std::pair<std::string, std::string> remote_up_id, remote_down_id, remote_up_part, remote_down_part;
     std::vector<std::pair<std::string, std::string> > remote_up, remote_down;
 
-    std::cout<<"{"<<std::endl;
-    std::cout<<"    \"partitions\":["<<std::endl;
-    //std::cout<<"in partition 0:"<<std::endl;
+    outFile<<"{"<<std::endl;
+    outFile<<"    \"partitions\":["<<std::endl;
+    std::cout<<"in partition 0:"<<std::endl;
     std::string up_nexus;
     std::string down_nexus;
     for(const auto& catchment : network.filter("cat")){
+            if (partition < remainder)
+                partition_size = partition_size_plus1;
+            else
+                partition_size = partition_size_norm;
+
             std::string nexus = network.get_destination_ids(catchment)[0];
             //std::cout<<catchment<<" -> "<<nexus<<std::endl;
 
@@ -177,8 +212,8 @@ int main(int argc, char* argv[])
                 remote_down.push_back(remote_down_id);
                 remote_down.push_back(remote_down_part);
 
-                write_part(partition, this_catchment_part, this_nexus_part, remote_up, remote_down, num_partitions);
-                std::cout << std::endl;
+                write_part(partition, this_catchment_part, this_nexus_part, remote_up, remote_down, num_partitions, outFile);
+                outFile << std::endl;
 
                 // Clear unordered_map before next round of emplace
                 this_part_id.clear();
@@ -199,11 +234,13 @@ int main(int argc, char* argv[])
                 //this nexus overlaps partitions
                 nexus_list.push_back(nexus);
                 up_nexus = nexus;
-                //std::cout<<"\nin partition "<<partition<<":"<<std::endl;
+                std::cout<<"\nin partition "<<partition<<":"<<std::endl;
             }
     }
-    std::cout<<"    ]"<<std::endl;
-    std::cout<<"}"<<std::endl;
+    outFile<<"    ]"<<std::endl;
+    outFile<<"}"<<std::endl;
+
+    outFile.close();
 
     return 0;
 }
