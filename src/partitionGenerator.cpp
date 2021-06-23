@@ -6,70 +6,37 @@
 #include <fstream>
 
 std::vector<std::string> list_item;
-void write_part( int id,
+//void write_part( int id,
+void write_part( std::string id,
                  std::unordered_map<std::string, std::vector<std::string>>& catchment_parts,
                  std::unordered_map<std::string, std::vector<std::string>>& nexus_parts,
                  std::vector<std::pair<std::string, std::string>>& remote_up,
                  std::vector<std::pair<std::string, std::string>>& remote_down, int num_part, std::ofstream& outFile)
 {
     // Write out catchment list
-    outFile<<"        {\"id\":"<<id<<", \"cat-ids\":[";
+    outFile<<"        {\"id\":" << "\"" << id << "\"" <<", \"cat-ids\":[";
     for(auto const cat_id : catchment_parts)
         list_item = cat_id.second;
         for (std::vector<std::string>::const_iterator i = list_item.begin(); i != list_item.end(); ++i)   
             {
                 if (i != (list_item.end()-1))
-                    outFile<< *i << ", ";
+                    outFile <<"\"" << *i <<"\"" << ", ";
                 else
-                    outFile<< *i;
+                    outFile <<"\"" << *i <<"\"";
             }
     outFile<<"], ";
 
     // Write out nexus list
-    outFile<<"\"nex-ids\":[";
-    for(auto const cat_id : nexus_parts)
-        list_item = cat_id.second;
-        for (std::vector<std::string>::const_iterator i = list_item.begin(); i != list_item.end(); ++i)
-            {
-                if (i != (list_item.end()-1))
-                    outFile<< *i << ", ";
-                else
-                    outFile<< *i;
-            }
-    outFile<<"], ";
+    outFile<<"\"nex-ids\":[], ";
 
     // Write out remote up 
-    std::pair<std::string, std::string> remote_up_list;
-    outFile<<"\"remote-up\":[";
-    for (std::vector<std::pair<std::string, std::string> >::const_iterator i = remote_up.begin(); i != remote_up.end(); ++i)
-    {
-        if (id != 0)
-        {
-            remote_up_list = *i;
-            outFile << "{" << "\"" << remote_up_list.first << "\"" << ":" << remote_up_list.second << ", ";
-            ++i;
-            remote_up_list = *i;
-            outFile << "\"" << remote_up_list.first << "\"" << ":" << "\"" << remote_up_list.second << "\"" << "}";
-        }
-    }
-    outFile<<"], ";
+    outFile<<"\"remote-up\":[], ";
 
     // Write out remote down
     std::pair<std::string, std::string> remote_down_list;
-    outFile<<"\"remote-down\":[";
-    for (std::vector<std::pair<std::string, std::string> >::const_iterator i = remote_down.begin(); i != remote_down.end(); ++i)
-    {
-        if (id != (num_part-1))
-        {
-            remote_down_list = *i;
-            outFile << "{" << "\"" << remote_down_list.first << "\"" << ":" << remote_down_list.second << ", ";
-            ++i;
-            remote_down_list = *i;
-            outFile << "\"" << remote_down_list.first << "\"" << ":" << "\"" << remote_down_list.second << "\"" << "}";
-        }
-    }
-    outFile<<"]";
-    if (id != (num_part-1))
+    outFile<<"\"remote-down\":[]";
+
+    if (id != std::to_string(num_part-1))
        outFile<<"},";
     else
         outFile<<"}";
@@ -146,15 +113,15 @@ int main(int argc, char* argv[])
     std::cout << "partition_size_plus1:" << partition_size_plus1 << std::endl;
     std::cout << "remainder:" << remainder << std::endl;
     std::vector<std::string> catchment_list, nexus_list;
+    std::vector<std::string> cat_vec_1d;
+    std::vector<std::vector<std::string> > vec_cat_list;
 
     std::string id, partition_str, empty_up, empty_down;
     std::vector<std::string> empty_vec;
-    std::unordered_map<std::string, int> this_part_id;
+    std::unordered_map<std::string, std::string> this_part_id;
     std::unordered_map<std::string, std::vector<std::string> > this_catchment_part, this_nexus_part;
-    std::vector<std::unordered_map<std::string, int> > part_ids;
+    std::vector<std::unordered_map<std::string, std::string> > part_ids;
     std::vector<std::unordered_map<std::string, std::vector<std::string> > > catchment_part, nexus_part;
-    //std::unordered_map<std::string, std::string> remote_up_part, remote_down_part;
-    std::vector<std::unordered_map<std::string, std::string> > remote_up_vec, remote_down_vec;
 
     std::pair<std::string, std::string> remote_up_id, remote_down_id, remote_up_part, remote_down_part;
     std::vector<std::pair<std::string, std::string> > remote_up, remote_down;
@@ -183,12 +150,15 @@ int main(int argc, char* argv[])
                 down_nexus = nexus;
 
                 id = std::to_string(partition);
-                this_part_id.emplace("id", partition);
+                partition_str = std::to_string(partition);
+                this_part_id.emplace("id", partition_str);
                 this_catchment_part.emplace("cat-ids", catchment_list);
                 this_nexus_part.emplace("nex-ids", nexus_list);
                 part_ids.push_back(this_part_id);
                 catchment_part.push_back(this_catchment_part);
                 nexus_part.push_back(this_nexus_part);
+
+                vec_cat_list.push_back(catchment_list);
 
                 if (partition == 0)
                 {
@@ -212,7 +182,8 @@ int main(int argc, char* argv[])
                 remote_down.push_back(remote_down_id);
                 remote_down.push_back(remote_down_part);
 
-                write_part(partition, this_catchment_part, this_nexus_part, remote_up, remote_down, num_partitions, outFile);
+                partition_str = std::to_string(partition);
+                write_part(partition_str, this_catchment_part, this_nexus_part, remote_up, remote_down, num_partitions, outFile);
                 outFile << std::endl;
 
                 // Clear unordered_map before next round of emplace
@@ -234,13 +205,36 @@ int main(int argc, char* argv[])
                 //this nexus overlaps partitions
                 nexus_list.push_back(nexus);
                 up_nexus = nexus;
-                std::cout<<"\nin partition "<<partition<<":"<<std::endl;
+                //std::cout<<"\nin partition "<<partition<<":"<<std::endl;
             }
     }
     outFile<<"    ]"<<std::endl;
     outFile<<"}"<<std::endl;
 
     outFile.close();
+
+    std::cout << "Validating catchments:" << std::endl;
+    //converting vector to 1-d
+    for(int i = 0; i < vec_cat_list.size(); ++i)
+    {
+        for(int j = 0; j < vec_cat_list[i].size(); ++j)
+        {
+            cat_vec_1d.push_back(vec_cat_list[i][j]);
+        }
+    }
+
+    int i, j;
+    for(i = 0; i < cat_vec_1d.size(); ++i) {
+        if (i%1000 == 0)
+            std::cout << "i = " << i << std::endl;
+        for (j = i+1; j < cat_vec_1d.size(); ++j)
+            if ( cat_vec_1d[i] == cat_vec_1d[j] )
+            {
+                std::cout << "catchment duplication" << std::endl;
+                exit(-1);
+            }
+    }
+    std::cout << "Catchment validation completed" << std::endl;
 
     return 0;
 }
