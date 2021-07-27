@@ -4,6 +4,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <vector>
+#include <algorithm>
 
 #include "core/Partition_Parser.hpp"
 #include "FileChecker.h"
@@ -87,6 +88,31 @@ TEST_F(PartitionsParserTest, TestFileReader)
 
 
   ASSERT_TRUE(true);
+}
+
+/** Test that the right number of partitions was read from the file. */
+TEST_F(PartitionsParserTest, ParsePartitionFile_0_a) {
+    const std::string file_path = file_search(data_paths,"partition_huc01.json");
+    Partitions_Parser partitions_parser = Partitions_Parser(file_path);
+
+    partitions_parser.parse_partition_file();
+
+    ASSERT_EQ(100, partitions_parser.partition_ranks.size());
+}
+
+/** Test that the right number of partitions was read from the file. */
+TEST_F(PartitionsParserTest, ParsePartitionFile_1_a) {
+    const std::string file_path = file_search(data_paths,"partition_huc01.json");
+    Partitions_Parser partitions_parser = Partitions_Parser(file_path);
+
+    partitions_parser.parse_partition_file();
+
+    const std::string partition_id = "0";
+    const std::string expected_cat_id = "cat-39921";
+
+    std::vector<std::string> *cat_ids = &partitions_parser.partition_ranks.at(partition_id).cat_ids;
+
+    ASSERT_NE(std::find(cat_ids->begin(), cat_ids->end(), expected_cat_id), cat_ids->end());
 }
 
 // This test verifys that the data in a partition file can be read
