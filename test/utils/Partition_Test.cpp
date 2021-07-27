@@ -80,7 +80,7 @@ void PartitionsParserTest::setupArbitraryExampleCase() {
 TEST_F(PartitionsParserTest, TestFileReader)
 {
 
-  const std::string file_path = file_search(data_paths,"partition_huc01_100.json");
+  const std::string file_path = file_search(data_paths,"partition_huc01.json");
   Partitions_Parser partitions_parser = Partitions_Parser(file_path);
 
   partitions_parser.parse_partition_file();
@@ -93,7 +93,7 @@ TEST_F(PartitionsParserTest, TestFileReader)
 
 TEST_F(PartitionsParserTest, DisplayPartitionData)
 {
-    const std::string file_path = file_search(data_paths,"partition_huc01_100.json");
+    const std::string file_path = file_search(data_paths,"partition_huc01.json");
     Partitions_Parser partitions_parser = Partitions_Parser(file_path);
 
     partitions_parser.parse_partition_file();
@@ -125,7 +125,7 @@ TEST_F(PartitionsParserTest, DISABLED_ReferenceHydrofabric)
 {
     using network::Network;
     
-    const std::string file_path = file_search(data_paths,"partition_huc01_100.json");
+    const std::string file_path = file_search(data_paths,"partition_huc01.json");
     const std::string global_catchment_data_path = file_search(hydro_fabric_paths,"catchment_data.geojson");
     
     std::string link_key = "toid";
