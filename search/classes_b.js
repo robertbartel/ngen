@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['request_5ffrom_5fempty_5fnexus_271',['request_from_empty_nexus',['../structrequest__from__empty__nexus.html',1,'']]]
+  ['multilinestringfeature_1165',['MultiLineStringFeature',['../classgeojson_1_1_multi_line_string_feature.html',1,'geojson']]],
+  ['multipointfeature_1166',['MultiPointFeature',['../classgeojson_1_1_multi_point_feature.html',1,'geojson']]],
+  ['multipolygonfeature_1167',['MultiPolygonFeature',['../classgeojson_1_1_multi_polygon_feature.html',1,'geojson']]]
 ];

@@ -1,20 +1,17 @@
 <map id="tshirt::tshirt_model" name="tshirt::tshirt_model">
-<area shape="rect" id="node1" title="Tshirt model class." alt="" coords="255,1840,449,2269"/>
-<area shape="rect" id="node2" href="$class_reservoir_1_1_explicit___time_1_1_reservoir.html" title="Reservoir that has zero, one, or multiple outlets." alt="" coords="603,877,763,1189"/>
-<area shape="rect" id="node13" title=" " alt="" coords="718,1267,895,1359"/>
-<area shape="rect" id="node3" href="$structreservoir__state.html" title=" " alt="" coords="600,723,765,815"/>
-<area shape="rect" id="node4" title=" " alt="" coords="790,723,965,815"/>
-<area shape="rect" id="node5" title=" " alt="" coords="677,553,851,645"/>
-<area shape="rect" id="node6" href="$class_reservoir_1_1_implicit___time_1_1_reservoir___outlet.html" title="Base Single Reservior Outlet Class." alt="" coords="755,145,938,428"/>
-<area shape="rect" id="node7" title="STL class." alt="" coords="531,248,669,325"/>
-<area shape="rect" id="node15" title=" " alt="" coords="23,553,169,645"/>
-<area shape="rect" id="node17" title=" " alt="" coords="279,553,425,645"/>
-<area shape="rect" id="node8" title=" " alt="" coords="978,5,1017,83"/>
-<area shape="rect" id="node9" title="STL class." alt="" coords="941,561,1053,638"/>
-<area shape="rect" id="node14" title="STL class." alt="" coords="1112,452,1248,529"/>
-<area shape="rect" id="node12" title=" " alt="" coords="728,1553,885,1660"/>
-<area shape="rect" id="node10" href="$structreservoir__parameters.html" title=" " alt="" coords="389,723,576,815"/>
-<area shape="rect" id="node11" href="$structtshirt_1_1tshirt__params.html" title="Structure for containing and organizing the parameters of the Tshirt hydrological model." alt="" coords="129,1436,314,1777"/>
-<area shape="rect" id="node16" href="$structtshirt_1_1tshirt__fluxes.html" title="Structure for containing and organizing the calculated flux values of the Tshirt hydrological model." alt="" coords="5,189,187,384"/>
-<area shape="rect" id="node18" href="$structtshirt_1_1tshirt__state.html" title="Structure for containing and organizing the state values of the Tshirt hydrological model." alt="" coords="233,219,407,355"/>
+<area shape="rect" id="node1" title="Tshirt model class." alt="" coords="259,1212,453,1641"/>
+<area shape="rect" id="node2" href="$class_reservoir_1_1_explicit___time_1_1_reservoir.html" title="Reservoir that has zero, one, or multiple outlets." alt="" coords="471,801,631,1113"/>
+<area shape="rect" id="node3" href="$structreservoir__state.html" title=" " alt="" coords="469,539,635,631"/>
+<area shape="rect" id="node4" title=" " alt="" coords="659,539,834,631"/>
+<area shape="rect" id="node5" title=" " alt="" coords="387,300,560,392"/>
+<area shape="rect" id="node6" title=" " alt="" coords="229,145,366,223"/>
+<area shape="rect" id="node14" title=" " alt="" coords="5,416,152,508"/>
+<area shape="rect" id="node15" title=" " alt="" coords="161,663,308,755"/>
+<area shape="rect" id="node7" title=" " alt="" coords="633,5,671,83"/>
+<area shape="rect" id="node8" title=" " alt="" coords="596,307,708,385"/>
+<area shape="rect" id="node13" title=" " alt="" coords="780,145,916,223"/>
+<area shape="rect" id="node11" title=" " alt="" coords="859,532,1016,639"/>
+<area shape="rect" id="node9" href="$structreservoir__parameters.html" title=" " alt="" coords="259,539,445,631"/>
+<area shape="rect" id="node10" href="$structtshirt_1_1tshirt__params.html" title="Structure for containing and organizing the parameters of the Tshirt hydrological model." alt="" coords="122,779,307,1135"/>
+<area shape="rect" id="node12" title=" " alt="" coords="859,300,1037,392"/>
 </map>

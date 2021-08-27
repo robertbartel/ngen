@@ -3,7 +3,7 @@ var classtshirt_1_1tshirt__model =
     [ "tshirt_model", "classtshirt_1_1tshirt__model.html#adf2f1043a3536cda5effe39a2251131f", null ],
     [ "tshirt_model", "classtshirt_1_1tshirt__model.html#a904198bf2bc3c6b4e452c568bce59899", null ],
     [ "calc_evapotranspiration", "classtshirt_1_1tshirt__model.html#ab5115899dbc787c81320ab837a169dd6", null ],
-    [ "calc_soil_field_capacity_storage", "classtshirt_1_1tshirt__model.html#a84f258855ca04178e6a0214dc57cb486", null ],
+    [ "calc_soil_field_capacity_storage_threshold", "classtshirt_1_1tshirt__model.html#a5e4f346a5e4b4859b6e89b21dc461401", null ],
     [ "check_valid", "classtshirt_1_1tshirt__model.html#a729c4eac2d7da4ab0d4f9d326093f50a", null ],
     [ "get_current_state", "classtshirt_1_1tshirt__model.html#ac767074c575331e6666eb4087be7023b", null ],
     [ "get_fluxes", "classtshirt_1_1tshirt__model.html#a01cc559478f9b27acaa4a3373efd1c06", null ],
@@ -23,7 +23,7 @@ var classtshirt_1_1tshirt__model =
     [ "model_params", "classtshirt_1_1tshirt__model.html#a358025fe515688796dede4f738da91a9", null ],
     [ "perc_outlet_index", "classtshirt_1_1tshirt__model.html#af9d695d3def14c4e1fc901634b82c280", null ],
     [ "previous_state", "classtshirt_1_1tshirt__model.html#a2d27add128e6e4ffdd5cf746d7da7aec", null ],
-    [ "soil_field_capacity_storage", "classtshirt_1_1tshirt__model.html#aabf03fa9ca5aa8059b1ffa7eb58485c2", null ],
+    [ "soil_field_capacity_storage_threshold", "classtshirt_1_1tshirt__model.html#a7ea2283d9e380a1ed41668c4281d9b6b", null ],
     [ "soil_lf_nash_res", "classtshirt_1_1tshirt__model.html#aa9f192f9e7b65ad64253d0fa8b05a691", null ],
     [ "soil_reservoir", "classtshirt_1_1tshirt__model.html#a365047af2214956464fbdb8819440875", null ]
 ];
