@@ -13,6 +13,7 @@
 #include "Tshirt_C_Realization.hpp"
 #include "Simple_Lumped_Model_Realization.hpp"
 #include "Bmi_C_Formulation.hpp"
+#include "Bmi_Py_Formulation.hpp"
 
 #ifdef NGEN_LSTM_TORCH_LIB_ACTIVE
     #include "LSTM_Realization.hpp"
@@ -31,6 +32,9 @@ namespace realization {
     static std::map<std::string, constructor> formulations = {
 #ifdef NGEN_BMI_C_LIB_ACTIVE
         {"bmi_c", create_formulation_constructor<Bmi_C_Formulation>()},
+#endif
+#ifdef ACTIVATE_PYTHON
+        {"bmi_python", create_formulation_constructor<Bmi_Py_Formulation>()},
 #endif
         {"tshirt", create_formulation_constructor<Tshirt_Realization>()},
         {"tshirt_c", create_formulation_constructor<Tshirt_C_Realization>()},
