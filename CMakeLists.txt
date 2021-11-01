@@ -219,6 +219,8 @@ target_link_libraries(ngen PUBLIC
         NGen::kernels_evapotranspiration
         #NGen::kernels_reservoir_timeless
         #NGen::forcing
+        NGen::core_mediator
+        libudunits2
         )
 
 add_executable(partitionGenerator
