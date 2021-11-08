@@ -113,6 +113,15 @@ if(UDUNITS_ACTIVE)
         message(FATAL_ERROR "Git not detected: cannot obtain Udunits submodule (but how is this even working?)")
     endif()
 
+    # Patch the CMake version (for now at least)
+    if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+        set(UDUNITS_SED_ARGS "-i -e")
+    elseif(WIN32)
+        error( "Windows platforms are not currently supported" )
+    else()
+        set(UDUNITS_SED_ARGS "-i")
+    endif()
+
     # Add the project externally and a target for it (specifying a build location in the build dir of this project)
     ExternalProject_Add(libudunits2_build
             SOURCE_DIR ${UDUNITS_DIR}
@@ -120,6 +129,8 @@ if(UDUNITS_ACTIVE)
             BINARY_DIR ${UDUNITS_BUILD_DIR}
             INSTALL_DIR ${UDUNITS_INSTALL_DIR}
             CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${UDUNITS_INSTALL_DIR}
+            UPDATE_COMMAND git submodule update --init -- ${UDUNITS_DIR}
+            PATCH_COMMAND find ${UDUNITS_DIR} \( -type d -name .git -prune \) -o -type f -name "CMakeLists.txt" -exec sed ${UDUNITS_SED_ARGS} "s/CMAKE_MINIMUM_REQUIRED(VERSION 3.19)/CMAKE_MINIMUM_REQUIRED(VERSION 3.17.5)/" {} +
     )
 
     # Add the produced shared lib and link to the "external" build target
