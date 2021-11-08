@@ -91,6 +91,9 @@ endif()
 # UDUNITS
 if(UDUNITS_ACTIVE)
     set(UDUNITS_DIR ${PROJECT_SOURCE_DIR}/extern/UDUNITS-2)
+    set(UDUNITS_BUILD_BASE ${CMAKE_CURRENT_BINARY_DIR}/UDUNITS-2)
+    set(UDUNITS_BUILD_DIR ${UDUNITS_BUILD_BASE}/build)
+    set(UDUNITS_INSTALL_DIR ${UDUNITS_BUILD_BASE}/install)
 
     # Obtain the submodule
     if(GIT_SUBMODULE)
@@ -108,8 +111,10 @@ if(UDUNITS_ACTIVE)
     # Add the project externally and a target for it (specifying a build location in the build dir of this project)
     ExternalProject_Add(libudunits2_build
             SOURCE_DIR ${UDUNITS_DIR}
-            PREFIX ${UDUNITS_DIR}
-            BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/UDUNITS-2
+            PREFIX ${UDUNITS_BUILD_BASE}
+            BINARY_DIR ${UDUNITS_BUILD_DIR}
+            INSTALL_DIR ${UDUNITS_INSTALL_DIR}
+            CMAKE_ARGS CMAKE_INSTALL_PREFIX=${UDUNITS_BUILD_DIR}
     )
 
     # Add the produced shared lib and link to the "external" build target
@@ -118,11 +123,11 @@ if(UDUNITS_ACTIVE)
 
     # Account for different OS and how that impacts shared lib file name
     if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
-        set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/UDUNITS-2/lib/libudunits2.dylib")
+        set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${UDUNITS_BUILD_DIR}/lib/libudunits2.dylib")
     elseif(WIN32)
         error( "Windows platforms are not currently supported" )
     else()
-        set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/UDUNITS-2/lib/libudunits2.so")
+        set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${UDUNITS_BUILD_DIR}/lib/libudunits2.so")
     endif()
 
     # Configure location for the Udunits unit config file
@@ -244,7 +249,10 @@ target_include_directories(ngen PUBLIC
 #add_subdirectory("extern/test_bmi_c")
 
 add_subdirectory("src/core")
-add_dependencies(core libudunits2)
+if(UDUNITS_ACTIVE)
+    add_dependencies(core libudunits2)
+    #target_link_libraries(core PUBLIC libudunits2)
+endif()
 add_subdirectory("src/geojson")
 add_subdirectory("src/realizations/catchment")
 add_subdirectory("src/models/tshirt")
@@ -252,7 +260,7 @@ add_subdirectory("src/models/kernels/reservoir")
 add_subdirectory("src/models/kernels/evapotranspiration")
 #add_subdirectory("src/forcing")
 
-target_link_libraries(ngen PUBLIC
+set(NGEN_LINKED_LIBS
         NGen::core
         NGen::core_catchment
         #NGen::core_catchment_giuh
@@ -265,8 +273,12 @@ target_link_libraries(ngen PUBLIC
         #NGen::kernels_reservoir_timeless
         #NGen::forcing
         NGen::core_mediator
-        libudunits2
-        )
+)
+if(UDUNITS_ACTIVE)
+    list(APPEND NGEN_LINKED_LIBS libudunits2)
+endif()
+
+target_link_libraries(ngen PUBLIC ${NGEN_LINKED_LIBS})
 
 add_executable(partitionGenerator
     src/partitionGenerator.cpp
