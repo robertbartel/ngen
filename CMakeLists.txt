@@ -81,21 +81,56 @@ find_package(Boost 1.72.0 REQUIRED)
 
 include(ExternalProject)
 
+# Find Git, so we can do things like update submodules from here
+find_package(Git QUIET)
+if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
+    # Update submodules as needed
+    option(GIT_SUBMODULE "Check submodules during build" ON)
+endif()
+
 # UDUNITS
 if(UDUNITS_ACTIVE)
+    set(UDUNITS_DIR ${PROJECT_SOURCE_DIR}/extern/UDUNITS-2)
+
+    # Obtain the submodule
+    if(GIT_SUBMODULE)
+        message(STATUS "Updating Udunits2 submodule")
+        execute_process(COMMAND ${GIT_EXECUTABLE} submodule update --init -- ${UDUNITS_DIR}
+                        RESULT_VARIABLE GIT_SUBMOD_RESULT
+        )
+        if(NOT GIT_SUBMOD_RESULT EQUAL "0")
+            message(FATAL_ERROR "git submodule update --init for Udunits failed with ${GIT_SUBMOD_RESULT}")
+        endif()
+    else()
+        message(FATAL_ERROR "Git not detected: cannot obtain Udunits submodule (but how is this even working?)")
+    endif()
+
+    # Add the project externally and a target for it (specifying a build location in the build dir of this project)
     ExternalProject_Add(libudunits2_build
-        PREFIX ${PROJECT_SOURCE_DIR}/extern/UDUNITS-2
-        SOURCE_DIR .
-        CONFIGURE_COMMAND autoreconf -fi ${PROJECT_SOURCE_DIR}/extern/UDUNITS-2 && ${PROJECT_SOURCE_DIR}/extern/UDUNITS-2/configure 
-        BUILD_COMMAND make -j
+            SOURCE_DIR ${UDUNITS_DIR}
+            PREFIX ${UDUNITS_DIR}
+            BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/UDUNITS-2
     )
+
+    # Add the produced shared lib and link to the "external" build target
     add_library(libudunits2 SHARED IMPORTED)
     add_dependencies(libudunits2 libudunits2_build)
-    set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/extern/UDUNITS-2/src/lib/libudunits2.so")
-    add_compile_definitions("NGEN_UDUNITS2_XML_PATH=\"${PROJECT_SOURCE_DIR}/extern/UDUNITS-2/src/share/udunits/udunits2.xml\"")
-    #target_include_directories(libudunits2 INTERFACE "${PROJECT_SOURCE_DIR}/extern/UDUNITS-2/src/include") # This seems like it should have worked...??
-    # this should probably be src, not lib, but in parallel builds that doesn't get generated before udunits2.h is included, so...
-    include_directories("${PROJECT_SOURCE_DIR}/extern/UDUNITS-2/lib")
+
+    # Account for different OS and how that impacts shared lib file name
+    if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+        set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/UDUNITS-2/lib/libudunits2.dylib")
+    elseif(WIN32)
+        error( "Windows platforms are not currently supported" )
+    else()
+        set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/UDUNITS-2/lib/libudunits2.so")
+    endif()
+
+    # Configure location for the Udunits unit config file
+    add_compile_definitions("NGEN_UDUNITS2_XML_PATH=\"${UDUNITS_DIR}/lib/udunits2.xml\"")
+
+    # Provide necessary includes
+    target_include_directories(libudunits2 INTERFACE "${UDUNITS_DIR}/lib")
+    include_directories("${UDUNITS_DIR}/lib")
 endif()
 
 # Handle several steps for BMI C library logic and dependencies, at top level, if functionality is turned on
@@ -209,6 +244,7 @@ target_include_directories(ngen PUBLIC
 #add_subdirectory("extern/test_bmi_c")
 
 add_subdirectory("src/core")
+add_dependencies(core libudunits2)
 add_subdirectory("src/geojson")
 add_subdirectory("src/realizations/catchment")
 add_subdirectory("src/models/tshirt")
