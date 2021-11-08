@@ -114,7 +114,7 @@ if(UDUNITS_ACTIVE)
             PREFIX ${UDUNITS_BUILD_BASE}
             BINARY_DIR ${UDUNITS_BUILD_DIR}
             INSTALL_DIR ${UDUNITS_INSTALL_DIR}
-            CMAKE_ARGS CMAKE_INSTALL_PREFIX=${UDUNITS_BUILD_DIR}
+            CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${UDUNITS_INSTALL_DIR}
     )
 
     # Add the produced shared lib and link to the "external" build target
@@ -123,12 +123,16 @@ if(UDUNITS_ACTIVE)
 
     # Account for different OS and how that impacts shared lib file name
     if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+        set(CMAKE_MACOSX_RPATH 1)
         set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${UDUNITS_BUILD_DIR}/lib/libudunits2.dylib")
     elseif(WIN32)
         error( "Windows platforms are not currently supported" )
     else()
         set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${UDUNITS_BUILD_DIR}/lib/libudunits2.so")
     endif()
+
+    list( APPEND CMAKE_INSTALL_RPATH ${UDUNITS_INSTALL_DIR}/lib ${UDUNITS_INSTALL_DIR}/include )
+    list( APPEND CMAKE_BUILD_RPATH ${UDUNITS_BUILD_DIR}/lib )
 
     # Configure location for the Udunits unit config file
     add_compile_definitions("NGEN_UDUNITS2_XML_PATH=\"${UDUNITS_DIR}/lib/udunits2.xml\"")
