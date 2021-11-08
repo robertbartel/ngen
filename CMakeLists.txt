@@ -39,15 +39,20 @@ endif()
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Account for different OS and how that impacts shared lib file names
+if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
+    set(SHARED_LIB_EXTENSION "dylib")
+elseif(WIN32)
+    error( "Windows platforms are not currently supported" )
+else()
+    set(SHARED_LIB_EXTENSION "so")
+endif()
+
 set(PROJ_ROOT_INCLUDE_DIR ./include)
 set(PROJ_ROOT_MODELS_DIR ./models)
 
 set(HYMOD_DIR ${PROJ_ROOT_MODELS_DIR}/hymod)
 set(HYMOD_INCLUDE_DIR ${HYMOD_DIR}/include)
-
-add_executable(ngen
-        src/NGen.cpp
-        )
 
 # Find the Boost library and configure usage
 set(Boost_USE_STATIC_LIBS OFF)
@@ -121,15 +126,7 @@ if(UDUNITS_ACTIVE)
     add_library(libudunits2 SHARED IMPORTED)
     add_dependencies(libudunits2 libudunits2_build)
 
-    # Account for different OS and how that impacts shared lib file name
-    if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
-        set(CMAKE_MACOSX_RPATH 1)
-        set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${UDUNITS_BUILD_DIR}/lib/libudunits2.dylib")
-    elseif(WIN32)
-        error( "Windows platforms are not currently supported" )
-    else()
-        set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${UDUNITS_BUILD_DIR}/lib/libudunits2.so")
-    endif()
+    set_property(TARGET libudunits2 PROPERTY IMPORTED_LOCATION "${UDUNITS_BUILD_DIR}/lib/libudunits2.${SHARED_LIB_EXTENSION}")
 
     list( APPEND CMAKE_INSTALL_RPATH ${UDUNITS_INSTALL_DIR}/lib ${UDUNITS_INSTALL_DIR}/include )
     list( APPEND CMAKE_BUILD_RPATH ${UDUNITS_BUILD_DIR}/lib )
@@ -141,6 +138,10 @@ if(UDUNITS_ACTIVE)
     target_include_directories(libudunits2 INTERFACE "${UDUNITS_DIR}/lib")
     include_directories("${UDUNITS_DIR}/lib")
 endif()
+
+add_executable(ngen
+        src/NGen.cpp
+        )
 
 # Handle several steps for BMI C library logic and dependencies, at top level, if functionality is turned on
 if(BMI_C_LIB_ACTIVE)
@@ -242,7 +243,6 @@ endif()
 target_include_directories(ngen PUBLIC
         "${PROJECT_BINARY_DIR}/include" # For generated config header file in binary tree
         )
-
   
 # In some IDEs (e.g., CLion), it is easier to work with the code in the included example of an "external" shared library
 # when that code appears to be part of the main project, which can be done by add a statement like the ones below.
