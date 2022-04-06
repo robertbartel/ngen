@@ -29,6 +29,9 @@ var hierarchy =
       [ "invalid_time_step", "structinvalid__time__step.html", null ],
       [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", null ]
     ] ],
+    [ "boost::static_visitor", null, [
+      [ "geojson::JSONProperty::PropertyVisitor< T >", "structgeojson_1_1_j_s_o_n_property_1_1_property_visitor.html", null ]
+    ] ],
     [ "conceptual_reservoir", "structconceptual__reservoir.html", null ],
     [ "CSVReader", "class_c_s_v_reader.html", null ],
     [ "et::aorc_forcing_data", "structet_1_1aorc__forcing__data.html", null ],
@@ -48,7 +51,11 @@ var hierarchy =
     [ "forcing::ForcingProvider", "classforcing_1_1_forcing_provider.html", [
       [ "CsvPerFeatureForcingProvider", "class_csv_per_feature_forcing_provider.html", null ],
       [ "Forcing", "class_forcing.html", null ],
-      [ "forcing::WrappedForcingProvider", "classforcing_1_1_wrapped_forcing_provider.html", null ],
+      [ "forcing::WrappedForcingProvider", "classforcing_1_1_wrapped_forcing_provider.html", [
+        [ "forcing::DeferredWrappedProvider", "classforcing_1_1_deferred_wrapped_provider.html", [
+          [ "forcing::OptionalWrappedProvider", "classforcing_1_1_optional_wrapped_provider.html", null ]
+        ] ]
+      ] ],
       [ "realization::Bmi_Formulation", "classrealization_1_1_bmi___formulation.html", [
         [ "realization::Bmi_Module_Formulation< models::bmi::Bmi_C_Adapter >", "classrealization_1_1_bmi___module___formulation.html", [
           [ "realization::Bmi_C_Formulation", "classrealization_1_1_bmi___c___formulation.html", null ]
@@ -75,6 +82,8 @@ var hierarchy =
       [ "Visitor", "class_visitor.html", null ]
     ] ],
     [ "geojson::JSONProperty", "classgeojson_1_1_j_s_o_n_property.html", null ],
+    [ "geojson::List", "structgeojson_1_1_list.html", null ],
+    [ "geojson::Object", "structgeojson_1_1_object.html", null ],
     [ "giuh::giuh_carry_over", "structgiuh_1_1giuh__carry__over.html", null ],
     [ "giuh::giuh_kernel", "classgiuh_1_1giuh__kernel.html", [
       [ "giuh::giuh_kernel_impl", "classgiuh_1_1giuh__kernel__impl.html", null ]
@@ -166,6 +175,7 @@ var hierarchy =
       [ "invalid_downstream_request", "structinvalid__downstream__request.html", null ],
       [ "invalid_time_step", "structinvalid__time__step.html", null ],
       [ "models::external::State_Exception", "classmodels_1_1external_1_1_state___exception.html", null ],
+      [ "realization::ConfigurationException", "classrealization_1_1_configuration_exception.html", null ],
       [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", null ]
     ] ],
     [ "surface_radiation_forcing", "structsurface__radiation__forcing.html", null ],
