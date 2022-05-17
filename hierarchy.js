@@ -7,17 +7,14 @@ var hierarchy =
       [ "models::bmi::Bmi_Adapter< C >", "classmodels_1_1bmi_1_1_bmi___adapter.html", [
         [ "models::bmi::AbstractCLibBmiAdapter< C >", "classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html", null ]
       ] ],
-      [ "models::bmi::Bmi_Adapter< C_Bmi >", "classmodels_1_1bmi_1_1_bmi___adapter.html", [
+      [ "models::bmi::Bmi_Adapter< T >", "classmodels_1_1bmi_1_1_bmi___adapter.html", [
         [ "models::bmi::AbstractCLibBmiAdapter< C_Bmi >", "classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html", [
           [ "models::bmi::Bmi_C_Adapter", "classmodels_1_1bmi_1_1_bmi___c___adapter.html", null ]
-        ] ]
-      ] ],
-      [ "models::bmi::Bmi_Adapter< Cpp_Bmi >", "classmodels_1_1bmi_1_1_bmi___adapter.html", [
+        ] ],
         [ "models::bmi::AbstractCLibBmiAdapter< Cpp_Bmi >", "classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html", [
           [ "models::bmi::Bmi_Cpp_Adapter", "classmodels_1_1bmi_1_1_bmi___cpp___adapter.html", null ]
         ] ]
-      ] ],
-      [ "models::bmi::Bmi_Adapter< T >", "classmodels_1_1bmi_1_1_bmi___adapter.html", null ]
+      ] ]
     ] ],
     [ "boost::dfs_visitor", null, [
       [ "network::preorder_visitor< OutputIterator >", "structnetwork_1_1preorder__visitor.html", null ]
@@ -32,8 +29,36 @@ var hierarchy =
     [ "boost::static_visitor", null, [
       [ "geojson::JSONProperty::PropertyVisitor< T >", "structgeojson_1_1_j_s_o_n_property_1_1_property_visitor.html", null ]
     ] ],
+    [ "CatchmentAggrDataSelector", "class_catchment_aggr_data_selector.html", [
+      [ "BMIDataSelector", "class_b_m_i_data_selector.html", null ],
+      [ "CSVDataSelector", "class_c_s_v_data_selector.html", null ]
+    ] ],
     [ "conceptual_reservoir", "structconceptual__reservoir.html", null ],
     [ "CSVReader", "class_c_s_v_reader.html", null ],
+    [ "data_access::DataProvider< data_type, selection_type >", "classdata__access_1_1_data_provider.html", [
+      [ "data_access::AsyncDataProvider< data_type, selection_type >", "classdata__access_1_1_async_data_provider.html", null ]
+    ] ],
+    [ "data_access::DataProvider< double, CatchmentAggrDataSelector >", "classdata__access_1_1_data_provider.html", [
+      [ "data_access::GenericDataProvider", "classdata__access_1_1_generic_data_provider.html", [
+        [ "CsvPerFeatureForcingProvider", "class_csv_per_feature_forcing_provider.html", null ],
+        [ "Forcing", "class_forcing.html", null ],
+        [ "data_access::WrappedForcingProvider", "classdata__access_1_1_wrapped_forcing_provider.html", [
+          [ "data_access::DeferredWrappedProvider", "classdata__access_1_1_deferred_wrapped_provider.html", [
+            [ "data_access::OptionalWrappedProvider", "classdata__access_1_1_optional_wrapped_provider.html", null ]
+          ] ]
+        ] ],
+        [ "realization::Bmi_Formulation", "classrealization_1_1_bmi___formulation.html", [
+          [ "realization::Bmi_Module_Formulation< models::bmi::Bmi_C_Adapter >", "classrealization_1_1_bmi___module___formulation.html", [
+            [ "realization::Bmi_C_Formulation", "classrealization_1_1_bmi___c___formulation.html", null ]
+          ] ],
+          [ "realization::Bmi_Module_Formulation< models::bmi::Bmi_Cpp_Adapter >", "classrealization_1_1_bmi___module___formulation.html", [
+            [ "realization::Bmi_Cpp_Formulation", "classrealization_1_1_bmi___cpp___formulation.html", null ]
+          ] ],
+          [ "realization::Bmi_Module_Formulation< M >", "classrealization_1_1_bmi___module___formulation.html", null ],
+          [ "realization::Bmi_Multi_Formulation", "classrealization_1_1_bmi___multi___formulation.html", null ]
+        ] ]
+      ] ]
+    ] ],
     [ "et::aorc_forcing_data", "structet_1_1aorc__forcing__data.html", null ],
     [ "et::evapotranspiration_forcing", "structet_1_1evapotranspiration__forcing.html", null ],
     [ "et::evapotranspiration_options", "structet_1_1evapotranspiration__options.html", null ],
@@ -48,25 +73,7 @@ var hierarchy =
     [ "evapotranspiration_forcing", "structevapotranspiration__forcing.html", null ],
     [ "evapotranspiration_options", "structevapotranspiration__options.html", null ],
     [ "evapotranspiration_params", "structevapotranspiration__params.html", null ],
-    [ "forcing::ForcingProvider", "classforcing_1_1_forcing_provider.html", [
-      [ "CsvPerFeatureForcingProvider", "class_csv_per_feature_forcing_provider.html", null ],
-      [ "Forcing", "class_forcing.html", null ],
-      [ "forcing::WrappedForcingProvider", "classforcing_1_1_wrapped_forcing_provider.html", [
-        [ "forcing::DeferredWrappedProvider", "classforcing_1_1_deferred_wrapped_provider.html", [
-          [ "forcing::OptionalWrappedProvider", "classforcing_1_1_optional_wrapped_provider.html", null ]
-        ] ]
-      ] ],
-      [ "realization::Bmi_Formulation", "classrealization_1_1_bmi___formulation.html", [
-        [ "realization::Bmi_Module_Formulation< models::bmi::Bmi_C_Adapter >", "classrealization_1_1_bmi___module___formulation.html", [
-          [ "realization::Bmi_C_Formulation", "classrealization_1_1_bmi___c___formulation.html", null ]
-        ] ],
-        [ "realization::Bmi_Module_Formulation< models::bmi::Bmi_Cpp_Adapter >", "classrealization_1_1_bmi___module___formulation.html", [
-          [ "realization::Bmi_Cpp_Formulation", "classrealization_1_1_bmi___cpp___formulation.html", null ]
-        ] ],
-        [ "realization::Bmi_Module_Formulation< M >", "classrealization_1_1_bmi___module___formulation.html", null ],
-        [ "realization::Bmi_Multi_Formulation", "classrealization_1_1_bmi___multi___formulation.html", null ]
-      ] ]
-    ] ],
+    [ "forcing::ForcingProvider", "classforcing_1_1_forcing_provider.html", null ],
     [ "forcing_params", "structforcing__params.html", null ],
     [ "geojson::FeatureBase", "classgeojson_1_1_feature_base.html", [
       [ "geojson::CollectionFeature", "classgeojson_1_1_collection_feature.html", null ],
