@@ -1,5 +1,7 @@
 var NAVTREEINDEX20 =
 {
+"md_doc__b_u_i_l_d_s__a_n_d__c_m_a_k_e.html#autotoc_md37":[3,1,2],
+"md_doc__b_u_i_l_d_s__a_n_d__c_m_a_k_e.html#autotoc_md38":[3,1,2,0],
 "md_doc__b_u_i_l_d_s__a_n_d__c_m_a_k_e.html#autotoc_md39":[3,1,2,1],
 "md_doc__b_u_i_l_d_s__a_n_d__c_m_a_k_e.html#autotoc_md40":[3,1,2,2],
 "md_doc__b_u_i_l_d_s__a_n_d__c_m_a_k_e.html#autotoc_md41":[3,1,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX20 =
 "namespacemembers.html":[20,1,0],
 "namespacemembers_enum.html":[20,1,4],
 "namespacemembers_eval.html":[20,1,5],
-"namespacemembers_func.html":[20,1,1],
-"namespacemembers_type.html":[20,1,3],
-"namespacemembers_vars.html":[20,1,2]
+"namespacemembers_func.html":[20,1,1]
 };

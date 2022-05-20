@@ -1,5 +1,7 @@
 var NAVTREEINDEX21 =
 {
+"namespacemembers_type.html":[20,1,3],
+"namespacemembers_vars.html":[20,1,2],
 "namespacemodels.html":[20,0,8],
 "namespacemodels_1_1bmi.html":[20,0,8,0],
 "namespacemodels_1_1external.html":[20,0,8,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX21 =
 "structet_1_1solar__radiation__parameters.html#adb22c2c21adef73c4c3c5c5ad4f60a7d":[21,0,2,7,0],
 "structet_1_1solar__radiation__parameters.html#adb22c2c21adef73c4c3c5c5ad4f60a7d":[20,0,2,8,0],
 "structet_1_1solar__radiation__results.html":[21,0,2,8],
-"structet_1_1solar__radiation__results.html":[20,0,2,9],
-"structet_1_1solar__radiation__results.html#a513495a4f31d605f38c7a1ab9056bed5":[21,0,2,8,1],
-"structet_1_1solar__radiation__results.html#a513495a4f31d605f38c7a1ab9056bed5":[20,0,2,9,1]
+"structet_1_1solar__radiation__results.html":[20,0,2,9]
 };
