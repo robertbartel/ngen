@@ -171,6 +171,9 @@ int main(int argc, char *argv[]) {
         #ifdef NGEN_MPI_ACTIVE
         // Do make sure all writing of a wait file is done before proceeding
         MPI_Barrier(MPI_COMM_WORLD);
+        if (mpi_rank == 0) {
+            std::cout << "Writes of sentinel '" << debugger_connect_wait_file << "' complete for all ranks" << std::endl;
+        }
         #endif // NGEN_MPI_ACTIVE
         // Now start post-gdbserver-has-attached wait (i.e., to give time for developer debug connections to be opened)
         // until the local wait file is gone, or we reach the post_wait timeout
