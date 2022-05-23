@@ -223,6 +223,9 @@ namespace realization {
                         std::shared_ptr<Catchment_Formulation> missing_formulation = this->construct_missing_formulation(
                           location->get_id(), output_stream, simulation_time_config);
                         this->add_formulation(missing_formulation);
+#ifdef NGEN_DEBUG_OUTPUT
+                        std::cout << "Successfully added 'missing' formulation for " << location->get_id() << std::endl;
+#endif
                     }
                 }
             }
