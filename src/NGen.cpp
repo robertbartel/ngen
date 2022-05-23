@@ -46,6 +46,10 @@ int mpi_rank;
 int mpi_num_procs;
 #endif
 
+#ifndef NGEN_DEBUG_OUTPUT
+#define NGEN_DEBUG_OUTPUT
+#endif
+
 std::unordered_map<std::string, std::ofstream> nexus_outfiles;
 
 //Note: Use below if developing in-memory transfer of nexus flows to routing
@@ -213,7 +217,12 @@ int main(int argc, char *argv[]) {
 
     // TODO: Instead of iterating through a collection of FeatureBase objects mapping to catchments, we instead want to iterate through HY_Catchment objects
     geojson::GeoJSON catchment_collection = geojson::read(catchmentDataFile, catchment_subset_ids);
-    
+
+#ifdef NGEN_DEBUG_OUTPUT
+    std::cout << "Finished building catchment_collection" << std::endl;
+    std::cout << "Adding nexus features to collection" << std::endl;
+#endif
+
     for(auto& feature: *catchment_collection)
     {
         //feature->set_id(feature->get_property("ID").as_string());
@@ -221,8 +230,23 @@ int main(int argc, char *argv[]) {
         //std::cout<<"Catchment "<<feature->get_id()<<" -> Nexus "<<feature->get_property("toID").as_string()<<std::endl;
     }
 
+#ifdef NGEN_DEBUG_OUTPUT
+    std::cout << "Finished building nexus_collection" << std::endl;
+    std::cout << "Instantiating Formulation Manager" << std::endl;
+#endif
+
     std::shared_ptr<realization::Formulation_Manager> manager = std::make_shared<realization::Formulation_Manager>(REALIZATION_CONFIG_PATH);
+
+#ifdef NGEN_DEBUG_OUTPUT
+    std::cout << "Executing Formulation Manager read() function on catchments" << std::endl;
+#endif
+
     manager->read(catchment_collection, utils::getStdOut());
+
+#ifdef NGEN_DEBUG_OUTPUT
+    std::cout << "Formulation Manager read() complete" << std::endl;
+    std::cout << "Examining condition for whether routing is enabled" << std::endl;
+#endif
 
     //TODO refactor manager->read so certain configs can be queried before the entire
     //realization collection is created
@@ -246,6 +270,10 @@ int main(int argc, char *argv[]) {
     #endif //NGEN_MPI_ACTIVE
     #endif //NGEN_ROUTING_ACTIVE
 
+#ifdef NGEN_DEBUG_OUTPUT
+    std::cout << "Instantiating HY_Features object" << std::endl;
+#endif
+
     std::string link_key = "toid";
     #ifdef NGEN_MPI_ACTIVE
     nexus_collection->link_features_from_property(nullptr, &link_key);
@@ -254,6 +282,10 @@ int main(int argc, char *argv[]) {
     hy_features::HY_Features features = hy_features::HY_Features(catchment_collection, &link_key, manager);
     #endif
 
+
+#ifdef NGEN_DEBUG_OUTPUT
+    std::cout << "Validating dendridic feature connections" << std::endl;
+#endif
     //validate dendridic connections
     features.validate_dendridic();
     //TODO don't really need catchment_collection once catchments are added to nexus collection
@@ -261,6 +293,10 @@ int main(int argc, char *argv[]) {
     //catchment_collection.reset();
     nexus_collection.reset();
 
+
+#ifdef NGEN_DEBUG_OUTPUT
+    std::cout << "Opening nexus output files" << std::endl;
+#endif
     //Still hacking nexus output for the moment
     for(const auto& id : features.nexuses()) {
         #ifdef NGEN_MPI_ACTIVE
