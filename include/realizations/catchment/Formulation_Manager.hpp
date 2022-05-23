@@ -19,6 +19,10 @@
 #include "GiuhJsonReader.h"
 #include "routing/Routing_Params.h"
 
+#ifndef NGEN_DEBUG_OUTPUT
+#define NGEN_DEBUG_OUTPUT
+#endif
+
 namespace realization {
 
     class Formulation_Manager {
@@ -53,6 +57,9 @@ namespace realization {
                 auto possible_global_config = tree.get_child_optional("global");
 
                 if (possible_global_config) {
+                #ifdef NGEN_DEBUG_OUTPUT
+                    std::cout << "Reading global config" << std::endl;
+                #endif
                     this->global_formulation_tree = *possible_global_config;
 
                     //get forcing info
@@ -71,6 +78,9 @@ namespace realization {
                             geojson::JSONProperty(global_setting.first, global_setting.second)
                         );
                     }
+#ifdef NGEN_DEBUG_OUTPUT
+                    std::cout << "Global config read complete" << std::endl;
+#endif
                 }
 
                 /**
@@ -82,6 +92,10 @@ namespace realization {
                 if (!possible_simulation_time) {
                     throw std::runtime_error("ERROR: No simulation time period defined.");
                 }
+
+#ifdef NGEN_DEBUG_OUTPUT
+                std::cout << "Obtained simulation time" << std::endl;
+#endif
 
                 geojson::JSONProperty simulation_time_parameters("time", *possible_simulation_time);
 
@@ -113,6 +127,10 @@ namespace realization {
                     throw std::runtime_error(message);
                 }
 
+#ifdef NGEN_DEBUG_OUTPUT
+                std::cout << "Instantiating simulation time params object" << std::endl;
+#endif
+
                 simulation_time_params simulation_time_config(
                     simulation_time_parameters.at("start_time").as_string(),
                     simulation_time_parameters.at("end_time").as_string(),
@@ -123,6 +141,10 @@ namespace realization {
                  * Call constructor to construct a Simulation_Time object
                  */ 
                 this->Simulation_Time_Object = std::make_shared<Simulation_Time>(simulation_time_config);
+
+#ifdef NGEN_DEBUG_OUTPUT
+                std::cout << "Examining routing configuration element" << std::endl;
+#endif
 
                 /**
                  * Read routing configurations from configuration file
@@ -152,6 +174,9 @@ namespace realization {
                 auto possible_catchment_configs = tree.get_child_optional("catchments");
 
                 if (possible_catchment_configs) {
+#ifdef NGEN_DEBUG_OUTPUT
+                    std::cout << "Reading individual catchment formulation configs and creating formulations" << std::endl;
+#endif
                     for (std::pair<std::string, boost::property_tree::ptree> catchment_config : *possible_catchment_configs) {
                       if( fabric->find(catchment_config.first) == -1 )
                       {
@@ -181,11 +206,20 @@ namespace realization {
                         } //end for formulaitons
                       }//end for catchments
 
+#ifdef NGEN_DEBUG_OUTPUT
+                    std::cout << "Finished adding formulations for individual catchment configs" << std::endl;
+#endif
 
                 }//end if possible_catchment_configs
 
                 for (geojson::Feature location : *fabric) {
+#ifdef NGEN_DEBUG_OUTPUT
+                    std::cout << "Checking for missing formulations" << std::endl;
+#endif
                     if (not this->contains(location->get_id())) {
+#ifdef NGEN_DEBUG_OUTPUT
+                        std::cout << "Adding missing formulation for " << location->get_id() << std::endl;
+#endif
                         std::shared_ptr<Catchment_Formulation> missing_formulation = this->construct_missing_formulation(
                           location->get_id(), output_stream, simulation_time_config);
                         this->add_formulation(missing_formulation);
