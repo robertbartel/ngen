@@ -76,7 +76,7 @@ namespace parallel {
             codeBuffer = status ? MPI_HF_SUB_CODE_GOOD : MPI_HF_SUB_CODE_BAD;
         }
         // Execute broadcast of global status rooted at rank 0
-        MPI_Bcast(&codeBuffer, mpi_num_procs - 1, MPI_UNSIGNED_SHORT, 0, MPI_COMM_WORLD);
+        MPI_Bcast(&codeBuffer, 1, MPI_UNSIGNED_SHORT, 0, MPI_COMM_WORLD);
         return codeBuffer == MPI_HF_SUB_CODE_GOOD;
     }
 
