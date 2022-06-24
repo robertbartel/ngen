@@ -408,6 +408,7 @@ namespace realization {
                     errMsg = "Received system error number " + std::to_string(errno);
                 }
 
+                std::string wrong_type_text;
                 // If the directory could be found and opened, we can go ahead and iterate
                 if (directory != nullptr) {
                     while ((entry = readdir(directory))) {
@@ -421,6 +422,14 @@ namespace realization {
                                 simulation_time_config.end_time
                             );
                         }
+                        // For debugging: if we find the file, but it isn't right type (skip this if a directory) ...
+                        else if (std::regex_match(entry->d_name, pattern) and entry->d_type != DT_DIR) {
+                            wrong_type_text += "; Found file with name '"
+                                                + std::string(entry->d_name)
+                                                + "' but which has incorrect type '"
+                                                + std::to_string(entry->d_type)
+                                                + "';";
+                        }
                     }
                 }
                 else {
@@ -430,7 +439,7 @@ namespace realization {
 
                 closedir(directory);
 
-                throw std::runtime_error("Forcing data could not be found for '" + identifier + "'");
+                throw std::runtime_error("Forcing data could not be found for '" + identifier + "'" + wrong_type_text);
             }
 
             boost::property_tree::ptree tree;
