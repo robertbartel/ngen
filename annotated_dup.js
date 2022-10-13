@@ -8,8 +8,8 @@ var annotated_dup =
       [ "DataProvider", "classdata__access_1_1_data_provider.html", "classdata__access_1_1_data_provider" ],
       [ "DeferredWrappedProvider", "classdata__access_1_1_deferred_wrapped_provider.html", "classdata__access_1_1_deferred_wrapped_provider" ],
       [ "GenericDataProvider", "classdata__access_1_1_generic_data_provider.html", "classdata__access_1_1_generic_data_provider" ],
-      [ "OptionalWrappedProvider", "classdata__access_1_1_optional_wrapped_provider.html", "classdata__access_1_1_optional_wrapped_provider" ],
-      [ "WrappedForcingProvider", "classdata__access_1_1_wrapped_forcing_provider.html", "classdata__access_1_1_wrapped_forcing_provider" ]
+      [ "OptionalWrappedDataProvider", "classdata__access_1_1_optional_wrapped_data_provider.html", "classdata__access_1_1_optional_wrapped_data_provider" ],
+      [ "WrappedDataProvider", "classdata__access_1_1_wrapped_data_provider.html", "classdata__access_1_1_wrapped_data_provider" ]
     ] ],
     [ "et", "namespaceet.html", [
       [ "aorc_forcing_data", "structet_1_1aorc__forcing__data.html", "structet_1_1aorc__forcing__data" ],
@@ -26,9 +26,6 @@ var annotated_dup =
     ] ],
     [ "external", "namespaceexternal.html", [
       [ "ExternalIntegrationException", "classexternal_1_1_external_integration_exception.html", "classexternal_1_1_external_integration_exception" ]
-    ] ],
-    [ "forcing", "namespaceforcing.html", [
-      [ "ForcingProvider", "classforcing_1_1_forcing_provider.html", "classforcing_1_1_forcing_provider" ]
     ] ],
     [ "geojson", "namespacegeojson.html", [
       [ "CollectionFeature", "classgeojson_1_1_collection_feature.html", "classgeojson_1_1_collection_feature" ],
@@ -140,7 +137,6 @@ var annotated_dup =
     [ "evapotranspiration_params", "structevapotranspiration__params.html", "structevapotranspiration__params" ],
     [ "Feature_Test", "class_feature___test.html", "class_feature___test" ],
     [ "FeatureCollection_Test", "class_feature_collection___test.html", "class_feature_collection___test" ],
-    [ "Forcing", "class_forcing.html", "class_forcing" ],
     [ "forcing_params", "structforcing__params.html", "structforcing__params" ],
     [ "GIUH_Test", "class_g_i_u_h___test.html", "class_g_i_u_h___test" ],
     [ "GM_Object", "class_g_m___object.html", "class_g_m___object" ],
