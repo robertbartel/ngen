@@ -8,5 +8,6 @@ var searchData=
   ['et_5fparams_5',['et_params',['../classrealization_1_1_et___accountable.html#a5fab369fc039b378dfd270490ddb9e5c',1,'realization::Et_Accountable']]],
   ['expon_6',['expon',['../class_reservoir_1_1_explicit___time_1_1_reservoir___exponential___outlet.html#a69836632c8b4221940c82319fe54b2f6',1,'Reservoir::Explicit_Time::Reservoir_Exponential_Outlet::expon()'],['../class_reservoir_1_1_implicit___time_1_1_reservoir___exponential___outlet.html#aa481f74b76b728a06f777ed569e13fc2',1,'Reservoir::Implicit_Time::Reservoir_Exponential_Outlet::expon()'],['../structtshirt_1_1tshirt__params.html#ac12e04215a5d9c708f6195f584b05042',1,'tshirt::tshirt_params::expon()']]],
   ['exponent_5fprimary_7',['exponent_primary',['../structconceptual__reservoir.html#a9c4be4fa3a1d07d5568b39a5d21e66e8',1,'conceptual_reservoir']]],
-  ['exponent_5fsecondary_8',['exponent_secondary',['../structconceptual__reservoir.html#a07e2f65edc56c9c815fd50b800cae4e7',1,'conceptual_reservoir']]]
+  ['exponent_5fsecondary_8',['exponent_secondary',['../structconceptual__reservoir.html#a07e2f65edc56c9c815fd50b800cae4e7',1,'conceptual_reservoir']]],
+  ['extent_9',['extent',['../classboost_1_1span.html#aa52cfdcc1721b57f15a6b625f7116bbd',1,'boost::span']]]
 ];
