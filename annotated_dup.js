@@ -37,19 +37,6 @@ var annotated_dup =
       [ "OptionalWrappedDataProvider", "classdata__access_1_1_optional_wrapped_data_provider.html", "classdata__access_1_1_optional_wrapped_data_provider" ],
       [ "WrappedDataProvider", "classdata__access_1_1_wrapped_data_provider.html", "classdata__access_1_1_wrapped_data_provider" ]
     ] ],
-    [ "et", "namespaceet.html", [
-      [ "aorc_forcing_data", "structet_1_1aorc__forcing__data.html", "structet_1_1aorc__forcing__data" ],
-      [ "evapotranspiration_forcing", "structet_1_1evapotranspiration__forcing.html", "structet_1_1evapotranspiration__forcing" ],
-      [ "evapotranspiration_options", "structet_1_1evapotranspiration__options.html", "structet_1_1evapotranspiration__options" ],
-      [ "evapotranspiration_params", "structet_1_1evapotranspiration__params.html", "structet_1_1evapotranspiration__params" ],
-      [ "intermediate_vars", "structet_1_1intermediate__vars.html", "structet_1_1intermediate__vars" ],
-      [ "solar_radiation_forcing", "structet_1_1solar__radiation__forcing.html", "structet_1_1solar__radiation__forcing" ],
-      [ "solar_radiation_options", "structet_1_1solar__radiation__options.html", "structet_1_1solar__radiation__options" ],
-      [ "solar_radiation_parameters", "structet_1_1solar__radiation__parameters.html", "structet_1_1solar__radiation__parameters" ],
-      [ "solar_radiation_results", "structet_1_1solar__radiation__results.html", "structet_1_1solar__radiation__results" ],
-      [ "surface_radiation_forcing", "structet_1_1surface__radiation__forcing.html", "structet_1_1surface__radiation__forcing" ],
-      [ "surface_radiation_params", "structet_1_1surface__radiation__params.html", "structet_1_1surface__radiation__params" ]
-    ] ],
     [ "external", "namespaceexternal.html", [
       [ "ExternalIntegrationException", "classexternal_1_1_external_integration_exception.html", "classexternal_1_1_external_integration_exception" ]
     ] ],
@@ -73,12 +60,6 @@ var annotated_dup =
       [ "sqlite_deleter", "structgeopackage_1_1sqlite__deleter.html", "structgeopackage_1_1sqlite__deleter" ],
       [ "sqlite_iter", "classgeopackage_1_1sqlite__iter.html", "classgeopackage_1_1sqlite__iter" ],
       [ "wkb", "structgeopackage_1_1wkb.html", "structgeopackage_1_1wkb" ]
-    ] ],
-    [ "giuh", "namespacegiuh.html", [
-      [ "giuh_carry_over", "structgiuh_1_1giuh__carry__over.html", "structgiuh_1_1giuh__carry__over" ],
-      [ "giuh_kernel", "classgiuh_1_1giuh__kernel.html", "classgiuh_1_1giuh__kernel" ],
-      [ "giuh_kernel_impl", "classgiuh_1_1giuh__kernel__impl.html", "classgiuh_1_1giuh__kernel__impl" ],
-      [ "GiuhJsonReader", "classgiuh_1_1_giuh_json_reader.html", "classgiuh_1_1_giuh_json_reader" ]
     ] ],
     [ "hy_features", "namespacehy__features.html", [
       [ "hydrolocation", "namespacehy__features_1_1hydrolocation.html", [
@@ -107,6 +88,26 @@ var annotated_dup =
     [ "nexus", "namespacenexus.html", [
       [ "Nexus_Manager", "classnexus_1_1_nexus___manager.html", "classnexus_1_1_nexus___manager" ]
     ] ],
+    [ "ngen", "namespacengen.html", [
+      [ "detail", "namespacengen_1_1detail.html", [
+        [ "visitors", "namespacengen_1_1detail_1_1visitors.html", [
+          [ "mdarray_at", "structngen_1_1detail_1_1visitors_1_1mdarray__at.html", "structngen_1_1detail_1_1visitors_1_1mdarray__at" ],
+          [ "mdarray_insert", "structngen_1_1detail_1_1visitors_1_1mdarray__insert.html", "structngen_1_1detail_1_1visitors_1_1mdarray__insert" ],
+          [ "mdarray_rank", "structngen_1_1detail_1_1visitors_1_1mdarray__rank.html", "structngen_1_1detail_1_1visitors_1_1mdarray__rank" ],
+          [ "mdarray_shape", "structngen_1_1detail_1_1visitors_1_1mdarray__shape.html", "structngen_1_1detail_1_1visitors_1_1mdarray__shape" ],
+          [ "mdarray_size", "structngen_1_1detail_1_1visitors_1_1mdarray__size.html", "structngen_1_1detail_1_1visitors_1_1mdarray__size" ],
+          [ "to_string_visitor", "structngen_1_1detail_1_1visitors_1_1to__string__visitor.html", "structngen_1_1detail_1_1visitors_1_1to__string__visitor" ]
+        ] ],
+        [ "dimension", "structngen_1_1detail_1_1dimension.html", "structngen_1_1detail_1_1dimension" ],
+        [ "variable", "structngen_1_1detail_1_1variable.html", "structngen_1_1detail_1_1variable" ]
+      ] ],
+      [ "traits", "namespacengen_1_1traits.html", [
+        [ "bool_pack", "structngen_1_1traits_1_1bool__pack.html", null ],
+        [ "type_list", "structngen_1_1traits_1_1type__list.html", "structngen_1_1traits_1_1type__list" ]
+      ] ],
+      [ "mdarray", "classngen_1_1mdarray.html", "classngen_1_1mdarray" ],
+      [ "mdframe", "classngen_1_1mdframe.html", "classngen_1_1mdframe" ]
+    ] ],
     [ "realization", "namespacerealization.html", [
       [ "Bmi_C_Formulation", "classrealization_1_1_bmi___c___formulation.html", "classrealization_1_1_bmi___c___formulation" ],
       [ "Bmi_Cpp_Formulation", "classrealization_1_1_bmi___cpp___formulation.html", "classrealization_1_1_bmi___cpp___formulation" ],
@@ -115,32 +116,8 @@ var annotated_dup =
       [ "Bmi_Multi_Formulation", "classrealization_1_1_bmi___multi___formulation.html", "classrealization_1_1_bmi___multi___formulation" ],
       [ "Catchment_Formulation", "classrealization_1_1_catchment___formulation.html", "classrealization_1_1_catchment___formulation" ],
       [ "ConfigurationException", "classrealization_1_1_configuration_exception.html", "classrealization_1_1_configuration_exception" ],
-      [ "Et_Accountable", "classrealization_1_1_et___accountable.html", "classrealization_1_1_et___accountable" ],
-      [ "Et_Aware", "classrealization_1_1_et___aware.html", "classrealization_1_1_et___aware" ],
       [ "Formulation", "classrealization_1_1_formulation.html", "classrealization_1_1_formulation" ],
-      [ "Formulation_Manager", "classrealization_1_1_formulation___manager.html", "classrealization_1_1_formulation___manager" ],
-      [ "Tshirt_C_Realization", "classrealization_1_1_tshirt___c___realization.html", "classrealization_1_1_tshirt___c___realization" ],
-      [ "Tshirt_Realization", "classrealization_1_1_tshirt___realization.html", "classrealization_1_1_tshirt___realization" ]
-    ] ],
-    [ "Reservoir", "namespace_reservoir.html", [
-      [ "Explicit_Time", "namespace_reservoir_1_1_explicit___time.html", [
-        [ "Reservoir", "class_reservoir_1_1_explicit___time_1_1_reservoir.html", "class_reservoir_1_1_explicit___time_1_1_reservoir" ],
-        [ "Reservoir_Exponential_Outlet", "class_reservoir_1_1_explicit___time_1_1_reservoir___exponential___outlet.html", "class_reservoir_1_1_explicit___time_1_1_reservoir___exponential___outlet" ],
-        [ "Reservoir_Linear_Outlet", "class_reservoir_1_1_explicit___time_1_1_reservoir___linear___outlet.html", "class_reservoir_1_1_explicit___time_1_1_reservoir___linear___outlet" ],
-        [ "Reservoir_Outlet", "class_reservoir_1_1_explicit___time_1_1_reservoir___outlet.html", "class_reservoir_1_1_explicit___time_1_1_reservoir___outlet" ]
-      ] ],
-      [ "Implicit_Time", "namespace_reservoir_1_1_implicit___time.html", [
-        [ "Reservoir", "class_reservoir_1_1_implicit___time_1_1_reservoir.html", "class_reservoir_1_1_implicit___time_1_1_reservoir" ],
-        [ "Reservoir_Exponential_Outlet", "class_reservoir_1_1_implicit___time_1_1_reservoir___exponential___outlet.html", "class_reservoir_1_1_implicit___time_1_1_reservoir___exponential___outlet" ],
-        [ "Reservoir_Linear_Outlet", "class_reservoir_1_1_implicit___time_1_1_reservoir___linear___outlet.html", "class_reservoir_1_1_implicit___time_1_1_reservoir___linear___outlet" ],
-        [ "Reservoir_Outlet", "class_reservoir_1_1_implicit___time_1_1_reservoir___outlet.html", "class_reservoir_1_1_implicit___time_1_1_reservoir___outlet" ]
-      ] ]
-    ] ],
-    [ "tshirt", "namespacetshirt.html", [
-      [ "tshirt_fluxes", "structtshirt_1_1tshirt__fluxes.html", "structtshirt_1_1tshirt__fluxes" ],
-      [ "tshirt_model", "classtshirt_1_1tshirt__model.html", "classtshirt_1_1tshirt__model" ],
-      [ "tshirt_params", "structtshirt_1_1tshirt__params.html", "structtshirt_1_1tshirt__params" ],
-      [ "tshirt_state", "structtshirt_1_1tshirt__state.html", "structtshirt_1_1tshirt__state" ]
+      [ "Formulation_Manager", "classrealization_1_1_formulation___manager.html", "classrealization_1_1_formulation___manager" ]
     ] ],
     [ "utils", "namespaceutils.html", [
       [ "FileChecker", "classutils_1_1_file_checker.html", "classutils_1_1_file_checker" ],
@@ -149,23 +126,16 @@ var annotated_dup =
     ] ],
     [ "add_to_summed_nexus", "structadd__to__summed__nexus.html", "structadd__to__summed__nexus" ],
     [ "AORC_data", "struct_a_o_r_c__data.html", "struct_a_o_r_c__data" ],
-    [ "aorc_forcing_data", "structaorc__forcing__data.html", "structaorc__forcing__data" ],
     [ "Bmi", "struct_bmi.html", "struct_bmi" ],
     [ "BMIDataSelector", "class_b_m_i_data_selector.html", "class_b_m_i_data_selector" ],
     [ "CatchmentAggrDataSelector", "class_catchment_aggr_data_selector.html", "class_catchment_aggr_data_selector" ],
     [ "completed_time_step", "structcompleted__time__step.html", "structcompleted__time__step" ],
-    [ "conceptual_reservoir", "structconceptual__reservoir.html", "structconceptual__reservoir" ],
     [ "CSVDataSelector", "class_c_s_v_data_selector.html", "class_c_s_v_data_selector" ],
     [ "CsvPerFeatureForcingProvider", "class_csv_per_feature_forcing_provider.html", "class_csv_per_feature_forcing_provider" ],
     [ "CSVReader", "class_c_s_v_reader.html", "class_c_s_v_reader" ],
-    [ "EtCalcKernelTest", "class_et_calc_kernel_test.html", "class_et_calc_kernel_test" ],
-    [ "evapotranspiration_forcing", "structevapotranspiration__forcing.html", "structevapotranspiration__forcing" ],
-    [ "evapotranspiration_options", "structevapotranspiration__options.html", "structevapotranspiration__options" ],
-    [ "evapotranspiration_params", "structevapotranspiration__params.html", "structevapotranspiration__params" ],
     [ "Feature_Test", "class_feature___test.html", "class_feature___test" ],
     [ "FeatureCollection_Test", "class_feature_collection___test.html", "class_feature_collection___test" ],
     [ "forcing_params", "structforcing__params.html", "structforcing__params" ],
-    [ "GIUH_Test", "class_g_i_u_h___test.html", "class_g_i_u_h___test" ],
     [ "GM_Object", "class_g_m___object.html", "class_g_m___object" ],
     [ "HY_CartographicRealization", "class_h_y___cartographic_realization.html", "class_h_y___cartographic_realization" ],
     [ "HY_Catchment", "class_h_y___catchment.html", "class_h_y___catchment" ],
@@ -180,12 +150,6 @@ var annotated_dup =
     [ "HY_HydroNexus", "class_h_y___hydro_nexus.html", "class_h_y___hydro_nexus" ],
     [ "HY_InteriorCatchment", "class_h_y___interior_catchment.html", "class_h_y___interior_catchment" ],
     [ "HY_PointHydroNexus", "class_h_y___point_hydro_nexus.html", "class_h_y___point_hydro_nexus" ],
-    [ "hymod_fluxes", "structhymod__fluxes.html", "structhymod__fluxes" ],
-    [ "hymod_kernel", "classhymod__kernel.html", "classhymod__kernel" ],
-    [ "hymod_params", "structhymod__params.html", "structhymod__params" ],
-    [ "hymod_state", "structhymod__state.html", "structhymod__state" ],
-    [ "HymodKernelTest", "class_hymod_kernel_test.html", "class_hymod_kernel_test" ],
-    [ "intermediate_vars", "structintermediate__vars.html", "structintermediate__vars" ],
     [ "invalid_downstream_request", "structinvalid__downstream__request.html", "structinvalid__downstream__request" ],
     [ "invalid_time_step", "structinvalid__time__step.html", "structinvalid__time__step" ],
     [ "JSONGeometry_Test", "class_j_s_o_n_geometry___test.html", "class_j_s_o_n_geometry___test" ],
@@ -195,27 +159,12 @@ var annotated_dup =
     [ "Network_Test2", "class_network___test2.html", "class_network___test2" ],
     [ "Nexus_Remote_Test", "class_nexus___remote___test.html", "class_nexus___remote___test" ],
     [ "Nexus_Test", "class_nexus___test.html", "class_nexus___test" ],
-    [ "NWM_soil_parameters", "struct_n_w_m__soil__parameters.html", "struct_n_w_m__soil__parameters" ],
-    [ "pdm03_struct", "structpdm03__struct.html", "structpdm03__struct" ],
-    [ "Pdm03KernelTest", "class_pdm03_kernel_test.html", "class_pdm03_kernel_test" ],
     [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", "structrequest__from__empty__nexus" ],
-    [ "reservoir_parameters", "structreservoir__parameters.html", "structreservoir__parameters" ],
-    [ "reservoir_state", "structreservoir__state.html", "structreservoir__state" ],
     [ "ReservoirKernelTest", "class_reservoir_kernel_test.html", "class_reservoir_kernel_test" ],
     [ "ReservoirTimelessKernelTest", "class_reservoir_timeless_kernel_test.html", "class_reservoir_timeless_kernel_test" ],
     [ "routing_params", "structrouting__params.html", "structrouting__params" ],
-    [ "SchaakeKernelTest", "class_schaake_kernel_test.html", "class_schaake_kernel_test" ],
-    [ "Simple_Lumped_Model_Realization", "class_simple___lumped___model___realization.html", "class_simple___lumped___model___realization" ],
     [ "Simulation_Time", "class_simulation___time.html", "class_simulation___time" ],
     [ "simulation_time_params", "structsimulation__time__params.html", "structsimulation__time__params" ],
-    [ "solar_radiation_forcing", "structsolar__radiation__forcing.html", "structsolar__radiation__forcing" ],
-    [ "solar_radiation_options", "structsolar__radiation__options.html", "structsolar__radiation__options" ],
-    [ "solar_radiation_parameters", "structsolar__radiation__parameters.html", "structsolar__radiation__parameters" ],
-    [ "solar_radiation_results", "structsolar__radiation__results.html", "structsolar__radiation__results" ],
-    [ "surface_radiation_forcing", "structsurface__radiation__forcing.html", "structsurface__radiation__forcing" ],
-    [ "surface_radiation_params", "structsurface__radiation__params.html", "structsurface__radiation__params" ],
-    [ "tshirt_c_result_fluxes", "structtshirt__c__result__fluxes.html", "structtshirt__c__result__fluxes" ],
-    [ "TshirtModelTest", "class_tshirt_model_test.html", "class_tshirt_model_test" ],
     [ "UnitsHelper", "class_units_helper.html", "class_units_helper" ],
     [ "UnitsHelper_Test", "class_units_helper___test.html", "class_units_helper___test" ],
     [ "Visitor", "class_visitor.html", "class_visitor" ]

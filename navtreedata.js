@@ -285,37 +285,34 @@ var NAVTREE =
         [ "Typedefs", "functions_type.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"class_h_y___hydro_nexus.html#a11dc68437650f47aad75eadc071b51e5",
-"class_reservoir_1_1_explicit___time_1_1_reservoir___outlet.html#aeffe8449c5cbe459c2bceedfcbb661e2",
-"class_simulation___time.html#a2932772505ed5505173b0cb8208cd748",
-"classdata__access_1_1_data_provider.html#a8254f58e64499bb4ae799ab120fd0934",
-"classgeojson_1_1_collection_feature.html#a984573e0ad014345634d5e859846ef35",
-"classgeojson_1_1_feature_collection.html#ac486986e8a46952a122e392539b86ed2",
-"classgeojson_1_1_multi_line_string_feature.html#a3ff99f3984c2097aedd6207a8f1eb5f8",
-"classgeojson_1_1_multi_polygon_feature.html#a77d7f52df0473ed087c9a72a7c66fce9",
-"classgeojson_1_1_polygon_feature.html#a81ae3cf3eac8a0100bd0fcd49dc75db9",
-"classhy__features_1_1_h_y___features.html#a3a28c4767f2f53b70d200148de764d9e",
-"classmodels_1_1bmi_1_1_bmi___adapter.html#a2132b18abc07635c6c1e9cdfe7e186ce",
-"classmodels_1_1bmi_1_1_bmi___c___adapter.html#ab59c92e91f3ebe1cf5eaceac16100043",
-"classnetwork_1_1_network.html#a17193c5c4eeebbcbe2eeda9879e22e83",
-"classrealization_1_1_bmi___c___formulation.html#ac24b58505cb49f6594fd79fec5005014",
-"classrealization_1_1_bmi___cpp___formulation.html#ac96032fca42092ad95727dcbf1d02a7b",
-"classrealization_1_1_bmi___module___formulation.html#a2e84d036f980988830aec7155e2e7ba8",
-"classrealization_1_1_bmi___multi___formulation.html#a4b3db6bb593b3d3261ac5ed2f35684b3",
-"classrealization_1_1_et___accountable.html#a786de4d8f78bddb751896ea9865c9a9a",
-"classrealization_1_1_tshirt___realization.html#a12152fda31d618b47b590f9f23b452cf",
-"functions_vars.html",
-"namespacegeojson.html#a1c9774b2c97ea8d59d6d7255ef005c81",
-"structboost_1_1detail_1_1span__has__data.html",
-"structevapotranspiration__forcing.html#acb54d0efcdedd029ce5fe1cbd117f597",
-"structsolar__radiation__results.html#a7d88801b4c6c0202a0384d68b8f41d06"
+"_2github_2workspace_2include_2utilities_2mdarray_2mdarray_8hpp-example.html",
+"class_h_y___hydro_nexus.html#afcd4c4b517599cb265da2cfeb2610c9d",
+"classbmi_1_1_bmi.html#a75725d44cf7432a7f09f1ac403727d64",
+"classdata__access_1_1_optional_wrapped_data_provider.html#a1d914d387e7ae2d933a372d0976ed959",
+"classgeojson_1_1_feature_base.html#a099497ede94011cda55f2a8309d7be62",
+"classgeojson_1_1_j_s_o_n_property.html#a8124b60e4f0a5d500d7635205344a158",
+"classgeojson_1_1_multi_line_string_feature.html#ad821415b00bf3b84764ad4c39e978d6d",
+"classgeojson_1_1_multi_polygon_feature.html#ae7fa0192036f7406ebb0af6715d6c3b4",
+"classgeopackage_1_1sqlite.html#a425421fba7b13eea523d63a2225e1bb9",
+"classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#ab59c92e91f3ebe1cf5eaceac16100043",
+"classmodels_1_1bmi_1_1_bmi___c___adapter.html#a590bb56edfa69f5dce5f76820e7c74d6",
+"classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#ac1a86e6285c9d8c809d1bd1bdc013215",
+"classrealization_1_1_bmi___c___formulation.html#a2010f61d0e7141bb48230923592de215",
+"classrealization_1_1_bmi___cpp___formulation.html#a39cf248257ea2a34052fa65ad08bf2ba",
+"classrealization_1_1_bmi___formulation.html#aaa4dcba7e78f634ad0475bf1e3f3a697",
+"classrealization_1_1_bmi___module___formulation.html#aec9896208681042a5c7ba24045aa824b",
+"classrealization_1_1_catchment___formulation.html#a8bfec24b0d57240e7ada2493a781db6d",
+"functions_vars_i.html",
+"namespacegeojson.html#a89dc78a6264929ea729d0911730835b6",
+"structboost_1_1detail_1_1span__store.html#a10728ca311bb137a3e6fd83c58f28ea0",
+"structngen_1_1detail_1_1visitors_1_1mdarray__at.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
