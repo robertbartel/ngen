@@ -1,52 +1,52 @@
 <map id="hy_features::HY_Features" name="hy_features::HY_Features">
-<area shape="rect" id="node1" title="Collection interface to HY_Features objects and their associated model formulations." alt="" coords="2064,3169,2240,3371"/>
-<area shape="rect" id="node2" title=" " alt="" coords="1924,1549,2129,1618"/>
-<area shape="rect" id="node3" title=" " alt="" coords="1804,211,1887,251"/>
-<area shape="rect" id="node6" href="$class_h_y___catchment.html" title=" " alt="" coords="1112,1028,1275,1127"/>
-<area shape="rect" id="node16" title=" " alt="" coords="1710,504,1855,544"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1515,504,1685,544"/>
-<area shape="rect" id="node21" title=" " alt="" coords="2216,2055,2429,2124"/>
-<area shape="rect" id="node23" href="$class_h_y___hydro_nexus.html" title=" " alt="" coords="2255,1453,2463,1713"/>
-<area shape="rect" id="node25" title=" " alt="" coords="2535,504,2699,544"/>
-<area shape="rect" id="node28" title=" " alt="" coords="3024,482,3163,566"/>
-<area shape="rect" id="node33" title=" " alt="" coords="2261,497,2408,551"/>
-<area shape="rect" id="node34" href="$classgeojson_1_1_j_s_o_n_property.html" title="@TODO: Convert JSONProperty into a variant of the supported types" alt="" coords="2330,925,2491,1229"/>
-<area shape="rect" id="node37" title=" " alt="" coords="1594,2392,1782,2461"/>
-<area shape="rect" id="node39" href="$classrealization_1_1_catchment___formulation.html" title=" " alt="" coords="1126,1981,1322,2197"/>
-<area shape="rect" id="node40" href="$classrealization_1_1_formulation.html" title=" " alt="" coords="1582,656,1765,901"/>
-<area shape="rect" id="node43" href="$classutils_1_1_stream_handler.html" title="This class provides a copyable interface to a std::ostream or std::ostream like object that may not s..." alt="" coords="738,1490,881,1677"/>
-<area shape="rect" id="node50" href="$structrouting__params.html" title="routing_params providing configuration information for routing." alt="" coords="345,744,481,813"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1157,5,1285,60"/>
-<area shape="rect" id="node5" title=" " alt="" coords="1259,1314,1400,1383"/>
-<area shape="rect" id="node9" href="$class_h_y___catchment_realization.html" title=" " alt="" coords="1095,1512,1295,1655"/>
-<area shape="rect" id="node7" href="$class_h_y___hydro_feature.html" title=" " alt="" coords="1288,489,1440,559"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1111,1820,1278,1889"/>
-<area shape="rect" id="node41" href="$class_h_y___catchment_area.html" title=" " alt="" coords="902,1791,1066,1919"/>
-<area shape="rect" id="node10" title=" " alt="" coords="1027,1314,1235,1383"/>
-<area shape="rect" id="node11" href="$classdata__access_1_1_generic_data_provider.html" title=" " alt="" coords="909,1050,1088,1105"/>
-<area shape="rect" id="node12" href="$classdata__access_1_1_data_provider.html" title=" " alt="" coords="193,416,447,632"/>
-<area shape="rect" id="node13" href="$classdata__access_1_1_data_provider.html" title=" " alt="" coords="185,123,375,339"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1407,1050,1548,1105"/>
-<area shape="rect" id="node22" title=" " alt="" coords="2316,1820,2457,1889"/>
-<area shape="rect" id="node24" title=" " alt="" coords="2068,1307,2209,1391"/>
-<area shape="rect" id="node29" title=" " alt="" coords="1698,3037,1878,3107"/>
-<area shape="rect" id="node31" title=" " alt="" coords="1723,1314,1906,1383"/>
-<area shape="rect" id="node38" title=" " alt="" coords="1531,2260,1711,2329"/>
-<area shape="rect" id="node44" title=" " alt="" coords="811,1314,951,1383"/>
-<area shape="rect" id="node49" title=" " alt="" coords="425,1314,586,1383"/>
-<area shape="rect" id="node15" title=" " alt="" coords="2451,13,2490,53"/>
-<area shape="rect" id="node17" title=" " alt="" coords="2502,211,2618,251"/>
-<area shape="rect" id="node19" title=" " alt="" coords="2668,203,2807,258"/>
-<area shape="rect" id="node36" title=" " alt="" coords="2319,211,2441,251"/>
-<area shape="rect" id="node27" title=" " alt="" coords="3187,489,3325,559"/>
-<area shape="rect" id="node35" title=" " alt="" coords="2386,1321,2529,1376"/>
-<area shape="rect" id="node20" title=" " alt="" coords="2530,13,2569,53"/>
-<area shape="rect" id="node26" href="$classnetwork_1_1_network.html" title="A lightweight, graph based index of hydrologic features." alt="" coords="3145,933,3298,1222"/>
-<area shape="rect" id="node30" href="$classrealization_1_1_formulation___manager.html" title=" " alt="" coords="1679,2524,1897,2975"/>
-<area shape="rect" id="node32" href="$class_simulation___time.html" title="Simulation Time class providing time&#45;series variables and methods to the model." alt="" coords="1721,969,1895,1185"/>
-<area shape="rect" id="node42" href="$class_g_m___object.html" title=" " alt="" coords="905,1549,1020,1618"/>
-<area shape="rect" id="node45" title=" " alt="" coords="438,1057,535,1097"/>
-<area shape="rect" id="node46" title=" " alt="" coords="31,497,166,551"/>
-<area shape="rect" id="node47" title=" " alt="" coords="5,211,160,251"/>
-<area shape="rect" id="node48" title=" " alt="" coords="31,13,134,53"/>
+<area shape="rect" id="node1" title="Collection interface to HY_Features objects and their associated model formulations." alt="" coords="2573,3191,2749,3421"/>
+<area shape="rect" id="node2" title=" " alt="" coords="2419,1555,2624,1625"/>
+<area shape="rect" id="node3" title=" " alt="" coords="2065,130,2148,170"/>
+<area shape="rect" id="node6" href="$class_h_y___catchment.html" title=" " alt="" coords="1104,683,1339,943"/>
+<area shape="rect" id="node14" title=" " alt="" coords="953,277,1098,317"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1123,277,1293,317"/>
+<area shape="rect" id="node19" title=" " alt="" coords="2773,2061,2987,2131"/>
+<area shape="rect" id="node21" href="$class_h_y___hydro_nexus.html" title=" " alt="" coords="1591,1460,1799,1720"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1795,277,1959,317"/>
+<area shape="rect" id="node26" title=" " alt="" coords="2499,255,2637,339"/>
+<area shape="rect" id="node27" title=" " alt="" coords="2712,262,2851,331"/>
+<area shape="rect" id="node32" title=" " alt="" coords="1548,269,1695,324"/>
+<area shape="rect" id="node33" href="$classgeojson_1_1_j_s_o_n_property.html" title="@TODO: Convert JSONProperty into a variant of the supported types" alt="" coords="1414,661,1575,965"/>
+<area shape="rect" id="node36" title=" " alt="" coords="1107,2399,1295,2468"/>
+<area shape="rect" id="node38" href="$classrealization_1_1_catchment___formulation.html" title=" " alt="" coords="2051,1988,2247,2204"/>
+<area shape="rect" id="node39" href="$classrealization_1_1_formulation.html" title=" " alt="" coords="1981,363,2163,608"/>
+<area shape="rect" id="node42" href="$classutils_1_1_stream_handler.html" title="This class provides a copyable interface to a std::ostream or std::ostream like object that may not s..." alt="" coords="2174,1019,2317,1205"/>
+<area shape="rect" id="node44" href="$structrouting__params.html" title="routing_params providing configuration information for routing." alt="" coords="1837,451,1973,520"/>
+<area shape="rect" id="node47" href="$structngen_1_1_layer_description.html" title="A simple structure to hold meta data related to a computational layer." alt="" coords="2085,262,2243,331"/>
+<area shape="rect" id="node4" title=" " alt="" coords="2043,5,2171,60"/>
+<area shape="rect" id="node5" title=" " alt="" coords="1099,1259,1240,1328"/>
+<area shape="rect" id="node9" href="$class_h_y___catchment_realization.html" title=" " alt="" coords="949,1519,1149,1661"/>
+<area shape="rect" id="node7" href="$class_h_y___hydro_feature.html" title=" " alt="" coords="613,262,765,331"/>
+<area shape="rect" id="node8" title=" " alt="" coords="775,1827,942,1896"/>
+<area shape="rect" id="node40" href="$class_h_y___catchment_area.html" title=" " alt="" coords="1762,1797,1926,1925"/>
+<area shape="rect" id="node10" title=" " alt="" coords="651,1259,859,1328"/>
+<area shape="rect" id="node11" href="$classdata__access_1_1_generic_data_provider.html" title=" " alt="" coords="768,786,947,841"/>
+<area shape="rect" id="node12" title=" " alt="" coords="399,786,540,841"/>
+<area shape="rect" id="node20" title=" " alt="" coords="1596,1827,1737,1896"/>
+<area shape="rect" id="node22" title=" " alt="" coords="933,1251,1075,1335"/>
+<area shape="rect" id="node28" title=" " alt="" coords="1325,3059,1505,3128"/>
+<area shape="rect" id="node30" title=" " alt="" coords="109,1259,291,1328"/>
+<area shape="rect" id="node37" title=" " alt="" coords="1197,2267,1377,2336"/>
+<area shape="rect" id="node43" title=" " alt="" coords="1482,1259,1643,1328"/>
+<area shape="rect" id="node13" title=" " alt="" coords="698,13,737,53"/>
+<area shape="rect" id="node15" title=" " alt="" coords="771,130,887,170"/>
+<area shape="rect" id="node17" title=" " alt="" coords="2823,123,2961,177"/>
+<area shape="rect" id="node35" title=" " alt="" coords="545,130,666,170"/>
+<area shape="rect" id="node25" title=" " alt="" coords="789,262,928,331"/>
+<area shape="rect" id="node34" title=" " alt="" coords="1315,1266,1458,1321"/>
+<area shape="rect" id="node48" title=" " alt="" coords="683,458,805,513"/>
+<area shape="rect" id="node46" title=" " alt="" coords="2035,779,2231,848"/>
+<area shape="rect" id="node18" title=" " alt="" coords="2873,13,2911,53"/>
+<area shape="rect" id="node50" title=" " alt="" coords="3200,130,3299,170"/>
+<area shape="rect" id="node24" href="$classnetwork_1_1_network.html" title="A lightweight, graph based index of hydrologic features." alt="" coords="2551,661,2705,965"/>
+<area shape="rect" id="node29" href="$classrealization_1_1_formulation___manager.html" title=" " alt="" coords="1306,2531,1523,2996"/>
+<area shape="rect" id="node31" href="$class_simulation___time.html" title="Simulation Time class providing time&#45;series variables and methods to the model." alt="" coords="55,632,235,995"/>
+<area shape="rect" id="node41" href="$class_g_m___object.html" title=" " alt="" coords="1823,1555,1937,1625"/>
+<area shape="rect" id="node45" href="$classngen_1_1_layer_data_storage.html" title="A class to hold and manage layer metadata for the system." alt="" coords="1667,1229,1831,1357"/>
+<area shape="rect" id="node49" title=" " alt="" coords="3263,1381,3377,1436"/>
 </map>
