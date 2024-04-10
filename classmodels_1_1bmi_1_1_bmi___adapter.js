@@ -2,7 +2,8 @@ var classmodels_1_1bmi_1_1_bmi___adapter =
 [
     [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#a0c2c4cd3ff3b6fc1050e2d5b878dbc40", null ],
     [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#a131ad658e150f04fe2a5f1ce7bedbf96", null ],
-    [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#a5d30e5abcdab164d2b0aefbf4becb9e5", null ],
+    [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#aab17323112c53dcbed7e3bcb7ea44b4d", null ],
+    [ "~Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#a5a32e5a3add9dddeffb027a33388aafb", null ],
     [ "construct_and_init_backing_model", "classmodels_1_1bmi_1_1_bmi___adapter.html#aaf11585e4e3852fa9391ad5966af22d2", null ],
     [ "convert_model_time_to_seconds", "classmodels_1_1bmi_1_1_bmi___adapter.html#a6efbfd9ff146bbe3b3c1a82d243f8266", null ],
     [ "convert_seconds_to_model_time", "classmodels_1_1bmi_1_1_bmi___adapter.html#a73ca855d0db45838b87309038fae1fed", null ],
@@ -47,6 +48,7 @@ var classmodels_1_1bmi_1_1_bmi___adapter =
     [ "GetVarUnits", "classmodels_1_1bmi_1_1_bmi___adapter.html#a75725d44cf7432a7f09f1ac403727d64", null ],
     [ "Initialize", "classmodels_1_1bmi_1_1_bmi___adapter.html#aeace85bbd89962f2945bec0ca3c76091", null ],
     [ "Initialize", "classmodels_1_1bmi_1_1_bmi___adapter.html#a4a2a8f1fb2442ec5e3a5bd1c7a3b3ef2", null ],
+    [ "is_model_initialized", "classmodels_1_1bmi_1_1_bmi___adapter.html#a833fd44ca84e9b77b876f75e23215776", null ],
     [ "isInitialized", "classmodels_1_1bmi_1_1_bmi___adapter.html#a31e002ee7effe39ca0f07b7c2f16a453", null ],
     [ "SetValue", "classmodels_1_1bmi_1_1_bmi___adapter.html#ae0e047f16b967e6b6cab77d3285add30", null ],
     [ "SetValueAtIndices", "classmodels_1_1bmi_1_1_bmi___adapter.html#a3cecd50be90621a3d47cc811258c5f75", null ],

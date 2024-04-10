@@ -83,6 +83,7 @@ var annotated_dup =
         [ "bool_pack", "structngen_1_1traits_1_1bool__pack.html", null ],
         [ "type_list", "structngen_1_1traits_1_1type__list.html", "structngen_1_1traits_1_1type__list" ]
       ] ],
+      [ "DomainLayer", "classngen_1_1_domain_layer.html", "classngen_1_1_domain_layer" ],
       [ "Layer", "classngen_1_1_layer.html", "classngen_1_1_layer" ],
       [ "LayerDataStorage", "classngen_1_1_layer_data_storage.html", "classngen_1_1_layer_data_storage" ],
       [ "LayerDescription", "structngen_1_1_layer_description.html", "structngen_1_1_layer_description" ],
@@ -92,6 +93,10 @@ var annotated_dup =
     ] ],
     [ "realization", "namespacerealization.html", [
       [ "config", "namespacerealization_1_1config.html", [
+        [ "Config", "structrealization_1_1config_1_1_config.html", "structrealization_1_1config_1_1_config" ],
+        [ "Forcing", "structrealization_1_1config_1_1_forcing.html", "structrealization_1_1config_1_1_forcing" ],
+        [ "Formulation", "structrealization_1_1config_1_1_formulation.html", "structrealization_1_1config_1_1_formulation" ],
+        [ "Layer", "structrealization_1_1config_1_1_layer.html", "structrealization_1_1config_1_1_layer" ],
         [ "Routing", "structrealization_1_1config_1_1_routing.html", "structrealization_1_1config_1_1_routing" ],
         [ "Time", "structrealization_1_1config_1_1_time.html", "structrealization_1_1config_1_1_time" ]
       ] ],
@@ -147,6 +152,8 @@ var annotated_dup =
     [ "Nexus_Remote_Test", "class_nexus___remote___test.html", "class_nexus___remote___test" ],
     [ "Nexus_Test", "class_nexus___test.html", "class_nexus___test" ],
     [ "NullForcingProvider", "class_null_forcing_provider.html", "class_null_forcing_provider" ],
+    [ "Partition_One", "class_partition___one.html", "class_partition___one" ],
+    [ "PartitionData", "struct_partition_data.html", "struct_partition_data" ],
     [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", "structrequest__from__empty__nexus" ],
     [ "ReservoirKernelTest", "class_reservoir_kernel_test.html", "class_reservoir_kernel_test" ],
     [ "ReservoirTimelessKernelTest", "class_reservoir_timeless_kernel_test.html", "class_reservoir_timeless_kernel_test" ],

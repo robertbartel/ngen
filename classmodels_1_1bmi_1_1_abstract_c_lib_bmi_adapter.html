@@ -121,14 +121,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afac72323e2bdf05953f6858ea068972c" id="r_afac72323e2bdf05953f6858ea068972c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#afac72323e2bdf05953f6858ea068972c">AbstractCLibBmiAdapter</a> (const std::string &amp;type_name, std::string library_file_path, std::string <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#a32725cc98663e54694c90c8740e8e5dd">bmi_init_config</a>, std::string <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#ae6d1be4a39ef76547004c3392b95f3e4">forcing_file_path</a>, bool allow_exceed_end, bool has_fixed_time_step, std::string registration_func, <a class="el" href="classutils_1_1_stream_handler.html">utils::StreamHandler</a> <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#a6bfb2f398f00c3b44b1235d4758f0c91">output</a>)</td></tr>
 <tr class="memdesc:afac72323e2bdf05953f6858ea068972c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main public constructor.  <br /></td></tr>
 <tr class="separator:afac72323e2bdf05953f6858ea068972c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4a8df78a1c6c49278feff40a344cca4" id="r_ad4a8df78a1c6c49278feff40a344cca4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#ad4a8df78a1c6c49278feff40a344cca4">AbstractCLibBmiAdapter</a> (<a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html">AbstractCLibBmiAdapter</a> &amp;&amp;adapter) noexcept</td></tr>
-<tr class="separator:ad4a8df78a1c6c49278feff40a344cca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a559a7b2852c033fe2acd46cf0d64041e" id="r_a559a7b2852c033fe2acd46cf0d64041e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#a559a7b2852c033fe2acd46cf0d64041e">~AbstractCLibBmiAdapter</a> ()</td></tr>
-<tr class="memdesc:a559a7b2852c033fe2acd46cf0d64041e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <br /></td></tr>
-<tr class="separator:a559a7b2852c033fe2acd46cf0d64041e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2acdb60b764e84ddcb0426a5aa4c82e6" id="r_a2acdb60b764e84ddcb0426a5aa4c82e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#a2acdb60b764e84ddcb0426a5aa4c82e6">~AbstractCLibBmiAdapter</a> () override</td></tr>
+<tr class="memdesc:a2acdb60b764e84ddcb0426a5aa4c82e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class destructor.  <br /></td></tr>
+<tr class="separator:a2acdb60b764e84ddcb0426a5aa4c82e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d83ca0190339e27eda4b539e05177a6" id="r_a4d83ca0190339e27eda4b539e05177a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#a4d83ca0190339e27eda4b539e05177a6">Finalize</a> () override</td></tr>
 <tr class="memdesc:a4d83ca0190339e27eda4b539e05177a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform tear-down task for this object and its backing model.  <br /></td></tr>
 <tr class="separator:a4d83ca0190339e27eda4b539e05177a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a833fd44ca84e9b77b876f75e23215776" id="r_a833fd44ca84e9b77b876f75e23215776"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#a833fd44ca84e9b77b876f75e23215776">is_model_initialized</a> ()=0</td></tr>
+<tr class="memdesc:a833fd44ca84e9b77b876f75e23215776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the backing model has been initialized yet.  <br /></td></tr>
+<tr class="separator:a833fd44ca84e9b77b876f75e23215776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b021125add57e1921bb4344d9ccea5f" id="r_a4b021125add57e1921bb4344d9ccea5f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#a4b021125add57e1921bb4344d9ccea5f">get_time_convert_factor</a> ()</td></tr>
 <tr class="memdesc:a4b021125add57e1921bb4344d9ccea5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine backing model's time units and return an appropriate conversion factor.  <br /></td></tr>
 <tr class="separator:a4b021125add57e1921bb4344d9ccea5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -310,13 +311,10 @@ Private Attributes</h2></td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afac72323e2bdf05953f6858ea068972c" name="afac72323e2bdf05953f6858ea068972c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afac72323e2bdf05953f6858ea068972c">&#9670;&#160;</a></span>AbstractCLibBmiAdapter() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afac72323e2bdf05953f6858ea068972c">&#9670;&#160;</a></span>AbstractCLibBmiAdapter()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">models::bmi::AbstractCLibBmiAdapter::AbstractCLibBmiAdapter </td>
@@ -372,11 +370,6 @@ Private Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Main public constructor. </p>
@@ -402,8 +395,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad4a8df78a1c6c49278feff40a344cca4" name="ad4a8df78a1c6c49278feff40a344cca4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4a8df78a1c6c49278feff40a344cca4">&#9670;&#160;</a></span>AbstractCLibBmiAdapter() <span class="overload">[2/2]</span></h2>
+<a id="a2acdb60b764e84ddcb0426a5aa4c82e6" name="a2acdb60b764e84ddcb0426a5aa4c82e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2acdb60b764e84ddcb0426a5aa4c82e6">&#9670;&#160;</a></span>~AbstractCLibBmiAdapter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -412,33 +405,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">models::bmi::AbstractCLibBmiAdapter::AbstractCLibBmiAdapter </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html">AbstractCLibBmiAdapter</a> &amp;&amp;&#160;</td>
-          <td class="paramname"><em>adapter</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a559a7b2852c033fe2acd46cf0d64041e" name="a559a7b2852c033fe2acd46cf0d64041e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a559a7b2852c033fe2acd46cf0d64041e">&#9670;&#160;</a></span>~AbstractCLibBmiAdapter()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual models::bmi::AbstractCLibBmiAdapter::~AbstractCLibBmiAdapter </td>
+          <td class="memname">models::bmi::AbstractCLibBmiAdapter::~AbstractCLibBmiAdapter </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -446,7 +413,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -511,7 +478,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -549,7 +516,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -585,7 +552,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -674,7 +641,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -725,7 +692,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -766,7 +733,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -778,7 +745,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#a2bb1cba086a935b90f356f29def46d54">dyn_lib_handle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#a559a7b2852c033fe2acd46cf0d64041e">~AbstractCLibBmiAdapter()</a>, and <a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#a4d83ca0190339e27eda4b539e05177a6">Finalize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#a2acdb60b764e84ddcb0426a5aa4c82e6">~AbstractCLibBmiAdapter()</a>, and <a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html#a4d83ca0190339e27eda4b539e05177a6">Finalize()</a>.</p>
 
 </div>
 </div>
@@ -917,7 +884,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -949,7 +916,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2093,7 +2060,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2135,7 +2102,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2165,6 +2132,36 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a833fd44ca84e9b77b876f75e23215776" name="a833fd44ca84e9b77b876f75e23215776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a833fd44ca84e9b77b876f75e23215776">&#9670;&#160;</a></span>is_model_initialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool models::bmi::Bmi_Adapter::is_model_initialized </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Whether the backing model has been initialized yet. </p>
+<dl class="section return"><dt>Returns</dt><dd>Whether the backing model has been initialized yet. </dd></dl>
+
+<p>Implemented in <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#acce88ed28003ec80328eb35596ae15b8">models::bmi::Bmi_C_Adapter</a>, and <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#a4fb64f09d9e675f4da58e9a9fa08b550">models::bmi::Bmi_Cpp_Adapter</a>.</p>
+
+</div>
+</div>
 <a id="a31e002ee7effe39ca0f07b7c2f16a453" name="a31e002ee7effe39ca0f07b7c2f16a453"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a31e002ee7effe39ca0f07b7c2f16a453">&#9670;&#160;</a></span>isInitialized()</h2>
 
@@ -2183,7 +2180,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2665,7 +2662,7 @@ Private Attributes</h2></td></tr>
 
 <p>Whether the backing model has been initialized yet, which is always initially <code>false</code>. </p>
 
-<p class="reference">Referenced by <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#ad1b2a065afca6374e1a33df8cb86f22c">models::bmi::Bmi_C_Adapter::Bmi_C_Adapter()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#a1d12e828bab29517b53cd06cb7226237">models::bmi::Bmi_Cpp_Adapter::Bmi_Cpp_Adapter()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#a590bb56edfa69f5dce5f76820e7c74d6">models::bmi::Bmi_C_Adapter::construct_and_init_backing_model_for_type()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#aae261e8942befef9cb10ba47b89199a4">models::bmi::Bmi_Cpp_Adapter::construct_and_init_backing_model_for_type()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#a11f9107c47aa791a77799bd08b1e2b93">models::bmi::Bmi_C_Adapter::finalizeForCAdapter()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#afabb0ce9324c2c08bab9e836dc612c3b">models::bmi::Bmi_Cpp_Adapter::finalizeForCppAdapter()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#aeace85bbd89962f2945bec0ca3c76091">models::bmi::Bmi_Adapter::Initialize()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#a4a2a8f1fb2442ec5e3a5bd1c7a3b3ef2">models::bmi::Bmi_Adapter::Initialize()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#a2d711c40806e31b3b47232fe3d8f10ea">models::bmi::Bmi_C_Adapter::is_model_initialized()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#a2902dc0ab6801565909137e72fd1f24a">models::bmi::Bmi_Cpp_Adapter::is_model_initialized()</a>, and <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#a31e002ee7effe39ca0f07b7c2f16a453">models::bmi::Bmi_Adapter::isInitialized()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#ad1b2a065afca6374e1a33df8cb86f22c">models::bmi::Bmi_C_Adapter::Bmi_C_Adapter()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#a1d12e828bab29517b53cd06cb7226237">models::bmi::Bmi_Cpp_Adapter::Bmi_Cpp_Adapter()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#a590bb56edfa69f5dce5f76820e7c74d6">models::bmi::Bmi_C_Adapter::construct_and_init_backing_model_for_type()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#aae261e8942befef9cb10ba47b89199a4">models::bmi::Bmi_Cpp_Adapter::construct_and_init_backing_model_for_type()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#a11f9107c47aa791a77799bd08b1e2b93">models::bmi::Bmi_C_Adapter::finalizeForCAdapter()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#afabb0ce9324c2c08bab9e836dc612c3b">models::bmi::Bmi_Cpp_Adapter::finalizeForCppAdapter()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#aeace85bbd89962f2945bec0ca3c76091">models::bmi::Bmi_Adapter::Initialize()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#a4a2a8f1fb2442ec5e3a5bd1c7a3b3ef2">models::bmi::Bmi_Adapter::Initialize()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___c___adapter.html#acce88ed28003ec80328eb35596ae15b8">models::bmi::Bmi_C_Adapter::is_model_initialized()</a>, <a class="el" href="classmodels_1_1bmi_1_1_bmi___cpp___adapter.html#a4fb64f09d9e675f4da58e9a9fa08b550">models::bmi::Bmi_Cpp_Adapter::is_model_initialized()</a>, and <a class="el" href="classmodels_1_1bmi_1_1_bmi___adapter.html#a31e002ee7effe39ca0f07b7c2f16a453">models::bmi::Bmi_Adapter::isInitialized()</a>.</p>
 
 </div>
 </div>
@@ -2743,8 +2740,9 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/bmi/<a class="el" href="_abstract_c_lib_bmi_adapter_8hpp_source.html">AbstractCLibBmiAdapter.hpp</a></li>
+<li>src/bmi/<b>AbstractCLibBmiAdapter.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -2752,7 +2750,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemodels.html">models</a></li><li class="navelem"><a class="el" href="namespacemodels_1_1bmi.html">bmi</a></li><li class="navelem"><a class="el" href="classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html">AbstractCLibBmiAdapter</a></li>
-    <li class="footer">Generated on Wed Feb 28 2024 16:29:12 for NGen by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Wed Apr 10 2024 20:11:13 for NGen by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
