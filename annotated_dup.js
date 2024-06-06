@@ -4,7 +4,6 @@ var annotated_dup =
       [ "Bmi", "classbmi_1_1_bmi.html", "classbmi_1_1_bmi" ]
     ] ],
     [ "data_access", "namespacedata__access.html", [
-      [ "AsyncDataProvider", "classdata__access_1_1_async_data_provider.html", "classdata__access_1_1_async_data_provider" ],
       [ "DataProvider", "classdata__access_1_1_data_provider.html", "classdata__access_1_1_data_provider" ],
       [ "DeferredWrappedProvider", "classdata__access_1_1_deferred_wrapped_provider.html", "classdata__access_1_1_deferred_wrapped_provider" ],
       [ "GenericDataProvider", "classdata__access_1_1_generic_data_provider.html", "classdata__access_1_1_generic_data_provider" ],
@@ -52,9 +51,6 @@ var annotated_dup =
       [ "Network", "classnetwork_1_1_network.html", "classnetwork_1_1_network" ],
       [ "preorder_visitor", "structnetwork_1_1preorder__visitor.html", "structnetwork_1_1preorder__visitor" ],
       [ "VertexProperty", "structnetwork_1_1_vertex_property.html", "structnetwork_1_1_vertex_property" ]
-    ] ],
-    [ "nexus", "namespacenexus.html", [
-      [ "Nexus_Manager", "classnexus_1_1_nexus___manager.html", "classnexus_1_1_nexus___manager" ]
     ] ],
     [ "ngen", "namespacengen.html", [
       [ "detail", "namespacengen_1_1detail.html", [
@@ -118,16 +114,18 @@ var annotated_dup =
     [ "add_to_summed_nexus", "structadd__to__summed__nexus.html", "structadd__to__summed__nexus" ],
     [ "AORC_data", "struct_a_o_r_c__data.html", "struct_a_o_r_c__data" ],
     [ "Bmi", "struct_bmi.html", "struct_bmi" ],
-    [ "BMIDataSelector", "class_b_m_i_data_selector.html", "class_b_m_i_data_selector" ],
+    [ "BoundingBox", "struct_bounding_box.html", "struct_bounding_box" ],
     [ "CatchmentAggrDataSelector", "class_catchment_aggr_data_selector.html", "class_catchment_aggr_data_selector" ],
+    [ "Cell", "struct_cell.html", "struct_cell" ],
     [ "completed_time_step", "structcompleted__time__step.html", "structcompleted__time__step" ],
-    [ "CSVDataSelector", "class_c_s_v_data_selector.html", "class_c_s_v_data_selector" ],
     [ "CsvPerFeatureForcingProvider", "class_csv_per_feature_forcing_provider.html", "class_csv_per_feature_forcing_provider" ],
     [ "CSVReader", "class_c_s_v_reader.html", "class_c_s_v_reader" ],
     [ "Feature_Test", "class_feature___test.html", "class_feature___test" ],
     [ "FeatureCollection_Test", "class_feature_collection___test.html", "class_feature_collection___test" ],
     [ "forcing_params", "structforcing__params.html", "structforcing__params" ],
     [ "GM_Object", "class_g_m___object.html", "class_g_m___object" ],
+    [ "GridDataSelector", "struct_grid_data_selector.html", "struct_grid_data_selector" ],
+    [ "GridSpecification", "struct_grid_specification.html", "struct_grid_specification" ],
     [ "HY_CartographicRealization", "class_h_y___cartographic_realization.html", "class_h_y___cartographic_realization" ],
     [ "HY_Catchment", "class_h_y___catchment.html", "class_h_y___catchment" ],
     [ "HY_CatchmentAggregate", "class_h_y___catchment_aggregate.html", "class_h_y___catchment_aggregate" ],
@@ -154,10 +152,12 @@ var annotated_dup =
     [ "NullForcingProvider", "class_null_forcing_provider.html", "class_null_forcing_provider" ],
     [ "Partition_One", "class_partition___one.html", "class_partition___one" ],
     [ "PartitionData", "struct_partition_data.html", "struct_partition_data" ],
+    [ "Partitions_Parser", "class_partitions___parser.html", "class_partitions___parser" ],
     [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", "structrequest__from__empty__nexus" ],
     [ "ReservoirKernelTest", "class_reservoir_kernel_test.html", "class_reservoir_kernel_test" ],
     [ "ReservoirTimelessKernelTest", "class_reservoir_timeless_kernel_test.html", "class_reservoir_timeless_kernel_test" ],
     [ "routing_params", "structrouting__params.html", "structrouting__params" ],
+    [ "SelectorConfig", "struct_selector_config.html", "struct_selector_config" ],
     [ "Simulation_Time", "class_simulation___time.html", "class_simulation___time" ],
     [ "simulation_time_params", "structsimulation__time__params.html", "structsimulation__time__params" ],
     [ "UnitsHelper", "class_units_helper.html", "class_units_helper" ],

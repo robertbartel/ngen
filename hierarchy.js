@@ -30,14 +30,11 @@ var hierarchy =
       [ "ngen::detail::visitors::to_string_visitor", "structngen_1_1detail_1_1visitors_1_1to__string__visitor.html", null ],
       [ "ngen::geopackage::wkb::wgs84", "structngen_1_1geopackage_1_1wkb_1_1wgs84.html", null ]
     ] ],
-    [ "CatchmentAggrDataSelector", "class_catchment_aggr_data_selector.html", [
-      [ "BMIDataSelector", "class_b_m_i_data_selector.html", null ],
-      [ "CSVDataSelector", "class_c_s_v_data_selector.html", null ]
-    ] ],
+    [ "BoundingBox", "struct_bounding_box.html", null ],
+    [ "CatchmentAggrDataSelector", "class_catchment_aggr_data_selector.html", null ],
+    [ "Cell", "struct_cell.html", null ],
     [ "CSVReader", "class_c_s_v_reader.html", null ],
-    [ "data_access::DataProvider< data_type, selection_type >", "classdata__access_1_1_data_provider.html", [
-      [ "data_access::AsyncDataProvider< data_type, selection_type >", "classdata__access_1_1_async_data_provider.html", null ]
-    ] ],
+    [ "data_access::DataProvider< data_type, selection_type >", "classdata__access_1_1_data_provider.html", null ],
     [ "data_access::DataProvider< double, CatchmentAggrDataSelector >", "classdata__access_1_1_data_provider.html", [
       [ "data_access::GenericDataProvider", "classdata__access_1_1_generic_data_provider.html", [
         [ "CsvPerFeatureForcingProvider", "class_csv_per_feature_forcing_provider.html", null ],
@@ -84,6 +81,8 @@ var hierarchy =
       [ "HY_HydroNetwork", "class_h_y___hydro_network.html", null ],
       [ "hy_features::hydrolocation::HY_HydroLocation", "classhy__features_1_1hydrolocation_1_1_h_y___hydro_location.html", null ]
     ] ],
+    [ "GridDataSelector", "struct_grid_data_selector.html", null ],
+    [ "GridSpecification", "struct_grid_specification.html", null ],
     [ "HY_CatchmentRealization", "class_h_y___catchment_realization.html", [
       [ "HY_CartographicRealization", "class_h_y___cartographic_realization.html", null ],
       [ "HY_CatchmentArea", "class_h_y___catchment_area.html", null ],
@@ -110,7 +109,6 @@ var hierarchy =
       [ "Network_Test1", "class_network___test1.html", null ],
       [ "Network_Test2", "class_network___test2.html", null ]
     ] ],
-    [ "nexus::Nexus_Manager", "classnexus_1_1_nexus___manager.html", null ],
     [ "ngen::detail::dimension", "structngen_1_1detail_1_1dimension.html", null ],
     [ "ngen::detail::dimension::hash", "structngen_1_1detail_1_1dimension_1_1hash.html", null ],
     [ "ngen::detail::variable< SupportedTypes >", "structngen_1_1detail_1_1variable.html", null ],
@@ -133,6 +131,7 @@ var hierarchy =
     [ "ngen::traits::type_list< Ts >", "structngen_1_1traits_1_1type__list.html", null ],
     [ "Partition_One", "class_partition___one.html", null ],
     [ "PartitionData", "struct_partition_data.html", null ],
+    [ "Partitions_Parser", "class_partitions___parser.html", null ],
     [ "realization::config::Config", "structrealization_1_1config_1_1_config.html", null ],
     [ "realization::config::Forcing", "structrealization_1_1config_1_1_forcing.html", null ],
     [ "realization::config::Formulation", "structrealization_1_1config_1_1_formulation.html", null ],
@@ -144,6 +143,7 @@ var hierarchy =
     ] ],
     [ "realization::Formulation_Manager", "classrealization_1_1_formulation___manager.html", null ],
     [ "routing_params", "structrouting__params.html", null ],
+    [ "SelectorConfig", "struct_selector_config.html", null ],
     [ "Simulation_Time", "class_simulation___time.html", null ],
     [ "simulation_time_params", "structsimulation__time__params.html", null ],
     [ "std::exception", null, [
