@@ -1,6 +1,6 @@
 var classmodels_1_1bmi_1_1_bmi___adapter =
 [
-    [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#a0c2c4cd3ff3b6fc1050e2d5b878dbc40", null ],
+    [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#a40eaf20d208fc064dab32cf1ed76f3f8", null ],
     [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#a131ad658e150f04fe2a5f1ce7bedbf96", null ],
     [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#aab17323112c53dcbed7e3bcb7ea44b4d", null ],
     [ "~Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html#a5a32e5a3add9dddeffb027a33388aafb", null ],
@@ -54,17 +54,13 @@ var classmodels_1_1bmi_1_1_bmi___adapter =
     [ "SetValueAtIndices", "classmodels_1_1bmi_1_1_bmi___adapter.html#a3cecd50be90621a3d47cc811258c5f75", null ],
     [ "Update", "classmodels_1_1bmi_1_1_bmi___adapter.html#a0ecdb1dd0c0545908d7debb56e2c10aa", null ],
     [ "UpdateUntil", "classmodels_1_1bmi_1_1_bmi___adapter.html#a6bead8b75c803a2fd51f4df6f6f91627", null ],
-    [ "allow_model_exceed_end_time", "classmodels_1_1bmi_1_1_bmi___adapter.html#aa7eaecf4ba4b88781f8829e06e81b6b3", null ],
     [ "bmi_init_config", "classmodels_1_1bmi_1_1_bmi___adapter.html#a32725cc98663e54694c90c8740e8e5dd", null ],
     [ "bmi_model_has_fixed_time_step", "classmodels_1_1bmi_1_1_bmi___adapter.html#a97a27219b39d6de5a061e6ea0780711c", null ],
     [ "bmi_model_time_convert_factor", "classmodels_1_1bmi_1_1_bmi___adapter.html#a21ac56d555a07e58fccbef9dc2d867c9", null ],
     [ "bmi_model_time_step_size", "classmodels_1_1bmi_1_1_bmi___adapter.html#abd1717cf52bec5736e39575af54eea2f", null ],
-    [ "bmi_model_uses_forcing_file", "classmodels_1_1bmi_1_1_bmi___adapter.html#a384ff24215e8acfb0744c46cac56183e", null ],
-    [ "forcing_file_path", "classmodels_1_1bmi_1_1_bmi___adapter.html#ae6d1be4a39ef76547004c3392b95f3e4", null ],
     [ "init_exception_msg", "classmodels_1_1bmi_1_1_bmi___adapter.html#a2698bc13d9ced362e18cb8cf0dab82d7", null ],
     [ "input_var_names", "classmodels_1_1bmi_1_1_bmi___adapter.html#a21e6426f0db58661e3548ba2e9b93058", null ],
     [ "model_initialized", "classmodels_1_1bmi_1_1_bmi___adapter.html#a120a9a8212a5bd857bf119dc90268306", null ],
     [ "model_name", "classmodels_1_1bmi_1_1_bmi___adapter.html#ac2c1d1c1e279212c200ad6a4be4864d6", null ],
-    [ "output", "classmodels_1_1bmi_1_1_bmi___adapter.html#a6bfb2f398f00c3b44b1235d4758f0c91", null ],
     [ "output_var_names", "classmodels_1_1bmi_1_1_bmi___adapter.html#af9384bd6c9dfa04e5ec29181f6a66ed4", null ]
 ];
