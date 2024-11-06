@@ -245,6 +245,7 @@ endif()
 # -----------------------------------------------------------------------------
 # Configure whether Fortran BMI functionality is active
 if(NGEN_WITH_BMI_FORTRAN)
+    add_compile_definitions(NGEN_WITH_BMI_FORTRAN=true)
     add_external_subdirectory(
         SOURCE  "${NGEN_EXT_DIR}/iso_c_fortran_bmi"
         OUTPUT  "${NGEN_EXT_DIR}/iso_c_fortran_bmi/cmake_build"
@@ -263,6 +264,7 @@ endif()
 
 # -----------------------------------------------------------------------------
 if(NGEN_WITH_PYTHON)
+    add_compile_definitions(NGEN_WITH_PYTHON=true)
     find_package(Python 3.6.8 REQUIRED COMPONENTS Interpreter Development NumPy)
     if(${Python_NumPy_VERSION} VERSION_GREATER_EQUAL 2)
         message(FATAL_ERROR "Found numpy version \"${Python_NumPy_VERSION}\"; numpy>=2.0.0 is not currently supported")
