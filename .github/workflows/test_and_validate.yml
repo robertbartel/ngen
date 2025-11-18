@@ -5,7 +5,8 @@ name: Testing and Validation
 # Controls when the action will run.
 on:
   push:
-    branches: [ master, dev, notreal, release-* ]
+    # TODO: tweaking this for testing; remove before using in PR or merging upstream
+    branches: [ master, dev, notreal, ci-updates, release-* ]
   pull_request:
     branches: [ master, dev, notreal, release-* ]
   workflow_dispatch:
