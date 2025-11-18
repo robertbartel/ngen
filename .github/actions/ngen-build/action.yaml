@@ -196,12 +196,11 @@ runs:
             export BOOST_ROOT="$(pwd)/boost_1_86_0"
             export CFLAGS="-fsanitize=address -O1 -g -fno-omit-frame-pointer -Werror"
             export CXXFLAGS="-fsanitize=address -O1 -g -fno-omit-frame-pointer -pedantic-errors -Werror -Wpessimizing-move -Wparentheses -Wrange-loop-construct -Wsuggest-override"
-            export ASAN_OPTIONS=suppressions=/tmp/asan_ignore.txt
             if [ ${{ runner.os }} == 'macOS' ]
             then
               echo "fun:PyType_FromMetaclass" > /tmp/asan_ignore.txt
-              export CFLAGS="$CFLAGS -fsanitize-blacklist=/tmp/asan_ignore.txt -fno-common"
-              export CXXFLAGS="$CXXFLAGS -fsanitize-blacklist=/tmp/asan_ignore.txt -fno-common"
+              export CFLAGS="$CFLAGS -fsanitize-ignorelist=/tmp/asan_ignore.txt -fno-common"
+              export CXXFLAGS="$CXXFLAGS -fsanitize-ignorelist=/tmp/asan_ignore.txt -fno-common"
             fi
             . .venv/bin/activate
             [ ! -d "$BOOST_ROOT" ] && echo "Error: no Boost root found at $BOOST_ROOT" && exit 1
@@ -228,7 +227,7 @@ runs:
           run: |
             # Build Targets
             # Disable leak detection during test enumeration
-            export ASAN_OPTIONS=${ASAN_OPTIONS}:detect_leaks=false
+            export ASAN_OPTIONS=detect_leaks=false
             # Activate venv so that test discovery run during build works
             . .venv/bin/activate
             cmake --build ${{ inputs.build-dir }} --target ${{ inputs.targets }} -- -j  ${{ inputs.build-cores }}
