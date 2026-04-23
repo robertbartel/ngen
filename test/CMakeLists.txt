@@ -263,6 +263,7 @@ ngen_add_test(
     OBJECTS
         utils/bmi/mass_balance_Test.cpp
         utils/bmi/serialization_record_Test.cpp
+        utils/bmi/serialization_Test.cpp
     LIBRARIES
         NGen::bmi_protocols
         NGen::ngen_bmi
@@ -439,6 +440,7 @@ ngen_add_test(
     OBJECTS
         bmi/Bmi_Fortran_Adapter_Test.cpp
         realizations/catchments/Bmi_Fortran_Formulation_Test.cpp
+        utils/bmi/fortran_serialization_Test.cpp
     LIBRARIES
         gmock
         NGen::core
@@ -446,6 +448,7 @@ ngen_add_test(
         NGen::core_mediator
         NGen::forcing
         NGen::ngen_bmi
+        NGen::bmi_protocols
     REQUIRES
         NGEN_WITH_BMI_FORTRAN
     DEPENDS
