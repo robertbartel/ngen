@@ -176,6 +176,87 @@ TEST_F(CsvPerFeatureForcingProviderTest, TestGetAvailableForcingOutputs)
 
 }
 
+/// Resolve a fixture path against the same set of relative roots the rest of the suite uses.
+static std::string find_fixture(const std::string& rel) {
+    std::vector<std::string> candidates = {
+        "test/data/forcing/" + rel,
+        "../test/data/forcing/" + rel,
+        "../../test/data/forcing/" + rel
+    };
+    return utils::FileChecker::find_first_readable(candidates);
+}
+
+/// Confirms record_duration() returns the fixture's actual row interval (900s), not the
+/// historical hard-coded 3600.
+TEST_F(CsvPerFeatureForcingProviderTest, TestRecordDurationFromNinetySecondCsv)
+{
+    forcing_params p(find_fixture("cat-fake-900s-interval.csv"),
+                     "CsvPerFeature",
+                     "2015-12-01 00:00:00",
+                     "2015-12-01 01:45:00");
+    CsvPerFeatureForcingProvider provider(p);
+
+    EXPECT_EQ(provider.record_duration(), 900);
+}
+
+/// Asks for a 3600s-wide value window starting at the fixture's first row. With correct
+/// 900s row scaling, get_value() must aggregate four rows (1+2+3+4 = 10e-6); under the
+/// old hard-coded 3600s assumption it would aggregate only one row and return 1e-6.
+TEST_F(CsvPerFeatureForcingProviderTest, TestPrecipSumOverHourSpansFourNinetySecondRows)
+{
+    forcing_params p(find_fixture("cat-fake-900s-interval.csv"),
+                     "CsvPerFeature",
+                     "2015-12-01 00:00:00",
+                     "2015-12-01 01:45:00");
+    CsvPerFeatureForcingProvider provider(p);
+    const time_t begin = provider.get_data_start_time();
+
+    const double aggregated = provider.get_value(
+        CatchmentAggrDataSelector("", CSDMS_STD_NAME_LIQUID_EQ_PRECIP_RATE, begin, 3600, ""),
+        data_access::SUM);
+
+    EXPECT_NEAR(aggregated, 1.0e-5, 1e-12);
+}
+
+/// Single-row window: with 900s rows, get_value over duration 900 starting at the row
+/// boundary returns exactly that row's stored value.
+TEST_F(CsvPerFeatureForcingProviderTest, TestPrecipSingleNinetySecondRow)
+{
+    forcing_params p(find_fixture("cat-fake-900s-interval.csv"),
+                     "CsvPerFeature",
+                     "2015-12-01 00:00:00",
+                     "2015-12-01 01:45:00");
+    CsvPerFeatureForcingProvider provider(p);
+    const time_t begin = provider.get_data_start_time();
+
+    const double v = provider.get_value(
+        CatchmentAggrDataSelector("", CSDMS_STD_NAME_LIQUID_EQ_PRECIP_RATE, begin, 900, ""),
+        data_access::SUM);
+
+    EXPECT_NEAR(v, 1.0e-6, 1e-12);
+}
+
+/// Non-uniform row spacing must be rejected at construction with a std::runtime_error
+/// whose message identifies the offending row and the mismatch.
+TEST_F(CsvPerFeatureForcingProviderTest, TestNonUniformIntervalThrows)
+{
+    forcing_params p(find_fixture("cat-fake-nonuniform-interval.csv"),
+                     "CsvPerFeature",
+                     "2015-12-01 00:00:00",
+                     "2015-12-01 01:15:00");
+
+    try {
+        CsvPerFeatureForcingProvider provider(p);
+        FAIL() << "expected std::runtime_error for non-uniform CSV intervals";
+    } catch (const std::runtime_error& e) {
+        const std::string msg = e.what();
+        EXPECT_NE(msg.find("Non-uniform"), std::string::npos) << msg;
+        EXPECT_NE(msg.find("row index"), std::string::npos) << msg;
+        EXPECT_NE(msg.find("900"), std::string::npos) << msg;
+        EXPECT_NE(msg.find("1800"), std::string::npos) << msg;
+    }
+}
+
 ///Test CSV Units Parsing
 TEST_F(CsvPerFeatureForcingProviderTest, TestForcingUnitHeaderParsing)
 {
