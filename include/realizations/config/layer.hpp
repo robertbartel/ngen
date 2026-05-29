@@ -10,17 +10,27 @@ namespace realization{
   namespace config{
 
   /**
+   * @brief Fallback time-step length (seconds) used only when a Layer is
+   *        default-constructed (i.e. no explicit time_step was configured).
+   *
+   * This is a backstop for unconfigured Layers; any Layer constructed from a
+   * property tree carries its own time_step. The numeric value matches the
+   * historical default and is not a magic number tied to any per-timestep math.
+   */
+  static constexpr double DEFAULT_LAYER_TIME_STEP_SECONDS = 3600.0;
+
+  /**
    * @brief Layer configuration information
-   * 
+   *
    */
   struct Layer{
     /**
      * @brief Construct a new default surface layer
-     * 
-     * Default layers are surface layers (0) with 3600 second time steps
-     * 
+     *
+     * Default layers are surface layers (id 0) with a time step of
+     * DEFAULT_LAYER_TIME_STEP_SECONDS seconds.
      */
-    Layer():descriptor( {"surface layer", "s", 0, 3600 } ){};
+    Layer():descriptor( {"surface layer", "s", 0, DEFAULT_LAYER_TIME_STEP_SECONDS } ){};
 
     /**
      * @brief Construct a new Layer from a property tree
