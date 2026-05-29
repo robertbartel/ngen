@@ -22,19 +22,22 @@ namespace hy_features {
      * connected network::Network index and provides quick id based iteration of various feature types,
      * as well as helper functions for accessing pointers to the constructed features.
      * 
-     * Simple usage example to execute model formulations for each catchment for a single time:
-     * 
+     * Simple usage example to execute model formulations for each catchment for a single time.
+     * Note: @c time_step_seconds is the realization's configured time step length, in seconds
+     * (typically obtained from the active Simulation_Time via @c get_output_interval_seconds()).
+     *
      * @code {.cpp}
      * geojson::GeoJSON catchment_collection = geojson::read("catchment_data.geojson", std::vector<std::string>());
      * std::shared_ptr<realization::Formulation_Manager> manager = std::make_shared<realization::Formulation_Manager>("realization_config.json");
      * manager->read(catchment_collection, utils::getStdOut());
-     * 
+     *
      * hy_features::HY_Features features = hy_features::HY_Features(catchment_collection, manager);
      * int time_index = 0;
+     * double time_step_seconds = simulation_time.get_output_interval_seconds();
      * for(const auto& id : features.catchments()) {
      *     auto r = features.catchment_at(id);
      *     auto r_c = dynamic_pointer_cast<realization::Catchment_Formulation>(r);
-     *     double response = r_c->get_response(time_index, 3600.0);
+     *     double response = r_c->get_response(time_index, time_step_seconds);
      *     std::string output = std::to_string(time_index)+", examlpe_time_stamp,"+
      *                          r_c->get_output_line_for_timestep(time_index)+"\n";
      *     r_c->write_output(output);
