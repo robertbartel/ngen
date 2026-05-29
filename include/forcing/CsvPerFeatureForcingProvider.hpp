@@ -67,7 +67,7 @@ class CsvPerFeatureForcingProvider : public data_access::GenericDataProvider
      * @return The duration of one record of this forcing source
      */
     long record_duration() const override {
-        return time_epoch_vector[1] - time_epoch_vector[0];
+        return record_duration_seconds;
     }
 
     /**
@@ -84,8 +84,7 @@ class CsvPerFeatureForcingProvider : public data_access::GenericDataProvider
             throw std::out_of_range("Forcing had bad pre-start time for index query: " + std::to_string(epoch_time));
         }
         size_t i = 0;
-        // 1 hour
-        time_t seconds_in_time_step = 3600;
+        time_t seconds_in_time_step = record_duration_seconds;
         time_t time = start_date_time_epoch;
         while (epoch_time >= time + seconds_in_time_step && time < end_date_time_epoch) {
            i++;
@@ -93,7 +92,7 @@ class CsvPerFeatureForcingProvider : public data_access::GenericDataProvider
         }
         // The end_date_time_epoch is the epoch value of the BEGINNING of the last time step, not its end.
         // I.e., to make sure we cover it, we have to go another time step beyond.
-        if (time >= end_date_time_epoch + 3600) {
+        if (time >= end_date_time_epoch + record_duration_seconds) {
             throw std::out_of_range("Forcing had bad beyond-end time for index query: " + std::to_string(epoch_time));
         }
         else {
@@ -131,10 +130,10 @@ class CsvPerFeatureForcingProvider : public data_access::GenericDataProvider
         std::vector<long> involved_time_step_seconds;
         long ts_involved_s;
 
-        time_t first_time_step_start_epoch = start_date_time_epoch + (current_index * 3600);
+        time_t first_time_step_start_epoch = start_date_time_epoch + (current_index * record_duration_seconds);
         // Handle the first time step differently, since we need to do more to figure out how many seconds came from it
         // Total time step size minus the offset of the beginning, before the init time
-        ts_involved_s = 3600 - (init_time - first_time_step_start_epoch);
+        ts_involved_s = record_duration_seconds - (init_time - first_time_step_start_epoch);
 
         involved_time_step_seconds.push_back(ts_involved_s);
         involved_time_step_values.push_back(get_value_for_param_name(output_name, current_index));
@@ -144,7 +143,7 @@ class CsvPerFeatureForcingProvider : public data_access::GenericDataProvider
         while (time_remaining > 0) {
             if(current_index >= time_epoch_vector.size())
                 return involved_time_step_values[involved_time_step_values.size()-1]; //TODO: Is this the right answer? Is returning any value off the end of the range valid?
-            ts_involved_s = time_remaining > 3600 ? 3600 : time_remaining;
+            ts_involved_s = time_remaining > record_duration_seconds ? record_duration_seconds : time_remaining;
             involved_time_step_seconds.push_back(ts_involved_s);
             involved_time_step_values.push_back(get_value_for_param_name(output_name, current_index));
             time_remaining -= ts_involved_s;
@@ -154,7 +153,7 @@ class CsvPerFeatureForcingProvider : public data_access::GenericDataProvider
         double value = 0;
         for (size_t i = 0; i < involved_time_step_values.size(); ++i) {
             if (is_param_sum_over_time_step(output_name))
-                value += involved_time_step_values[i] * ((double)involved_time_step_seconds[i] / 3600.0);
+                value += involved_time_step_values[i] * ((double)involved_time_step_seconds[i] / static_cast<double>(record_duration_seconds));
             else
                 value += involved_time_step_values[i] * ((double)involved_time_step_seconds[i] / (double)selector.get_duration_secs());
         }
@@ -393,6 +392,20 @@ class CsvPerFeatureForcingProvider : public data_access::GenericDataProvider
             std::cout << "WARNING: Forcing data ends before the model end time." << std::endl;
             //throw std::runtime_error("Error: Forcing data ends before the model end time.");
         }
+
+        if (time_epoch_vector.size() >= 2) {
+            record_duration_seconds = time_epoch_vector[1] - time_epoch_vector[0];
+            for (size_t k = 2; k < time_epoch_vector.size(); ++k) {
+                time_t actual_interval = time_epoch_vector[k] - time_epoch_vector[k - 1];
+                if (actual_interval != record_duration_seconds) {
+                    throw std::runtime_error(
+                        "Error: Non-uniform forcing record interval in " + file_name +
+                        " at row index " + std::to_string(k) +
+                        ": expected " + std::to_string(record_duration_seconds) +
+                        " seconds, actual " + std::to_string(actual_interval) + " seconds.");
+                }
+            }
+        }
     }
 
     std::vector<std::string> available_forcings;
@@ -402,7 +415,9 @@ class CsvPerFeatureForcingProvider : public data_access::GenericDataProvider
     std::unordered_map<std::string, std::vector<double>> forcing_vectors;
 
     /// \todo: Consider making epoch time the iterator
-    std::vector<time_t> time_epoch_vector;     
+    std::vector<time_t> time_epoch_vector;
+    /// Cached uniform interval (in seconds) between adjacent records, populated by read_csv.
+    time_t record_duration_seconds = 0;
     int forcing_vector_index;
 
     /// \todo: Are these used?
