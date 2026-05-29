@@ -1,3 +1,12 @@
+// These tests construct ngen::Layer directly against hy_features::HY_Features.
+// Under MPI builds, ngen::Layer::feature_type is HY_Features_MPI (an unrelated
+// class requiring PartitionData/mpi_rank wiring), so this fixture cannot
+// compile against the MPI layer. The Layer::update_models scaling math being
+// tested is identical between serial and MPI builds, so serial coverage is
+// sufficient. Revisit if MPI-only logic is added to Layer::update_models.
+#include <NGenConfig.h>
+#if !NGEN_WITH_MPI
+
 #include "gtest/gtest.h"
 
 #include <Layer.hpp>
@@ -191,3 +200,5 @@ TEST(LayerTimestepScalingTest, NexusFlowScalesByStep_B_HourlyStep)
 
     EXPECT_NEAR(actual, expected, kFlowTolerance);
 }
+
+#endif // !NGEN_WITH_MPI

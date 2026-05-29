@@ -1,3 +1,12 @@
+// This integration test constructs ngen::Layer directly against
+// hy_features::HY_Features. Under MPI builds, ngen::Layer::feature_type is
+// HY_Features_MPI (an unrelated class requiring PartitionData/mpi_rank wiring),
+// so this fixture cannot compile against the MPI layer. The Layer scaling math
+// being exercised here is identical between serial and MPI builds, so serial
+// coverage is sufficient. Revisit if MPI-only logic is added to Layer.
+#include <NGenConfig.h>
+#if !NGEN_WITH_MPI
+
 #include "gtest/gtest.h"
 
 #include <Layer.hpp>
@@ -243,3 +252,5 @@ TEST(LayerCumulativeScalingIT, CumulativeVolumeAcrossSteps_B_Hourly)
             << " at step " << i;
     }
 }
+
+#endif // !NGEN_WITH_MPI
