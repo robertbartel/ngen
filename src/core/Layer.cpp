@@ -63,10 +63,9 @@ void ngen::Layer::update_models(boost::span<double> catchment_outflows,
         }
         double response_m_s = response * (area * 1000000);
         //TODO put this somewhere else as well, for now, an implicit assumption is that a module's get_response returns
-        //m/timestep
-        //since we are operating on a 1 hour (3600s) dt, we need to scale the output appropriately
-        //so no response is m^2/hr...m^2/hr * 1hr/3600s = m^3/hr
-        double response_m_h = response_m_s / 3600.0;
+        //m/timestep, so response_m_s above is actually m^3/timestep. Divide by the layer's actual time step in seconds
+        //to convert per-timestep volume to volumetric flow rate (m^3/s).
+        double response_m3_per_s = response_m_s / step;
         //update the nexus with this flow
         for(auto& nexus : features.destination_nexuses(id)) {
             //TODO in a DENDRITIC network, only one destination nexus per catchment
@@ -75,7 +74,7 @@ void ngen::Layer::update_models(boost::span<double> catchment_outflows,
             if(nexus == nullptr){
                 throw std::runtime_error("Invalid (null) nexus instantiation downstream of '"+id+"'");
             }
-            nexus->add_upstream_flow(response_m_h, id, output_time_index);
+            nexus->add_upstream_flow(response_m3_per_s, id, output_time_index);
             /*std::cerr << "Add water to nexus ID = " << nexus->get_id() << " from catchment ID = " << id << " value = "
               << response << ", ID = " << id << ", time-index = " << output_time_index << std::endl; */
             break;
