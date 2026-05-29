@@ -537,6 +537,7 @@ ngen_add_test(
         core/NetworkTests.cpp
         utils/include/StreamOutputTest.cpp
         realizations/Formulation_Manager_Test.cpp
+        realizations/Layer_Cumulative_IT.cpp
         utils/PerFormulationNexusOutputMgr_Test.cpp
         utils/Partition_Test.cpp
         utils/mdarray_Test.cpp
