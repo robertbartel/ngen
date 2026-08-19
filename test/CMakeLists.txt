@@ -207,10 +207,13 @@ ngen_add_test(
 
 # Auxiliary attribute declarations parse into ngen::geopackage types, so the suites covering them
 # need that target -- which only exists when SQLite support is enabled. Without it those cases
-# compile to nothing, so the suites still build and run.
+# compile to nothing, so the suites still build and run, and the fixture builder they would have
+# called is left out of the build along with them.
 set(NGEN_GEOPACKAGE_WHEN_ENABLED "")
+set(NGEN_AUX_FIXTURES_WHEN_ENABLED "")
 if(NGEN_WITH_SQLITE)
     set(NGEN_GEOPACKAGE_WHEN_ENABLED NGen::geopackage)
+    set(NGEN_AUX_FIXTURES_WHEN_ENABLED geopackage/aux_fixture_builders.cpp)
 endif()
 
 ########################## Realization Config Unit Tests
@@ -221,6 +224,9 @@ ngen_add_test(
         realizations/config/Output_Test.cpp
         realizations/config/CatchmentOutput_Test.cpp
         realizations/config/AuxiliaryAttributes_Test.cpp
+        ${NGEN_AUX_FIXTURES_WHEN_ENABLED}
+    INCLUDES
+        ${CMAKE_CURRENT_LIST_DIR}/geopackage
     LIBRARIES
         NGen::core
         NGen::realizations_catchment
@@ -615,6 +621,9 @@ ngen_add_test(
         utils/PerFormulationNexusOutputMgr_Test.cpp
         utils/Partition_Test.cpp
         utils/logging_Test.cpp
+        ${NGEN_AUX_FIXTURES_WHEN_ENABLED}
+    INCLUDES
+        ${CMAKE_CURRENT_LIST_DIR}/geopackage
     LIBRARIES
         gmock
         NGen::core
