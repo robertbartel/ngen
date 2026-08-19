@@ -178,6 +178,7 @@ ngen_add_test(
         ${CMAKE_CURRENT_LIST_DIR}/geopackage
     LIBRARIES
         NGen::geopackage
+        NGen::config_header
     REQUIRES
         NGEN_WITH_SQLITE
 )
