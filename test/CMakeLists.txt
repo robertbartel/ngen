@@ -172,6 +172,9 @@ ngen_add_test(
         geopackage/WKB_Test.cpp
         geopackage/SQLite_Test.cpp
         geopackage/GeoPackage_Test.cpp
+        geopackage/aux_fixture_builders.cpp
+    INCLUDES
+        ${CMAKE_CURRENT_LIST_DIR}/geopackage
     LIBRARIES
         NGen::geopackage
     REQUIRES
