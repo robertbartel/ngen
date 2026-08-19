@@ -25,12 +25,6 @@ var hierarchy =
     ] ],
     [ "boost::static_visitor", null, [
       [ "geojson::JSONProperty::AsVectorVisitor< T >", "structgeojson_1_1_j_s_o_n_property_1_1_as_vector_visitor.html", null ],
-      [ "ngen::detail::visitors::mdarray_at< SupportedTypes >", "structngen_1_1detail_1_1visitors_1_1mdarray__at.html", null ],
-      [ "ngen::detail::visitors::mdarray_insert", "structngen_1_1detail_1_1visitors_1_1mdarray__insert.html", null ],
-      [ "ngen::detail::visitors::mdarray_rank", "structngen_1_1detail_1_1visitors_1_1mdarray__rank.html", null ],
-      [ "ngen::detail::visitors::mdarray_shape", "structngen_1_1detail_1_1visitors_1_1mdarray__shape.html", null ],
-      [ "ngen::detail::visitors::mdarray_size", "structngen_1_1detail_1_1visitors_1_1mdarray__size.html", null ],
-      [ "ngen::detail::visitors::to_string_visitor", "structngen_1_1detail_1_1visitors_1_1to__string__visitor.html", null ],
       [ "ngen::geopackage::wkb::wgs84", "structngen_1_1geopackage_1_1wkb_1_1wgs84.html", null ]
     ] ],
     [ "BoundingBox", "struct_bounding_box.html", null ],
@@ -115,10 +109,6 @@ var hierarchy =
       [ "Network_Test1", "class_network___test1.html", null ],
       [ "Network_Test2", "class_network___test2.html", null ]
     ] ],
-    [ "ngen::detail::dimension", "structngen_1_1detail_1_1dimension.html", null ],
-    [ "ngen::detail::dimension::hash", "structngen_1_1detail_1_1dimension_1_1hash.html", null ],
-    [ "ngen::detail::variable< SupportedTypes >", "structngen_1_1detail_1_1variable.html", null ],
-    [ "ngen::detail::variable< SupportedTypes >::hash", "structngen_1_1detail_1_1variable_1_1hash.html", null ],
     [ "ngen::geopackage::wkb", "structngen_1_1geopackage_1_1wkb.html", null ],
     [ "ngen::Layer", "classngen_1_1_layer.html", [
       [ "ngen::DomainLayer", "classngen_1_1_domain_layer.html", null ],
@@ -126,9 +116,6 @@ var hierarchy =
     ] ],
     [ "ngen::LayerDataStorage", "classngen_1_1_layer_data_storage.html", null ],
     [ "ngen::LayerDescription", "structngen_1_1_layer_description.html", null ],
-    [ "ngen::mdarray< T >", "classngen_1_1mdarray.html", null ],
-    [ "ngen::mdarray< T >::iterator< T >", "structngen_1_1mdarray_1_1iterator.html", null ],
-    [ "ngen::mdframe", "classngen_1_1mdframe.html", null ],
     [ "ngen::sqlite::database", "classngen_1_1sqlite_1_1database.html", null ],
     [ "ngen::sqlite::database::deleter", "structngen_1_1sqlite_1_1database_1_1deleter.html", null ],
     [ "ngen::sqlite::database::iterator", "structngen_1_1sqlite_1_1database_1_1iterator.html", null ],
@@ -146,6 +133,8 @@ var hierarchy =
     [ "realization::config::Forcing", "structrealization_1_1config_1_1_forcing.html", null ],
     [ "realization::config::Formulation", "structrealization_1_1config_1_1_formulation.html", null ],
     [ "realization::config::Layer", "structrealization_1_1config_1_1_layer.html", null ],
+    [ "realization::config::Output", "structrealization_1_1config_1_1_output.html", null ],
+    [ "realization::config::OutputDomain", "structrealization_1_1config_1_1_output_domain.html", null ],
     [ "realization::config::Routing", "structrealization_1_1config_1_1_routing.html", null ],
     [ "realization::config::Time", "structrealization_1_1config_1_1_time.html", null ],
     [ "realization::Formulation", "classrealization_1_1_formulation.html", [
@@ -167,6 +156,7 @@ var hierarchy =
       [ "realization::ConfigurationException", "classrealization_1_1_configuration_exception.html", null ],
       [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", null ],
       [ "std::runtime_error", null, [
+        [ "UnitsHelper::unit_conversion_exception", "struct_units_helper_1_1unit__conversion__exception.html", null ],
         [ "ngen::sqlite::sqlite_error", "structngen_1_1sqlite_1_1sqlite__error.html", null ]
       ] ]
     ] ],
@@ -190,10 +180,16 @@ var hierarchy =
       [ "Network_Test1", "class_network___test1.html", null ]
     ] ],
     [ "UnitsHelper", "class_units_helper.html", null ],
+    [ "UnitsHelper::unit_error_log_key", "struct_units_helper_1_1unit__error__log__key.html", null ],
+    [ "utils::CatchmentOutputsMgr", "classutils_1_1_catchment_outputs_mgr.html", [
+      [ "utils::CatchmentCsvOutputMgr", "classutils_1_1_catchment_csv_output_mgr.html", null ]
+    ] ],
+    [ "utils::FeatureDescriptor", "structutils_1_1_feature_descriptor.html", null ],
     [ "utils::FileChecker", "classutils_1_1_file_checker.html", null ],
     [ "utils::NexusOutputsMgr", "classutils_1_1_nexus_outputs_mgr.html", [
       [ "utils::PerNexusCsvOutputMgr", "classutils_1_1_per_nexus_csv_output_mgr.html", null ]
     ] ],
+    [ "utils::OutputField", "structutils_1_1_output_field.html", null ],
     [ "utils::StreamHandler", "classutils_1_1_stream_handler.html", [
       [ "utils::FileStreamHandler", "classutils_1_1_file_stream_handler.html", null ]
     ] ],

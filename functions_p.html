@@ -101,7 +101,9 @@ $(function(){initNavTree('functions_p.html',''); initResizable(true); });
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>parameters&#160;:&#160;<a class="el" href="structrealization_1_1config_1_1_forcing.html#a393e96a8db52ddc1840b9f9341739290">realization::config::Forcing</a>, <a class="el" href="structrealization_1_1config_1_1_formulation.html#a5c3aeb5ef66146128167fea250bbd431">realization::config::Formulation</a></li>
 <li>params&#160;:&#160;<a class="el" href="structrealization_1_1config_1_1_routing.html#a39078491a8c6e29753e66ad7b41baa14">realization::config::Routing</a></li>
+<li>parse_block()&#160;:&#160;<a class="el" href="structrealization_1_1config_1_1_output.html#a601b2c531ef04e34ae0f0ac99a3f0695">realization::config::Output</a></li>
 <li>parse_external_model_params()&#160;:&#160;<a class="el" href="classrealization_1_1_formulation___manager.html#ade623c87318034b5a90e0133624dbb0f">realization::Formulation_Manager</a></li>
+<li>parse_legacy()&#160;:&#160;<a class="el" href="structrealization_1_1config_1_1_output.html#a27f496c09095b7a0b0a01055905ddaa0">realization::config::Output</a></li>
 <li>parse_partition_file()&#160;:&#160;<a class="el" href="class_partitions___parser.html#a1667ab474aa0daa3530a42f31d89da45">Partitions_Parser</a></li>
 <li>partition_data&#160;:&#160;<a class="el" href="class_partition___one.html#a8c496bb6b6294877ac2fa7d5f54f3c9f">Partition_One</a></li>
 <li>partition_ranks&#160;:&#160;<a class="el" href="class_partitions___parser.html#a77192e7019935a3740a6d275b3912ad7">Partitions_Parser</a></li>
@@ -111,7 +113,6 @@ $(function(){initNavTree('functions_p.html',''); initResizable(true); });
 <li>PerNexusCsvOutputMgr()&#160;:&#160;<a class="el" href="classutils_1_1_per_nexus_csv_output_mgr.html#a7fd5f6518048cf92ac5f7883c4069dd7">utils::PerNexusCsvOutputMgr</a></li>
 <li>point()&#160;:&#160;<a class="el" href="classgeojson_1_1_collection_feature.html#a612d40ad69ec13f03492a6295bdaa0bb">geojson::CollectionFeature</a></li>
 <li>point_t&#160;:&#160;<a class="el" href="class_h_y___catchment_divide.html#a0ab00c83535749844633ab7cd9551b65">HY_CatchmentDivide</a>, <a class="el" href="class_h_y___flow_path.html#a57ccb8fa3803c5bea8719f18e75a502f">HY_FlowPath</a>, <a class="el" href="structngen_1_1geopackage_1_1wkb.html#a684ad6f1f2dd1df8b1e9e63624c22a05">ngen::geopackage::wkb</a></li>
-<li>pointer&#160;:&#160;<a class="el" href="structngen_1_1mdarray_1_1iterator.html#a5e4537042ad3299aa5b82ffd8dd149a4">ngen::mdarray&lt; T &gt;::iterator&lt; T &gt;</a>, <a class="el" href="classngen_1_1mdarray.html#a8b87b5b343f81e7bbf3a21e90da6e3c2">ngen::mdarray&lt; T &gt;</a></li>
 <li>PointFeature()&#160;:&#160;<a class="el" href="classgeojson_1_1_point_feature.html#a59370cc9ac5d234a229d04f42ed54385">geojson::PointFeature</a></li>
 <li>points()&#160;:&#160;<a class="el" href="classgeojson_1_1_collection_feature.html#ab33bdaf1ed796a32c10c2dfd9bd12021">geojson::CollectionFeature</a></li>
 <li>polygon()&#160;:&#160;<a class="el" href="classgeojson_1_1_collection_feature.html#a405d1d18b235825ae0a92476d5e50260">geojson::CollectionFeature</a></li>
@@ -120,6 +121,8 @@ $(function(){initNavTree('functions_p.html',''); initResizable(true); });
 <li>polygons()&#160;:&#160;<a class="el" href="classgeojson_1_1_collection_feature.html#a3c8959f3aa851cda1bd698969ef7d2e4">geojson::CollectionFeature</a></li>
 <li>position_()&#160;:&#160;<a class="el" href="struct_grid_data_selector.html#afb5faddcd49d0936cdb323ba658548e3">GridDataSelector</a></li>
 <li>precipitation_rate_meters_per_second&#160;:&#160;<a class="el" href="class_csv_per_feature_forcing_provider.html#af8798cff63230e821e713f45a180d673">CsvPerFeatureForcingProvider</a></li>
+<li>precision&#160;:&#160;<a class="el" href="structrealization_1_1config_1_1_output.html#abc9e92961d687b838c400d4e103d579c">realization::config::Output</a></li>
+<li>precision_&#160;:&#160;<a class="el" href="classutils_1_1_catchment_csv_output_mgr.html#a1ad07c80e527fe3eb7efe578d0d99500">utils::CatchmentCsvOutputMgr</a></li>
 <li>precisionStatement&#160;:&#160;<a class="el" href="structhy__features_1_1hydrolocation_1_1_h_y___distance_from_referent.html#ad00576ad6253d9957bb2e8570b9d0e00">hy_features::hydrolocation::HY_DistanceFromReferent</a></li>
 <li>preorder_visitor()&#160;:&#160;<a class="el" href="structnetwork_1_1preorder__visitor.html#a47ca6df72bbd19eb6af537c0844ae3cf">network::preorder_visitor&lt; OutputIterator &gt;</a></li>
 <li>PRES_surface_Pa&#160;:&#160;<a class="el" href="struct_a_o_r_c__data.html#a01514ef87b4e39415aaa8b45815f2c7d">AORC_data</a></li>
@@ -133,8 +136,13 @@ $(function(){initNavTree('functions_p.html',''); initResizable(true); });
 <li>protocols&#160;:&#160;<a class="el" href="classmodels_1_1bmi_1_1protocols_1_1_ngen_bmi_protocols.html#ab77f6fa47c05a62ba038210299188ed3">models::bmi::protocols::NgenBmiProtocols</a></li>
 <li>providedOutputs&#160;:&#160;<a class="el" href="classdata__access_1_1_deferred_wrapped_provider.html#a20c7ab984ad34e8f71225a6abc422fbd">data_access::DeferredWrappedProvider</a></li>
 <li>provider&#160;:&#160;<a class="el" href="structforcing__params.html#ade4fb727ea0eac594b7d1c84aedd9b5a">forcing_params</a></li>
+<li>provider_model_name&#160;:&#160;<a class="el" href="struct_units_helper_1_1unit__conversion__exception.html#a77185d5c68305fc039ef414e86bedcf7">UnitsHelper::unit_conversion_exception</a></li>
+<li>provider_name&#160;:&#160;<a class="el" href="struct_units_helper_1_1unit__error__log__key.html#a32e7e69aa10c4295d7460212be4ad157">UnitsHelper::unit_error_log_key</a></li>
+<li>provider_units&#160;:&#160;<a class="el" href="struct_units_helper_1_1unit__conversion__exception.html#a17181d48e4272a664e13257f80ae0b32">UnitsHelper::unit_conversion_exception</a></li>
+<li>provider_var_name&#160;:&#160;<a class="el" href="struct_units_helper_1_1unit__conversion__exception.html#ab804c77114920e37638aa6bf236c9511">UnitsHelper::unit_conversion_exception</a></li>
+<li>provider_variable&#160;:&#160;<a class="el" href="struct_units_helper_1_1unit__error__log__key.html#ae5f56cfbb9cd7c79346f69ef5e06958c">UnitsHelper::unit_error_log_key</a></li>
 <li>ptr_()&#160;:&#160;<a class="el" href="structngen_1_1sqlite_1_1database_1_1iterator.html#a61a73e09122670e88122238cce97c75f">ngen::sqlite::database::iterator</a></li>
-<li>push_back()&#160;:&#160;<a class="el" href="structgeojson_1_1_list.html#a9f45981e383d8ad0cc5679e93420f3b1">geojson::List</a></li>
+<li>push_back()&#160;:&#160;<a class="el" href="structgeojson_1_1_list.html#a28e0531d1eb1f1b8cbedbe4c759fefb7">geojson::List</a></li>
 <li>put()&#160;:&#160;<a class="el" href="classutils_1_1_stream_handler.html#a37b9e817a29d162b43066c3f60debe3f">utils::StreamHandler</a></li>
 <li>put_indexed()&#160;:&#160;<a class="el" href="classutils_1_1_stream_handler.html#a3c6d48fc5333e2f7d13df9156eac13b9">utils::StreamHandler</a></li>
 <li>put_layer()&#160;:&#160;<a class="el" href="classngen_1_1_layer_data_storage.html#abd30fa604b8e071d901b6aad7023baf8">ngen::LayerDataStorage</a></li>
@@ -145,7 +153,7 @@ $(function(){initNavTree('functions_p.html',''); initResizable(true); });
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Jul 7 2026 17:26:30 for NGen by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="footer">Generated on Wed Aug 19 2026 12:36:42 for NGen by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>
