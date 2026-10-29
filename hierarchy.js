@@ -17,7 +17,6 @@ var hierarchy =
       [ "add_to_summed_nexus", "structadd__to__summed__nexus.html", null ],
       [ "completed_time_step", "structcompleted__time__step.html", null ],
       [ "invalid_downstream_request", "structinvalid__downstream__request.html", null ],
-      [ "invalid_time_step", "structinvalid__time__step.html", null ],
       [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", null ]
     ] ],
     [ "boost::iostreams::stream", null, [
@@ -98,11 +97,17 @@ var hierarchy =
     [ "HY_HydroNexus", "class_h_y___hydro_nexus.html", [
       [ "HY_PointHydroNexus", "class_h_y___point_hydro_nexus.html", null ]
     ] ],
+    [ "models::bmi::protocols::anonymous_namespace{serialization.cpp}::ScopedCapture", "classmodels_1_1bmi_1_1protocols_1_1anonymous__namespace_02serialization_8cpp_03_1_1_scoped_capture.html", null ],
     [ "models::bmi::protocols::Context", "structmodels_1_1bmi_1_1protocols_1_1_context.html", null ],
     [ "models::bmi::protocols::NgenBmiProtocol", "classmodels_1_1bmi_1_1protocols_1_1_ngen_bmi_protocol.html", [
-      [ "models::bmi::protocols::NgenMassBalance", "classmodels_1_1bmi_1_1protocols_1_1_ngen_mass_balance.html", null ]
+      [ "models::bmi::protocols::NgenDeserializationProtocol", "classmodels_1_1bmi_1_1protocols_1_1_ngen_deserialization_protocol.html", null ],
+      [ "models::bmi::protocols::NgenMassBalance", "classmodels_1_1bmi_1_1protocols_1_1_ngen_mass_balance.html", null ],
+      [ "models::bmi::protocols::NgenSerializationProtocol", "classmodels_1_1bmi_1_1protocols_1_1_ngen_serialization_protocol.html", null ]
     ] ],
     [ "models::bmi::protocols::NgenBmiProtocols", "classmodels_1_1bmi_1_1protocols_1_1_ngen_bmi_protocols.html", null ],
+    [ "models::bmi::protocols::ReservedVar", "structmodels_1_1bmi_1_1protocols_1_1_reserved_var.html", null ],
+    [ "models::bmi::protocols::serialization::wire_format::RecordPrefix", "structmodels_1_1bmi_1_1protocols_1_1serialization_1_1wire__format_1_1_record_prefix.html", null ],
+    [ "multithreading::details::string_literal< N >", "structmultithreading_1_1details_1_1string__literal.html", null ],
     [ "network::Network", "classnetwork_1_1_network.html", null ],
     [ "network::VertexProperty", "structnetwork_1_1_vertex_property.html", null ],
     [ "Network_Test", "class_network___test.html", [
@@ -116,6 +121,19 @@ var hierarchy =
     ] ],
     [ "ngen::LayerDataStorage", "classngen_1_1_layer_data_storage.html", null ],
     [ "ngen::LayerDescription", "structngen_1_1_layer_description.html", null ],
+    [ "ngen::serialization::BackendError", "structngen_1_1serialization_1_1_backend_error.html", null ],
+    [ "ngen::serialization::detail::RecordT< PayloadT >", "structngen_1_1serialization_1_1detail_1_1_record_t.html", null ],
+    [ "ngen::serialization::FileBackend::Index", "classngen_1_1serialization_1_1_file_backend_1_1_index.html", null ],
+    [ "ngen::serialization::FileBackend::Index::Entry", "structngen_1_1serialization_1_1_file_backend_1_1_index_1_1_entry.html", null ],
+    [ "ngen::serialization::RecordBackend", "classngen_1_1serialization_1_1_record_backend.html", [
+      [ "ngen::serialization::FileBackend", "classngen_1_1serialization_1_1_file_backend.html", null ]
+    ] ],
+    [ "ngen::serialization::RecordBackend::Reader", "classngen_1_1serialization_1_1_record_backend_1_1_reader.html", [
+      [ "ngen::serialization::FileBackend::Reader", "classngen_1_1serialization_1_1_file_backend_1_1_reader.html", null ]
+    ] ],
+    [ "ngen::serialization::RecordBackend::Writer", "classngen_1_1serialization_1_1_record_backend_1_1_writer.html", [
+      [ "ngen::serialization::FileBackend::Writer", "classngen_1_1serialization_1_1_file_backend_1_1_writer.html", null ]
+    ] ],
     [ "ngen::sqlite::database", "classngen_1_1sqlite_1_1database.html", null ],
     [ "ngen::sqlite::database::deleter", "structngen_1_1sqlite_1_1database_1_1deleter.html", null ],
     [ "ngen::sqlite::database::iterator", "structngen_1_1sqlite_1_1database_1_1iterator.html", null ],
@@ -129,6 +147,7 @@ var hierarchy =
     [ "Partition_One", "class_partition___one.html", null ],
     [ "PartitionData", "struct_partition_data.html", null ],
     [ "Partitions_Parser", "class_partitions___parser.html", null ],
+    [ "realization::Bmi_Var_Details", "classrealization_1_1_bmi___var___details.html", null ],
     [ "realization::config::Config", "structrealization_1_1config_1_1_config.html", null ],
     [ "realization::config::Forcing", "structrealization_1_1config_1_1_forcing.html", null ],
     [ "realization::config::Formulation", "structrealization_1_1config_1_1_formulation.html", null ],
@@ -145,18 +164,21 @@ var hierarchy =
     [ "SelectorConfig", "struct_selector_config.html", null ],
     [ "Simulation_Time", "class_simulation___time.html", null ],
     [ "simulation_time_params", "structsimulation__time__params.html", null ],
+    [ "std::enable_shared_from_this", null, [
+      [ "ngen::serialization::FileBackend", "classngen_1_1serialization_1_1_file_backend.html", null ]
+    ] ],
     [ "std::exception", null, [
       [ "add_to_summed_nexus", "structadd__to__summed__nexus.html", null ],
       [ "completed_time_step", "structcompleted__time__step.html", null ],
       [ "external::ExternalIntegrationException", "classexternal_1_1_external_integration_exception.html", null ],
       [ "invalid_downstream_request", "structinvalid__downstream__request.html", null ],
-      [ "invalid_time_step", "structinvalid__time__step.html", null ],
       [ "models::bmi::protocols::ProtocolError", "classmodels_1_1bmi_1_1protocols_1_1_protocol_error.html", null ],
       [ "models::external::State_Exception", "classmodels_1_1external_1_1_state___exception.html", null ],
       [ "realization::ConfigurationException", "classrealization_1_1_configuration_exception.html", null ],
       [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", null ],
       [ "std::runtime_error", null, [
         [ "UnitsHelper::unit_conversion_exception", "struct_units_helper_1_1unit__conversion__exception.html", null ],
+        [ "models::bmi::unknown_bmi_type", "structmodels_1_1bmi_1_1unknown__bmi__type.html", null ],
         [ "ngen::sqlite::sqlite_error", "structngen_1_1sqlite_1_1sqlite__error.html", null ]
       ] ]
     ] ],
@@ -180,12 +202,17 @@ var hierarchy =
       [ "Network_Test1", "class_network___test1.html", null ]
     ] ],
     [ "UnitsHelper", "class_units_helper.html", null ],
+    [ "UnitsHelper::normalized_units", "struct_units_helper_1_1normalized__units.html", null ],
     [ "UnitsHelper::unit_error_log_key", "struct_units_helper_1_1unit__error__log__key.html", null ],
     [ "utils::CatchmentOutputsMgr", "classutils_1_1_catchment_outputs_mgr.html", [
       [ "utils::CatchmentCsvOutputMgr", "classutils_1_1_catchment_csv_output_mgr.html", null ]
     ] ],
     [ "utils::FeatureDescriptor", "structutils_1_1_feature_descriptor.html", null ],
     [ "utils::FileChecker", "classutils_1_1_file_checker.html", null ],
+    [ "utils::FormulationStepOutput", "structutils_1_1_formulation_step_output.html", [
+      [ "PerFormulationStepOutput", "struct_per_formulation_step_output.html", null ],
+      [ "PerNexusStepOutput", "struct_per_nexus_step_output.html", null ]
+    ] ],
     [ "utils::NexusOutputsMgr", "classutils_1_1_nexus_outputs_mgr.html", [
       [ "utils::PerNexusCsvOutputMgr", "classutils_1_1_per_nexus_csv_output_mgr.html", null ]
     ] ],

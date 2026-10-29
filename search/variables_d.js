@@ -1,7 +1,7 @@
 var searchData=
 [
   ['n_0',['n',['../class_network___test.html#a470fa2e04fd1239f0932f52c7e6439d5',1,'Network_Test']]],
-  ['name_1',['name',['../structngen_1_1_layer_description.html#a8d632f5ca6bcbda986fde0f73105ba0e',1,'ngen::LayerDescription']]],
+  ['name_1',['name',['../structngen_1_1_layer_description.html#a8d632f5ca6bcbda986fde0f73105ba0e',1,'ngen::LayerDescription::name'],['../classrealization_1_1_bmi___var___details.html#abad567c8f0617b99c8ab5bb79a670a4e',1,'realization::Bmi_Var_Details::name'],['../structmodels_1_1bmi_1_1protocols_1_1_reserved_var.html#a928f27f1d99de0ae1b692f32ef2fe958',1,'models::bmi::protocols::ReservedVar::name']]],
   ['names_5f_2',['names_',['../structngen_1_1sqlite_1_1database_1_1iterator.html#ab17b2f5d88168158db9acf9ca0d2c3ba',1,'ngen::sqlite::database::iterator']]],
   ['ncol_5f_3',['ncol_',['../structngen_1_1sqlite_1_1database_1_1iterator.html#a0b1eab3cd2df38d55e1c8a368d2bd22a',1,'ngen::sqlite::database::iterator']]],
   ['neighbors_4',['neighbors',['../classgeojson_1_1_feature_base.html#ad2b3f513a87e2787c8450254c0187857',1,'geojson::FeatureBase']]],
@@ -17,9 +17,10 @@ var searchData=
   ['nexus_5findexes_5f_14',['nexus_indexes_',['../class_ngen_simulation.html#a6a81cfc85c71834ae9fe3986fa68e057',1,'NgenSimulation']]],
   ['nexus_5foutfiles_15',['nexus_outfiles',['../classutils_1_1_per_nexus_csv_output_mgr.html#af76ee3e66e12b4fcc66a5f6557d8f937',1,'utils::PerNexusCsvOutputMgr']]],
   ['nexus_5foutputs_5fmgr_16',['nexus_outputs_mgr',['../classngen_1_1_surface_layer.html#a2a9db2399700b8dcb7c3f22ccffcca13',1,'ngen::SurfaceLayer']]],
-  ['nexuses_17',['nexuses',['../class_network___test.html#ae789eeaf0218215360e2c2b7f3f60d8d',1,'Network_Test']]],
+  ['nexuses_17',['nexuses',['../classngen_1_1_surface_layer.html#abc560367ec28489a1fc886905242fa09',1,'ngen::SurfaceLayer::nexuses'],['../class_network___test.html#ae789eeaf0218215360e2c2b7f3f60d8d',1,'Network_Test::nexuses']]],
   ['nooutletreservoir_18',['NoOutletReservoir',['../class_reservoir_kernel_test.html#a7c15ea06536a086b52fe2556832885f0',1,'ReservoirKernelTest::NoOutletReservoir'],['../class_reservoir_timeless_kernel_test.html#af4bafdd80667fac7872bbe8481619ebb',1,'ReservoirTimelessKernelTest::NoOutletReservoir']]],
   ['nooutletreservoir2_19',['NoOutletReservoir2',['../class_reservoir_kernel_test.html#a2388e5a52b338a7a655d4855b4fc84e7',1,'ReservoirKernelTest::NoOutletReservoir2'],['../class_reservoir_timeless_kernel_test.html#af20b4030e198fe3a8a66a30bac9b7ee3',1,'ReservoirTimelessKernelTest::NoOutletReservoir2']]],
   ['nooutletreservoir3_20',['NoOutletReservoir3',['../class_reservoir_kernel_test.html#a8940d7294c4e15d00b6776719c8db958',1,'ReservoirKernelTest::NoOutletReservoir3'],['../class_reservoir_timeless_kernel_test.html#a9991d3dad1be1cc5067c574df69eb38a',1,'ReservoirTimelessKernelTest::NoOutletReservoir3']]],
-  ['number_5fof_5fdownstream_5fcatchments_21',['number_of_downstream_catchments',['../class_h_y___hydro_nexus.html#a849ee7fd94b2fd0d32a7fc7734bc3234',1,'HY_HydroNexus']]]
+  ['num_5fitems_21',['num_items',['../classrealization_1_1_bmi___var___details.html#aee65f76a3b02cb0c9958f841b7bbf86a',1,'realization::Bmi_Var_Details']]],
+  ['number_5fof_5fdownstream_5fcatchments_22',['number_of_downstream_catchments',['../class_h_y___hydro_nexus.html#a849ee7fd94b2fd0d32a7fc7734bc3234',1,'HY_HydroNexus']]]
 ];

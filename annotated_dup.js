@@ -39,19 +39,36 @@ var annotated_dup =
     [ "models", "namespacemodels.html", [
       [ "bmi", "namespacemodels_1_1bmi.html", [
         [ "protocols", "namespacemodels_1_1bmi_1_1protocols.html", [
+          [ "anonymous_namespace{serialization.cpp}", "namespacemodels_1_1bmi_1_1protocols_1_1anonymous__namespace_02serialization_8cpp_03.html", [
+            [ "ScopedCapture", "classmodels_1_1bmi_1_1protocols_1_1anonymous__namespace_02serialization_8cpp_03_1_1_scoped_capture.html", "classmodels_1_1bmi_1_1protocols_1_1anonymous__namespace_02serialization_8cpp_03_1_1_scoped_capture" ]
+          ] ],
+          [ "serialization", "namespacemodels_1_1bmi_1_1protocols_1_1serialization.html", [
+            [ "wire_format", "namespacemodels_1_1bmi_1_1protocols_1_1serialization_1_1wire__format.html", [
+              [ "RecordPrefix", "structmodels_1_1bmi_1_1protocols_1_1serialization_1_1wire__format_1_1_record_prefix.html", "structmodels_1_1bmi_1_1protocols_1_1serialization_1_1wire__format_1_1_record_prefix" ]
+            ] ]
+          ] ],
           [ "Context", "structmodels_1_1bmi_1_1protocols_1_1_context.html", "structmodels_1_1bmi_1_1protocols_1_1_context" ],
           [ "NgenBmiProtocol", "classmodels_1_1bmi_1_1protocols_1_1_ngen_bmi_protocol.html", "classmodels_1_1bmi_1_1protocols_1_1_ngen_bmi_protocol" ],
           [ "NgenBmiProtocols", "classmodels_1_1bmi_1_1protocols_1_1_ngen_bmi_protocols.html", "classmodels_1_1bmi_1_1protocols_1_1_ngen_bmi_protocols" ],
+          [ "NgenDeserializationProtocol", "classmodels_1_1bmi_1_1protocols_1_1_ngen_deserialization_protocol.html", "classmodels_1_1bmi_1_1protocols_1_1_ngen_deserialization_protocol" ],
           [ "NgenMassBalance", "classmodels_1_1bmi_1_1protocols_1_1_ngen_mass_balance.html", "classmodels_1_1bmi_1_1protocols_1_1_ngen_mass_balance" ],
-          [ "ProtocolError", "classmodels_1_1bmi_1_1protocols_1_1_protocol_error.html", "classmodels_1_1bmi_1_1protocols_1_1_protocol_error" ]
+          [ "NgenSerializationProtocol", "classmodels_1_1bmi_1_1protocols_1_1_ngen_serialization_protocol.html", "classmodels_1_1bmi_1_1protocols_1_1_ngen_serialization_protocol" ],
+          [ "ProtocolError", "classmodels_1_1bmi_1_1protocols_1_1_protocol_error.html", "classmodels_1_1bmi_1_1protocols_1_1_protocol_error" ],
+          [ "ReservedVar", "structmodels_1_1bmi_1_1protocols_1_1_reserved_var.html", "structmodels_1_1bmi_1_1protocols_1_1_reserved_var" ]
         ] ],
         [ "AbstractCLibBmiAdapter", "classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter.html", "classmodels_1_1bmi_1_1_abstract_c_lib_bmi_adapter" ],
         [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html", "classmodels_1_1bmi_1_1_bmi___adapter" ],
         [ "Bmi_C_Adapter", "classmodels_1_1bmi_1_1_bmi___c___adapter.html", "classmodels_1_1bmi_1_1_bmi___c___adapter" ],
-        [ "Bmi_Cpp_Adapter", "classmodels_1_1bmi_1_1_bmi___cpp___adapter.html", "classmodels_1_1bmi_1_1_bmi___cpp___adapter" ]
+        [ "Bmi_Cpp_Adapter", "classmodels_1_1bmi_1_1_bmi___cpp___adapter.html", "classmodels_1_1bmi_1_1_bmi___cpp___adapter" ],
+        [ "unknown_bmi_type", "structmodels_1_1bmi_1_1unknown__bmi__type.html", "structmodels_1_1bmi_1_1unknown__bmi__type" ]
       ] ],
       [ "external", "namespacemodels_1_1external.html", [
         [ "State_Exception", "classmodels_1_1external_1_1_state___exception.html", "classmodels_1_1external_1_1_state___exception" ]
+      ] ]
+    ] ],
+    [ "multithreading", "namespacemultithreading.html", [
+      [ "details", "namespacemultithreading_1_1details.html", [
+        [ "string_literal", "structmultithreading_1_1details_1_1string__literal.html", "structmultithreading_1_1details_1_1string__literal" ]
       ] ]
     ] ],
     [ "network", "namespacenetwork.html", [
@@ -62,6 +79,14 @@ var annotated_dup =
     [ "ngen", "namespacengen.html", [
       [ "geopackage", "namespacengen_1_1geopackage.html", [
         [ "wkb", "structngen_1_1geopackage_1_1wkb.html", "structngen_1_1geopackage_1_1wkb" ]
+      ] ],
+      [ "serialization", "namespacengen_1_1serialization.html", [
+        [ "detail", "namespacengen_1_1serialization_1_1detail.html", [
+          [ "RecordT", "structngen_1_1serialization_1_1detail_1_1_record_t.html", "structngen_1_1serialization_1_1detail_1_1_record_t" ]
+        ] ],
+        [ "BackendError", "structngen_1_1serialization_1_1_backend_error.html", "structngen_1_1serialization_1_1_backend_error" ],
+        [ "FileBackend", "classngen_1_1serialization_1_1_file_backend.html", "classngen_1_1serialization_1_1_file_backend" ],
+        [ "RecordBackend", "classngen_1_1serialization_1_1_record_backend.html", "classngen_1_1serialization_1_1_record_backend" ]
       ] ],
       [ "sqlite", "namespacengen_1_1sqlite.html", [
         [ "database", "classngen_1_1sqlite_1_1database.html", "classngen_1_1sqlite_1_1database" ],
@@ -103,6 +128,7 @@ var annotated_dup =
       [ "Bmi_Formulation", "classrealization_1_1_bmi___formulation.html", "classrealization_1_1_bmi___formulation" ],
       [ "Bmi_Module_Formulation", "classrealization_1_1_bmi___module___formulation.html", "classrealization_1_1_bmi___module___formulation" ],
       [ "Bmi_Multi_Formulation", "classrealization_1_1_bmi___multi___formulation.html", "classrealization_1_1_bmi___multi___formulation" ],
+      [ "Bmi_Var_Details", "classrealization_1_1_bmi___var___details.html", "classrealization_1_1_bmi___var___details" ],
       [ "Catchment_Formulation", "classrealization_1_1_catchment___formulation.html", "classrealization_1_1_catchment___formulation" ],
       [ "ConfigurationException", "classrealization_1_1_configuration_exception.html", "classrealization_1_1_configuration_exception" ],
       [ "Formulation", "classrealization_1_1_formulation.html", "classrealization_1_1_formulation" ],
@@ -119,6 +145,7 @@ var annotated_dup =
       [ "FeatureDescriptor", "structutils_1_1_feature_descriptor.html", "structutils_1_1_feature_descriptor" ],
       [ "FileChecker", "classutils_1_1_file_checker.html", "classutils_1_1_file_checker" ],
       [ "FileStreamHandler", "classutils_1_1_file_stream_handler.html", "classutils_1_1_file_stream_handler" ],
+      [ "FormulationStepOutput", "structutils_1_1_formulation_step_output.html", "structutils_1_1_formulation_step_output" ],
       [ "NexusOutputsMgr", "classutils_1_1_nexus_outputs_mgr.html", "classutils_1_1_nexus_outputs_mgr" ],
       [ "NullStream", "classutils_1_1_null_stream.html", "classutils_1_1_null_stream" ],
       [ "OutputField", "structutils_1_1_output_field.html", "structutils_1_1_output_field" ],
@@ -155,7 +182,6 @@ var annotated_dup =
     [ "HY_InteriorCatchment", "class_h_y___interior_catchment.html", "class_h_y___interior_catchment" ],
     [ "HY_PointHydroNexus", "class_h_y___point_hydro_nexus.html", "class_h_y___point_hydro_nexus" ],
     [ "invalid_downstream_request", "structinvalid__downstream__request.html", "structinvalid__downstream__request" ],
-    [ "invalid_time_step", "structinvalid__time__step.html", "structinvalid__time__step" ],
     [ "JSONGeometry_Test", "class_j_s_o_n_geometry___test.html", "class_j_s_o_n_geometry___test" ],
     [ "JSONProperty_Test", "class_j_s_o_n_property___test.html", "class_j_s_o_n_property___test" ],
     [ "MultiLayerParserTest", "class_multi_layer_parser_test.html", "class_multi_layer_parser_test" ],
@@ -169,6 +195,8 @@ var annotated_dup =
     [ "Partition_One", "class_partition___one.html", "class_partition___one" ],
     [ "PartitionData", "struct_partition_data.html", "struct_partition_data" ],
     [ "Partitions_Parser", "class_partitions___parser.html", "class_partitions___parser" ],
+    [ "PerFormulationStepOutput", "struct_per_formulation_step_output.html", "struct_per_formulation_step_output" ],
+    [ "PerNexusStepOutput", "struct_per_nexus_step_output.html", "struct_per_nexus_step_output" ],
     [ "request_from_empty_nexus", "structrequest__from__empty__nexus.html", "structrequest__from__empty__nexus" ],
     [ "ReservoirKernelTest", "class_reservoir_kernel_test.html", "class_reservoir_kernel_test" ],
     [ "ReservoirTimelessKernelTest", "class_reservoir_timeless_kernel_test.html", "class_reservoir_timeless_kernel_test" ],
