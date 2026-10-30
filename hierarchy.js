@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "anonymous_namespace{Formulation_Manager.cpp}::DirectoryCloser", "structanonymous__namespace_02_formulation___manager_8cpp_03_1_1_directory_closer.html", null ],
     [ "AORC_data", "struct_a_o_r_c__data.html", null ],
     [ "Bmi", "struct_bmi.html", null ],
     [ "bmi::Bmi", "classbmi_1_1_bmi.html", [
@@ -24,6 +25,7 @@ var hierarchy =
     ] ],
     [ "boost::static_visitor", null, [
       [ "geojson::JSONProperty::AsVectorVisitor< T >", "structgeojson_1_1_j_s_o_n_property_1_1_as_vector_visitor.html", null ],
+      [ "hy_features::attributes::area_from_geometry_visitor", "structhy__features_1_1attributes_1_1area__from__geometry__visitor.html", null ],
       [ "ngen::geopackage::wkb::wgs84", "structngen_1_1geopackage_1_1wkb_1_1wgs84.html", null ]
     ] ],
     [ "BoundingBox", "struct_bounding_box.html", null ],
@@ -65,11 +67,7 @@ var hierarchy =
     [ "geojson::List", "structgeojson_1_1_list.html", null ],
     [ "geojson::Object", "structgeojson_1_1_object.html", null ],
     [ "GM_Object", "class_g_m___object.html", [
-      [ "HY_CatchmentArea", "class_h_y___catchment_area.html", [
-        [ "realization::Catchment_Formulation", "classrealization_1_1_catchment___formulation.html", [
-          [ "realization::Bmi_Formulation", "classrealization_1_1_bmi___formulation.html", null ]
-        ] ]
-      ] ],
+      [ "HY_CatchmentArea", "class_h_y___catchment_area.html", null ],
       [ "HY_CatchmentDivide", "class_h_y___catchment_divide.html", null ],
       [ "HY_FlowPath", "class_h_y___flow_path.html", null ],
       [ "HY_HydroNetwork", "class_h_y___hydro_network.html", null ],
@@ -77,13 +75,7 @@ var hierarchy =
     ] ],
     [ "GridDataSelector", "struct_grid_data_selector.html", null ],
     [ "GridSpecification", "struct_grid_specification.html", null ],
-    [ "HY_CatchmentRealization", "class_h_y___catchment_realization.html", [
-      [ "HY_CartographicRealization", "class_h_y___cartographic_realization.html", null ],
-      [ "HY_CatchmentArea", "class_h_y___catchment_area.html", null ],
-      [ "HY_CatchmentDivide", "class_h_y___catchment_divide.html", null ],
-      [ "HY_FlowPath", "class_h_y___flow_path.html", null ],
-      [ "HY_HydroNetwork", "class_h_y___hydro_network.html", null ]
-    ] ],
+    [ "HY_CatchmentRealization::Response", "class_h_y___catchment_realization_1_1_response.html", null ],
     [ "hy_features::HY_Features", "classhy__features_1_1_h_y___features.html", null ],
     [ "hy_features::hydrolocation::HY_DistanceFromReferent", "structhy__features_1_1hydrolocation_1_1_h_y___distance_from_referent.html", null ],
     [ "hy_features::hydrolocation::HY_IndirectPosition", "classhy__features_1_1hydrolocation_1_1_h_y___indirect_position.html", null ],
@@ -112,9 +104,22 @@ var hierarchy =
     [ "network::VertexProperty", "structnetwork_1_1_vertex_property.html", null ],
     [ "Network_Test", "class_network___test.html", [
       [ "Network_Test1", "class_network___test1.html", null ],
-      [ "Network_Test2", "class_network___test2.html", null ]
+      [ "Network_Test2", "class_network___test2.html", null ],
+      [ "Network_Test3", "class_network___test3.html", null ]
     ] ],
+    [ "ngen::geopackage::GeoPackageReader", "classngen_1_1geopackage_1_1_geo_package_reader.html", null ],
     [ "ngen::geopackage::wkb", "structngen_1_1geopackage_1_1wkb.html", null ],
+    [ "ngen::hydrofabric::anonymous_namespace{HydrofabricReaderFactory.cpp}::Identified", "structngen_1_1hydrofabric_1_1anonymous__namespace_02_hydrofabric_reader_factory_8cpp_03_1_1_identified.html", null ],
+    [ "ngen::hydrofabric::HydrofabricReader", "classngen_1_1hydrofabric_1_1_hydrofabric_reader.html", [
+      [ "ngen::hydrofabric::GeoJSONHydrofabricReader", "classngen_1_1hydrofabric_1_1_geo_j_s_o_n_hydrofabric_reader.html", null ],
+      [ "ngen::hydrofabric::GeoPackageHydrofabricReader", "classngen_1_1hydrofabric_1_1_geo_package_hydrofabric_reader.html", [
+        [ "ngen::hydrofabric::AbstractV4GeoPackageHydrofabricReader", "classngen_1_1hydrofabric_1_1_abstract_v4_geo_package_hydrofabric_reader.html", [
+          [ "ngen::hydrofabric::V4_0Beta1GeoPackageHydrofabricReader", "classngen_1_1hydrofabric_1_1_v4__0_beta1_geo_package_hydrofabric_reader.html", null ],
+          [ "ngen::hydrofabric::V4_0GeoPackageHydrofabricReader", "classngen_1_1hydrofabric_1_1_v4__0_geo_package_hydrofabric_reader.html", null ]
+        ] ],
+        [ "ngen::hydrofabric::V2_2GeoPackageHydrofabricReader", "classngen_1_1hydrofabric_1_1_v2__2_geo_package_hydrofabric_reader.html", null ]
+      ] ]
+    ] ],
     [ "ngen::Layer", "classngen_1_1_layer.html", [
       [ "ngen::DomainLayer", "classngen_1_1_domain_layer.html", null ],
       [ "ngen::SurfaceLayer", "classngen_1_1_surface_layer.html", null ]
@@ -157,7 +162,8 @@ var hierarchy =
     [ "realization::config::Routing", "structrealization_1_1config_1_1_routing.html", null ],
     [ "realization::config::Time", "structrealization_1_1config_1_1_time.html", null ],
     [ "realization::Formulation", "classrealization_1_1_formulation.html", [
-      [ "realization::Catchment_Formulation", "classrealization_1_1_catchment___formulation.html", null ]
+      [ "Depth_Formulation", "class_depth___formulation.html", null ],
+      [ "realization::Bmi_Formulation", "classrealization_1_1_bmi___formulation.html", null ]
     ] ],
     [ "realization::Formulation_Manager", "classrealization_1_1_formulation___manager.html", null ],
     [ "routing_params", "structrouting__params.html", null ],
@@ -165,6 +171,13 @@ var hierarchy =
     [ "Simulation_Time", "class_simulation___time.html", null ],
     [ "simulation_time_params", "structsimulation__time__params.html", null ],
     [ "std::enable_shared_from_this", null, [
+      [ "HY_CatchmentRealization", "class_h_y___catchment_realization.html", [
+        [ "HY_CartographicRealization", "class_h_y___cartographic_realization.html", null ],
+        [ "HY_CatchmentArea", "class_h_y___catchment_area.html", null ],
+        [ "HY_CatchmentDivide", "class_h_y___catchment_divide.html", null ],
+        [ "HY_FlowPath", "class_h_y___flow_path.html", null ],
+        [ "HY_HydroNetwork", "class_h_y___hydro_network.html", null ]
+      ] ],
       [ "ngen::serialization::FileBackend", "classngen_1_1serialization_1_1_file_backend.html", null ]
     ] ],
     [ "std::exception", null, [
@@ -188,10 +201,13 @@ var hierarchy =
     [ "testing::Test", null, [
       [ "FeatureCollection_Test", "class_feature_collection___test.html", null ],
       [ "Feature_Test", "class_feature___test.html", null ],
+      [ "HY_CatchmentRealization_Test", "class_h_y___catchment_realization___test.html", null ],
+      [ "HY_Features_Attributes_Test", "class_h_y___features___attributes___test.html", null ],
       [ "JSONGeometry_Test", "class_j_s_o_n_geometry___test.html", null ],
       [ "JSONProperty_Test", "class_j_s_o_n_property___test.html", null ],
       [ "MultiLayerParserTest", "class_multi_layer_parser_test.html", null ],
       [ "Network_Test2", "class_network___test2.html", null ],
+      [ "Network_Test3", "class_network___test3.html", null ],
       [ "Nexus_Remote_Test", "class_nexus___remote___test.html", null ],
       [ "Nexus_Test", "class_nexus___test.html", null ],
       [ "ReservoirKernelTest", "class_reservoir_kernel_test.html", null ],
