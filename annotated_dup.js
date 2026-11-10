@@ -66,7 +66,8 @@ var annotated_dup =
         [ "Bmi_Adapter", "classmodels_1_1bmi_1_1_bmi___adapter.html", "classmodels_1_1bmi_1_1_bmi___adapter" ],
         [ "Bmi_C_Adapter", "classmodels_1_1bmi_1_1_bmi___c___adapter.html", "classmodels_1_1bmi_1_1_bmi___c___adapter" ],
         [ "Bmi_Cpp_Adapter", "classmodels_1_1bmi_1_1_bmi___cpp___adapter.html", "classmodels_1_1bmi_1_1_bmi___cpp___adapter" ],
-        [ "unknown_bmi_type", "structmodels_1_1bmi_1_1unknown__bmi__type.html", "structmodels_1_1bmi_1_1unknown__bmi__type" ]
+        [ "unknown_bmi_type", "structmodels_1_1bmi_1_1unknown__bmi__type.html", "structmodels_1_1bmi_1_1unknown__bmi__type" ],
+        [ "unsupported_primitive_type", "structmodels_1_1bmi_1_1unsupported__primitive__type.html", "structmodels_1_1bmi_1_1unsupported__primitive__type" ]
       ] ],
       [ "external", "namespacemodels_1_1external.html", [
         [ "State_Exception", "classmodels_1_1external_1_1_state___exception.html", "classmodels_1_1external_1_1_state___exception" ]
@@ -77,6 +78,7 @@ var annotated_dup =
         [ "string_literal", "structmultithreading_1_1details_1_1string__literal.html", "structmultithreading_1_1details_1_1string__literal" ]
       ] ],
       [ "cache_slot", "structmultithreading_1_1cache__slot.html", "structmultithreading_1_1cache__slot" ],
+      [ "failed_fill", "structmultithreading_1_1failed__fill.html", null ],
       [ "per_thread", "classmultithreading_1_1per__thread.html", "classmultithreading_1_1per__thread" ],
       [ "shared_cache", "structmultithreading_1_1shared__cache.html", "structmultithreading_1_1shared__cache" ],
       [ "thread_key", "structmultithreading_1_1thread__key.html", "structmultithreading_1_1thread__key" ]

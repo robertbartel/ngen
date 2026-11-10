@@ -101,6 +101,7 @@ var hierarchy =
     [ "models::bmi::protocols::serialization::wire_format::RecordPrefix", "structmodels_1_1bmi_1_1protocols_1_1serialization_1_1wire__format_1_1_record_prefix.html", null ],
     [ "multithreading::cache_slot< T >", "structmultithreading_1_1cache__slot.html", null ],
     [ "multithreading::details::string_literal< N >", "structmultithreading_1_1details_1_1string__literal.html", null ],
+    [ "multithreading::failed_fill", "structmultithreading_1_1failed__fill.html", null ],
     [ "multithreading::per_thread< T >", "classmultithreading_1_1per__thread.html", null ],
     [ "multithreading::shared_cache< Key, T >", "structmultithreading_1_1shared__cache.html", null ],
     [ "multithreading::thread_key", "structmultithreading_1_1thread__key.html", null ],
@@ -196,6 +197,7 @@ var hierarchy =
       [ "std::runtime_error", null, [
         [ "UnitsHelper::unit_conversion_exception", "struct_units_helper_1_1unit__conversion__exception.html", null ],
         [ "models::bmi::unknown_bmi_type", "structmodels_1_1bmi_1_1unknown__bmi__type.html", null ],
+        [ "models::bmi::unsupported_primitive_type", "structmodels_1_1bmi_1_1unsupported__primitive__type.html", null ],
         [ "ngen::sqlite::sqlite_error", "structngen_1_1sqlite_1_1sqlite__error.html", null ]
       ] ]
     ] ],
